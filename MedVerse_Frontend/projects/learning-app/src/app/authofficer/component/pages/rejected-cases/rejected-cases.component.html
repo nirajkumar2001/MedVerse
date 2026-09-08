@@ -1,0 +1,79 @@
+<div class="rejected-layout">
+
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="rejected-page" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <section class="page-header">
+      <div>
+        <h1>Rejected Cases</h1>
+        <p>
+          View medical cases that were rejected after authentication review.
+        </p>
+      </div>
+    </section>
+
+    <section class="search-section">
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search by case ID, title, or disease..."
+          [(ngModel)]="searchText"
+        />
+      </div>
+
+    </section>
+
+    <div class="case-count">
+      Showing {{ filteredCases.length }} rejected cases
+    </div>
+
+    <section class="case-grid">
+
+      <article class="case-card" *ngFor="let item of filteredCases">
+
+        <div class="card-top">
+          <div class="case-icon">
+            
+          </div>
+
+          <span class="status-badge">
+            ● {{ item.status }}
+          </span>
+        </div>
+
+        <div class="case-content">
+          <h3>{{ item.caseId }}</h3>
+
+          <h4>{{ item.title }}</h4>
+
+          <p class="disease">
+            {{ item.disease }}
+          </p>
+
+          <p class="date">
+            🗓 {{ item.rejectedDate }}
+          </p>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="view-btn" (click)="viewCase(item)">
+            👁 View Case
+          </button>
+        </div>
+
+      </article>
+
+      <div class="empty-state" *ngIf="filteredCases.length === 0">
+        No rejected cases found.
+      </div>
+
+    </section>
+
+    <app-authofficer-footer></app-authofficer-footer>
+  </main>
+
+</div>

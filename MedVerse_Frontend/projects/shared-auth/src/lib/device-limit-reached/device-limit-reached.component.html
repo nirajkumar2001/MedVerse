@@ -1,0 +1,111 @@
+<main class="device-page">
+  <header class="device-header">
+    <div class="alert-mark">!</div>
+    <div>
+      <h1>Device Limit Reached</h1>
+      <p>You are already signed in on more than <strong>{{ maxDevices }} devices</strong>. Please log out from one device to continue.</p>
+    </div>
+  </header>
+
+  <section class="device-panel">
+    <aside class="security-panel">
+      <div class="usage-badge">
+        <strong>{{ devices.length }}/{{ maxDevices }}</strong>
+        <span>Active</span>
+      </div>
+
+      <div class="security-art" aria-hidden="true">
+        <div class="spark spark-one"></div>
+        <div class="spark spark-two"></div>
+        <div class="laptop">
+          <div class="screen">
+            <div class="shield">
+              <span></span>
+            </div>
+          </div>
+          <div class="base"></div>
+        </div>
+        <div class="phone">
+          <span></span>
+          <i></i>
+        </div>
+        <div class="tablet">
+          <span></span>
+        </div>
+      </div>
+
+      <div class="security-copy">
+        <h2>Security first. Always.</h2>
+        <p>For your protection, we limit active sessions to {{ maxDevices }} devices. Log out from one device to continue logging in on this device.</p>
+      </div>
+    </aside>
+
+    <section class="devices-area">
+      <div class="warning-banner">
+        <span>!</span>
+        Maximum {{ maxDevices }} active devices allowed. Please log out from one device to continue.
+      </div>
+
+      <div class="devices-title">
+        <h2>Active Devices</h2>
+        <span>({{ devices.length }} of {{ maxDevices }})</span>
+      </div>
+
+      <div class="device-list">
+        @for (device of devices; track device.deviceRefId) {
+          <button
+            class="device-row"
+            type="button"
+            [class.selected]="selectedDeviceRefId === device.deviceRefId"
+            (click)="selectDevice(device.deviceRefId)"
+          >
+            <span class="selected-check">✓</span>
+            <span class="device-icon" [class.phone-icon]="device.os === 'ios'">{{ getDeviceInitial(device) }}</span>
+
+            <span class="device-main">
+              <strong>{{ device.deviceName }}</strong>
+              <small>{{ device.browser }}</small>
+            </span>
+
+            <span class="device-meta">
+              <strong>{{ device.location }}</strong>
+              <small [class.active]="device.isActiveNow">{{ device.lastActive }}</small>
+            </span>
+
+            <!-- <span class="logout-pill">Log out</span> -->
+          </button>
+        }
+
+        <div class="device-row current">
+          <span class="device-icon dashed">N</span>
+          <span class="device-main">
+            <strong>{{ currentDevice.deviceName }}</strong>
+            <small>{{ currentDevice.browser }}</small>
+          </span>
+          <span class="device-meta">
+            <strong>{{ currentDevice.location }}</strong>
+            <small>{{ currentDevice.lastActive }}</small>
+          </span>
+          <span class="current-pill">Current login</span>
+        </div>
+      </div>
+
+      <p class="helper-text">
+        <span></span>
+        Select a device above to log out and continue your login on this device.
+      </p>
+
+      @if (errorMessage) {
+        <p class="error-text">{{ errorMessage }}</p>
+      }
+    </section>
+
+    <footer class="actions">
+      <button class="secondary-btn" type="button" (click)="cancel()">Cancel</button>
+      <button class="primary-btn" type="button" [disabled]="isContinuing" (click)="logoutAndContinue()">
+        {{ isContinuing ? 'Continuing...' : 'Log out & Continue Login' }}
+        <span>›</span>
+      </button>
+    </footer>
+  </section>
+</main>

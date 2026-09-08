@@ -1,0 +1,109 @@
+<div class="layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <div class="content">
+
+    <div class="top">
+
+      <div>
+        <h1>Profiles</h1>
+        <p>Review and approve user profiles</p>
+      </div>
+
+      <div class="actions">
+        <input
+          type="text"
+          placeholder="Search by name, email, role or user ID..."
+          [(ngModel)]="searchTerm" />
+      </div>
+
+    </div>
+
+    <div class="tabs">
+
+      <button
+        type="button"
+        *ngFor="let tab of statusTabs"
+        [class.active]="activeStatus === tab.value"
+        (click)="selectStatus(tab.value)">
+        {{ tab.label }}
+        <b>{{ getStatusCount(tab.value) }}</b>
+      </button>
+
+    </div>
+
+    <div class="table-card">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Submitted On</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngIf="isLoading">
+            <td colspan="6">Loading profile requests...</td>
+          </tr>
+
+          <tr *ngIf="!isLoading && errorMessage">
+            <td colspan="6">{{ errorMessage }}</td>
+          </tr>
+
+          <tr *ngIf="!isLoading && !errorMessage && profiles.length === 0">
+            <td colspan="6">No profile requests found.</td>
+          </tr>
+
+          <tr *ngFor="let p of profiles; trackBy: trackByProfileId">
+
+            <td>
+              <span class="id-badge">
+                {{ p.id }}
+              </span>
+            </td>
+
+            <td class="user-cell">
+              <span class="user-photo">
+                <img [src]="getProfileImage(p)" alt="User profile photo" (error)="onProfileImageError($event)">
+              </span>
+              <span>{{ p.name }}</span>
+            </td>
+
+            <td>{{ p.role }}</td>
+
+            <td>{{ p.date }}</td>
+
+            <td>
+              <span class="status-pill" [ngClass]="getStatusClass(p.rawStatus)">
+                {{ p.status }}
+              </span>
+            </td>
+
+            <td>
+              <button
+                [routerLink]="['/admin/profile-details', p.id]"
+                class="view-btn">
+                View
+              </button>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <app-admin-footer></app-admin-footer>
+  </div>
+
+</div>

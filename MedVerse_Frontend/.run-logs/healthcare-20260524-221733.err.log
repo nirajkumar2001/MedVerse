@@ -1,0 +1,617 @@
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impp'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpp[37m
+        ╵ [32m~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'im'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mim[37m
+        ╵ [32m~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impo'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpo[37m
+        ╵ [32m~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mUnexpected ";"[0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:7:
+[37m      2 │ import [32m;[37m
+        ╵        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1109: Expression expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: 'from' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: 'from' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impor'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpor[37m
+        ╵ [32m~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'PrivacyPolicyComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:10:2:
+[37m      10 │   [32mPrivacyPolicyComponent[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'PrivacyPolicyComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:10:2:
+[37m      10 │   [32mPrivacyPolicyComponent[37m,
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/healthcare-app/src/app/app.routes.ts:13:2:
+[37m      13 │   [32mTermsConditionsComponent[37m
+         ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mProgram does not contain "D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/access-status-chip/access-status-chip.component.ngtypecheck.ts" - available files are D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es5.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2016.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2021.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.dom.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.core.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.collection.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.generator.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.iterable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.promise.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.proxy.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.reflect.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.symbol.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2016.array.include.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2016.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.date.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.object.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.string.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.promise.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2018.regexp.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.array.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.object.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.string.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.symbol.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2019.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.bigint.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.date.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.promise.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.string.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2020.number.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2021.promise.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2021.string.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2021.weakref.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2021.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.array.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.error.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.intl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.object.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.sharedmemory.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.string.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.es2022.regexp.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.decorators.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/typescript/lib/lib.decorators.legacy.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/tslib/tslib.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/tslib/modules/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/main.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Subscription.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Subscriber.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Operator.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Observable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/types.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/audit.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/auditTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/buffer.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/bufferCount.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/bufferTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/bufferToggle.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/bufferWhen.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/catchError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/combineLatestAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/combineAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/combineLatest.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/combineLatestWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/concat.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/concatAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/concatMap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/concatMapTo.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/concatWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/connect.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/count.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/debounce.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/debounceTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/defaultIfEmpty.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/delay.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/delayWhen.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/dematerialize.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/distinct.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/distinctUntilChanged.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/distinctUntilKeyChanged.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/elementAt.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/endWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/every.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/exhaustAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/exhaust.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/exhaustMap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/expand.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/filter.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/finalize.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/find.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/findIndex.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/first.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Subject.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/groupBy.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/ignoreElements.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/isEmpty.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/last.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/map.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mapTo.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Notification.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/materialize.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/max.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/merge.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mergeAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mergeMap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/flatMap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mergeMapTo.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mergeScan.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/mergeWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/min.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/ConnectableObservable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/multicast.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/observeOn.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/onErrorResumeNextWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/pairwise.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/partition.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/pluck.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/publish.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/publishBehavior.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/publishLast.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/publishReplay.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/race.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/raceWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/reduce.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/repeat.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/repeatWhen.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/retry.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/retryWhen.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/refCount.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/sample.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/sampleTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/scan.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/sequenceEqual.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/share.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/shareReplay.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/single.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/skip.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/skipLast.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/skipUntil.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/skipWhile.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/startWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/subscribeOn.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/switchAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/switchMap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/switchMapTo.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/switchScan.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/take.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/takeLast.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/takeUntil.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/takeWhile.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/tap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/throttle.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/throttleTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/throwIfEmpty.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/timeInterval.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/timeout.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/timeoutWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/timestamp.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/toArray.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/window.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/windowCount.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/windowTime.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/windowToggle.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/windowWhen.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/withLatestFrom.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/zip.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/zipAll.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/operators/zipWith.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/operators/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/Action.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/Scheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/TestMessage.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/SubscriptionLog.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/SubscriptionLoggable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/ColdObservable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/HotObservable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/AsyncScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/timerHandle.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/AsyncAction.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/VirtualTimeScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/testing/TestScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/testing/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/symbol/observable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/dom/animationFrames.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/BehaviorSubject.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/ReplaySubject.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/AsyncSubject.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/AsapScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/asap.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/async.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/QueueScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/queue.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/AnimationFrameScheduler.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduler/animationFrame.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/identity.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/pipe.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/noop.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/isObservable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/lastValueFrom.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/firstValueFrom.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/ArgumentOutOfRangeError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/EmptyError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/NotFoundError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/ObjectUnsubscribedError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/SequenceError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/util/UnsubscriptionError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/bindCallback.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/bindNodeCallback.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/AnyCatcher.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/combineLatest.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/concat.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/connectable.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/defer.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/empty.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/forkJoin.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/from.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/fromEvent.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/fromEventPattern.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/generate.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/iif.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/interval.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/merge.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/never.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/of.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/onErrorResumeNext.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/pairs.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/partition.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/race.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/range.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/throwError.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/timer.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/using.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/observable/zip.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/scheduled/scheduled.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/internal/config.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/rxjs/dist/types/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/core/primitives/event-dispatch/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/core/primitives/signals/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/core/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/common/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/common/http/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/platform-browser/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.config.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/animations/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/animations/browser/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/platform-browser/animations/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/router/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.routes.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/public-api.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/shared-auth.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-services/src/lib/api-config.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-services/src/lib/api-config.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/shared-auth.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/shared-auth.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/shared-auth.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/data-stats/data-stats.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/data-stats/data-stats.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/home.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/navbar/navbar.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/navbar/navbar.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/hero/hero.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/hero/hero.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/story/story.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/story/story.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/roles/roles.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/roles/roles.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/footer/footer.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/components/footer/footer.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/home/home.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/forms/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/login/login.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/role-redirect.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/role-redirect.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/login/login.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/signup/signup.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/otp-websocket.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/otp-websocket.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/signup/signup.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/otp-verification/otp-verification.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/otp-verification/otp-verification.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/device-limit-reached/device-limit-reached.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/device-limit-reached/device-limit-reached.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/forgot-password/forgot-password.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/reset-password/reset-password.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/reset-password/reset-password.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/change-password/change-password.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/change-password/change-password.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/profile-rejected/profile-rejected.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/profile-rejected/profile-rejected.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/internal-server/internal-server.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/internal-server/internal-server.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/not-found/not-found.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/not-found/not-found.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/guards/auth.guard.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/guards/auth.guard.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/confirm-modal/confirm-modal.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/confirm-modal/confirm-modal.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/logout-confirm-modal/logout-confirm-modal.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/lib/logout-confirm-modal/logout-confirm-modal.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/shared-auth/src/public-api.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/layout-sidebar/layout-sidebar.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/sidebar-item.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/sidebar-item.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/layout-sidebar/layout-sidebar.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/back-button/back-button.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/back-button/back-button.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/page-header/page-header.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/page-header/page-header.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/components/access-request-form/access-request-form.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/access-request.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/access-request.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/trim-leading-space.directive.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/trim-leading-space.directive.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/components/access-request-form/access-request-form.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/healthcare-footer/healthcare-footer.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/healthcare-footer/healthcare-footer.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/confirm-modal/confirm-modal.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/confirm-modal/confirm-modal.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/logout-confirm-modal/logout-confirm-modal.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/logout-confirm-modal/logout-confirm-modal.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/toast-message/toast-message.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/toast-message/toast-message.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-home/doctor-dashboard.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/doctor.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/doctor.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/app-notification.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/app-notification.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/auth.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/auth.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/doctor.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/doctor.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/notification.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/realtime-notification.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/i-transaction.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/stomp-headers.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/i-frame.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/i-message.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/versions.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/types.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/stomp-config.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/stomp-subscription.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/client.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/frame-impl.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/parser.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/compatibility/compat-client.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/compatibility/stomp.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/esm6/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@stomp/stompjs/index.d.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/realtime-notification.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/notification.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-home/doctor-dashboard.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-notifications/doctor-notifications.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-notifications/doctor-notifications.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/components/doctor-profile-form/doctor-profile-form.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/alpha-only.directive.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/alpha-only.directive.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/no-special-chars.directive.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/directives/no-special-chars.directive.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/form-field-error/form-field-error.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/form-field-error/form-field-error.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/profile-readonly-field/profile-readonly-field.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/profile-readonly-field/profile-readonly-field.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/components/doctor-profile-form/doctor-profile-form.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-profile/doctor-profile.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-profile/doctor-profile.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-support/doctor-support.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/doctor-support/doctor-support.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/emergency-lookup/emergency-lookup.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/emergency-lookup.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/emergency-lookup.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/emergency-lookup/emergency-lookup.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/approved-patient-profile/approved-patient-profile.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/medical-profile-update.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/medical-profile-update.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/approved-patient-profile/approved-patient-profile.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/patient-care/patient-care.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/doctor/pages/patient-care/patient-care.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-dashboard/patient-dashboard.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/patient.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/emergency-record.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/emergency-record.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/patient.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/patient.service.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/medical-record.model.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/models/medical-record.model.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/core/services/patient.service.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/stat-card/stat-card.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/stat-card/stat-card.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-dashboard/patient-dashboard.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-emergency/patient-emergency.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-emergency/patient-emergency.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-medical-records/patient-medical-records.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-medical-records/patient-medical-records.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/empty-state/empty-state.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/components/empty-state/empty-state.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-notifications/patient-notifications.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-notifications/patient-notifications.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-profile/patient-profile.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-profile/patient-profile.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-support/patient-support.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/patient/pages/patient-support/patient-support.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/pages/settings/settings.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/shared/pages/settings/settings.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.routes.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.config.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.component.ngtypecheck.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/app/app.component.ts, D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/projects/healthcare-app/src/main.ts[0m [1m[35m[plugin angular-compiler][0m
+
+    node_modules/@angular/build/src/tools/angular/compilation/aot-compilation.js:122:121:
+[37m      122 │ ...MPLATE', () => angularCompiler.[32m[37mgetDiagnosticsForFile(sourceFil...
+          ╵                                   [32m^[0m
+
+    at getSourceFileOrError (file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-JBFBFCL7.js:20:11)
+    at file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-65SOG7CU.js:12715:24
+    at DelegatingPerfRecorder.inPhase (file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-UQPYSPIX.js:183:14)
+    at TemplateTypeCheckerImpl.getDiagnosticsForFile (file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-65SOG7CU.js:12705:22)
+    at NgCompiler.getTemplateDiagnosticsForFile (file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-AFLM6Y4J.js:3864:59)
+    at NgCompiler.getDiagnosticsForFile (file:///D:/MedVerse_Final_Backend/MedVerse_Final_Frontend/node_modules/@angular/compiler-cli/bundles/chunk-AFLM6Y4J.js:3544:32)
+    at D:\MedVerse_Final_Backend\MedVerse_Final_Frontend\node_modules\@angular\build\src\tools\angular\compilation\aot-compilation.js:122:122
+    at profileSync (D:\MedVerse_Final_Backend\MedVerse_Final_Frontend\node_modules\@angular\build\src\tools\esbuild\profiling.js:68:16)
+    at AotCompilation.collectDiagnostics (D:\MedVerse_Final_Backend\MedVerse_Final_Frontend\node_modules\@angular\build\src\tools\angular\compilation\aot-compilation.js:122:72)
+    at collectDiagnostics.next (<anonymous>)
+
+  This error came from the "onStart" callback registered here:
+
+    node_modules/@angular/build/src/tools/esbuild/angular/compiler-plugin.js:109:18:
+[37m      109 │             build.[32monStart[37m(async () => {
+          ╵                   [32m~~~~~~~[0m
+
+    at setup (D:\MedVerse_Final_Backend\MedVerse_Final_Frontend\node_modules\@angular\build\src\tools\esbuild\angular\compiler-plugin.js:109:19)
+    at async handlePlugins (D:\MedVerse_Final_Backend\MedVerse_Final_Frontend\node_modules\esbuild\lib\main.js:1194:20)
+
+[39m[22m

@@ -1,0 +1,159 @@
+<section class="card" *ngIf="editableDoctor">
+  <h3 class="card-title">Profile Information</h3>
+
+  <div class="profile-avatar-row">
+    <div class="doctor-photo-frame">
+      <img *ngIf="photoPreview; else emptyDoctorPhoto" [src]="photoPreview" alt="Doctor profile photo">
+
+      <ng-template #emptyDoctorPhoto>
+        <div class="doctor-photo-placeholder" aria-label="Doctor profile placeholder">
+          <span class="placeholder-head"></span>
+          <span class="placeholder-body"></span>
+        </div>
+      </ng-template>
+
+      <input
+        #photoInput
+        type="file"
+        accept="image/*"
+        hidden
+        (change)="onPhotoSelected($event)" />
+
+      <button
+        class="photo-upload-overlay"
+        type="button"
+        (click)="photoInput.click()"
+        aria-label="Upload doctor profile photo"
+        title="Upload photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+          <circle cx="12" cy="13" r="3.4" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="profile-avatar-info">
+      <h2>{{ editableDoctor.fullName }}</h2>
+      <p>{{ editableDoctor.designation }} | {{ editableDoctor.hospital }}</p>
+      <div class="photo-actions">
+        <button class="btn-danger-soft" *ngIf="photoPreview" type="button" (click)="removePhoto(photoInput)">
+          Remove Photo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="section-divider">
+      System Managed Details
+    </div>
+
+    <app-profile-readonly-field
+      class="id-detail"
+      label="ID"
+      [value]="editableDoctor.doctorId"
+      icon="🔒">
+    </app-profile-readonly-field>
+
+    <app-profile-readonly-field
+      class="name-detail"
+      label="Full Name"
+      [value]="editableDoctor.fullName"
+      icon="👨‍⚕️">
+    </app-profile-readonly-field>
+
+    <app-profile-readonly-field
+      class="email-detail"
+      label="Email Address"
+      [value]="editableDoctor.email"
+      icon="✉️">
+    </app-profile-readonly-field>
+
+    <div class="section-divider">
+      Editable Details
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Phone Number</label>
+
+      <input
+        type="tel"
+        [(ngModel)]="editableDoctor.phone"
+        (input)="validatePhone()"
+        [class.input-error]="errors.phone"
+        placeholder="+91 98765 43210" />
+
+      <app-form-field-error [message]="errors.phone"></app-form-field-error>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Designation</label>
+
+      <input
+        type="text"
+        appAlphaOnly
+        appTrimLeadingSpace
+        [(ngModel)]="editableDoctor.designation"
+        (input)="validateDesignation()"
+        [class.input-error]="errors.designation"
+        placeholder="Cardiologist" />
+
+      <app-form-field-error [message]="errors.designation"></app-form-field-error>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Hospital / Institution</label>
+
+      <input
+        type="text"
+        appNoSpecialChars
+        appTrimLeadingSpace
+        [(ngModel)]="editableDoctor.hospital"
+        (input)="validateHospital()"
+        [class.input-error]="errors.hospital"
+        placeholder="Apollo Hospital" />
+
+      <app-form-field-error [message]="errors.hospital"></app-form-field-error>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Department</label>
+
+      <input
+        type="text"
+        appAlphaOnly
+        appTrimLeadingSpace
+        [(ngModel)]="editableDoctor.department"
+        (input)="validateDepartment()"
+        [class.input-error]="errors.department"
+        placeholder="Cardiology" />
+
+      <app-form-field-error [message]="errors.department"></app-form-field-error>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Years of Experience</label>
+
+      <input
+        type="number"
+        min="0"
+        max="60"
+        [(ngModel)]="editableDoctor.experience"
+        (input)="validateExperience()"
+        [class.input-error]="errors.experience"
+        placeholder="12" />
+
+      <app-form-field-error [message]="errors.experience"></app-form-field-error>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-primary" type="button" (click)="saveProfile()">
+      Save Changes
+    </button>
+
+    <button class="btn-secondary" type="button" (click)="resetForm()">
+      Cancel
+    </button>
+  </div>
+</section>

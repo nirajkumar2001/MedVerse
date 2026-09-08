@@ -1,0 +1,50 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <button
+    class="sidebar-toggle"
+    type="button"
+    (click)="toggleSidebar()"
+    [attr.aria-label]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+    [title]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'">
+    {{ collapsed ? '>' : '<' }}
+  </button>
+
+  <div class="sidebar-logo">
+    <div class="logo-icon">+</div>
+    <div class="brand-copy">
+      <span>MedVerse</span>
+      <small>{{ brandName === 'MedVerse' ? 'Care. Connect. Save Lives.' : 'Your Health, Our Priority' }}</small>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Main</div>
+
+    <a
+      *ngFor="let item of menuItems"
+      class="nav-item"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.exact ?? false }">
+
+      <span class="nav-icon">{{ item.icon }}</span>
+      <span class="nav-label">{{ item.label }}</span>
+
+      <span class="nav-badge" *ngIf="item.badgeCount && item.badgeCount > 0">
+        {{ item.badgeCount }}
+      </span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button class="nav-item logout" type="button" (click)="onLogout()">
+      <span class="nav-icon">O</span>
+      <span class="nav-label">Logout</span>
+    </button>
+
+    <div class="sidebar-care-card">
+      <strong>{{ brandName.includes('Patient') ? 'Your health, always in your control.' : 'Every second counts.' }}</strong>
+      <small>{{ brandName.includes('Patient') ? 'Stay informed. Stay safe.' : 'Your access can save a life.' }}</small>
+      <span class="mini-ecg"></span>
+    </div>
+  </div>
+</aside>

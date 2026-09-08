@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.route-host {
+  min-height: 100vh;
+}
+
+.app-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  background: rgba(248, 250, 255, 0.64);
+  backdrop-filter: blur(8px);
+}
+
+.loader-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 162px;
+  justify-content: center;
+  padding: 18px 22px;
+  border: 1px solid rgba(90, 53, 240, 0.16);
+  border-radius: 8px;
+  color: var(--c-darkest);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-lg);
+}
+
+.loader-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(90, 53, 240, 0.16);
+  border-top-color: var(--c-mid);
+  animation: loader-spin 0.75s linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

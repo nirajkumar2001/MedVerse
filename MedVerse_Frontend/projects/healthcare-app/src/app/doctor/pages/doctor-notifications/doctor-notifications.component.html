@@ -1,0 +1,144 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Notifications"
+      title="Doctor Notifications"
+      subtitle="Track patient consent decisions, reminders, active sessions, and completed medical updates."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showNotificationButton]="false"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <section class="notification-summary">
+      <article><span>Unread</span><strong>{{ unreadCount }}</strong><p>Needs attention</p></article>
+      <article><span>Pending</span><strong>{{ pendingCount }}</strong><p>Waiting for patient</p></article>
+      <article><span>Approved</span><strong>{{ approvedCount }}</strong><p>Ready to edit</p></article>
+      <article><span>Completed</span><strong>{{ completedCount }}</strong><p>Medical update saved</p></article>
+    </section>
+
+    <section class="notification-board">
+      <div class="board-toolbar">
+        <div>
+          <h2>Access Notifications</h2>
+          <p>Only active approved access can open the patient medical profile edit page.</p>
+        </div>
+
+        <div class="toolbar-actions">
+          <button type="button" class="btn-secondary" (click)="reloadNotifications()">Refresh</button>
+          <button type="button" class="btn-primary" (click)="markAllAsRead()" [disabled]="unreadCount === 0">Mark all read</button>
+        </div>
+      </div>
+
+      <div class="filter-tabs">
+        <button
+          *ngFor="let filter of filters"
+          type="button"
+          [class.active]="activeFilter === filter.key"
+          (click)="setFilter(filter.key)">
+          {{ filter.label }}
+        </button>
+      </div>
+
+      <div class="loading-card" *ngIf="isLoading">Loading notifications...</div>
+
+      <ng-container *ngIf="!isLoading">
+        <div class="empty-state" *ngIf="filteredNotifications.length === 0">
+          <strong>No notifications found</strong>
+          <p>Try another filter or send a new access request from Dashboard / Patient Care.</p>
+        </div>
+
+        <div class="notification-list" *ngIf="filteredNotifications.length > 0">
+          <article
+            class="notification-card"
+            *ngFor="let item of filteredNotifications; trackBy: trackByNotification"
+            [class.unread]="item.unread">
+
+            <div class="notification-icon" [ngClass]="statusOf(item).toLowerCase()">
+              {{ statusOf(item) === 'APPROVED' ? '✓' : statusOf(item) === 'PENDING' ? '!' : statusOf(item) === 'COMPLETED' ? '●' : '×' }}
+            </div>
+
+            <div class="notification-body">
+              <div class="notification-title-row">
+                <div>
+                  <span class="status-pill" [ngClass]="statusOf(item).toLowerCase()">{{ statusLabel(item) }}</span>
+                  <h3>{{ item.title }}</h3>
+                </div>
+
+                <small>{{ item.time }}</small>
+              </div>
+
+              <p>{{ item.message }}</p>
+
+              <div class="notification-meta">
+                <span>Patient: <strong>{{ item.patientId || 'N/A' }}</strong></span>
+                <span>Scope: <strong>{{ item.accessScope || 'General' }}</strong></span>
+                <span>Time: <strong>{{ item.time || 'N/A' }}</strong></span>
+              </div>
+            </div>
+
+            <div class="notification-actions">
+              <button
+                type="button"
+                class="btn-primary"
+                *ngIf="statusOf(item) === 'APPROVED' && !item.accessEndedAt"
+                (click)="openApprovedProfile(item)">
+                Open Profile
+              </button>
+
+              <button
+                type="button"
+                class="btn-secondary"
+                *ngIf="statusOf(item) === 'PENDING'"
+                (click)="sendReminder(item)">
+                Send Reminder
+              </button>
+
+              <button
+                type="button"
+                class="btn-danger-soft"
+                *ngIf="statusOf(item) === 'APPROVED' && !item.accessEndedAt"
+                (click)="endApprovedSession(item)">
+                End Access
+              </button>
+
+              <button
+                type="button"
+                class="link-btn"
+                *ngIf="item.unread"
+                (click)="markAsRead(item)">
+                Mark read
+              </button>
+            </div>
+          </article>
+        </div>
+      </ng-container>
+    </section>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    [type]="toastType"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

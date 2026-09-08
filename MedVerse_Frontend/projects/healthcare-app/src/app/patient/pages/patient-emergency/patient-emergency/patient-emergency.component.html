@@ -1,0 +1,185 @@
+<div class="page-shell" *ngIf="patient">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Emergency Details" title="Emergency Details"
+      subtitle="Your essential identity, emergency contact, and treatment-critical medical details."
+      [badgeText]="'ID: ' + patient.patientId" [avatarText]="patient.fullName.charAt(0)" [avatarImage]="patientPhotoUrl"
+      [showSearch]="false" theme="patient">
+    </app-page-header>
+
+    <section class="loading-card" *ngIf="isLoading">
+      Loading emergency details...
+    </section>
+
+    <ng-container *ngIf="!isLoading">
+      <section class="emergency-hero">
+        <div class="hero-profile">
+          <div class="profile-avatar" [class.has-image]="patientPhotoUrl">
+            <img *ngIf="patientPhotoUrl; else patientInitial" [src]="patientPhotoUrl" alt="Patient profile photo">
+
+            <ng-template #patientInitial>
+              {{ patient.fullName.charAt(0) }}
+            </ng-template>
+          </div>
+
+          <div>
+            <span>General Patient Information</span>
+            <h2>{{ patient.fullName }}</h2>
+            <p>
+              {{ patient.age || 'N/A' }} Years • {{ patient.gender || 'N/A' }}
+            </p>
+          </div>
+        </div>
+
+        <div class="blood-group-card">
+          <span>Blood Group</span>
+          <strong>{{ bloodGroup }}</strong>
+        </div>
+      </section>
+
+      <section class="details-grid">
+        <article class="info-card">
+          <div class="section-title">
+            <span>01</span>
+            <div>
+              <h3>Patient Identity</h3>
+              <p>Basic identity and location details used during emergency care.</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span>Patient ID</span>
+            <strong>{{ patient.patientId }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Full Name</span>
+            <strong>{{ patient.fullName }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Age / Gender</span>
+            <strong>{{ patient.age || 'N/A' }} Years • {{ patient.gender || 'N/A' }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Address</span>
+            <strong>{{ fullAddress }}</strong>
+          </div>
+        </article>
+
+        <article class="info-card emergency-contact-card">
+          <div class="section-title">
+            <span>02</span>
+            <div>
+              <h3>Emergency Contact</h3>
+              <p>Contact number available for urgent medical coordination.</p>
+            </div>
+          </div>
+
+          <div class="contact-display">
+            <span>Emergency Contact Number</span>
+            <strong>{{ patient.emergencyContact || 'Not added' }}</strong>
+          </div>
+
+          <div class="contact-note">
+            Use this contact for urgent medical coordination and patient safety communication.
+          </div>
+        </article>
+      </section>
+
+      <section class="identification-grid">
+        <article>
+          <span>Height</span>
+          <strong>{{ latestHeight }}</strong>
+        </article>
+
+        <article>
+          <span>Weight</span>
+          <strong>{{ latestWeight }}</strong>
+        </article>
+
+        <article>
+          <span>BMI</span>
+          <strong>{{ latestBmi }}</strong>
+        </article>
+      </section>
+
+      <section class="critical-care-grid">
+        <article class="critical-card blood">
+          <div class="alert-icon">BG</div>
+
+          <div>
+            <span>Blood Group</span>
+            <strong>{{ bloodGroup }}</strong>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">AL</div>
+
+          <div>
+            <span>Allergies</span>
+
+            <div class="chip-list" *ngIf="allergies.length > 0; else noAllergies">
+              <b *ngFor="let item of allergies">{{ item }}</b>
+            </div>
+
+            <ng-template #noAllergies>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">CC</div>
+
+          <div>
+            <span>Chronic Conditions</span>
+
+            <div class="chip-list" *ngIf="chronicConditions.length > 0; else noConditions">
+              <b *ngFor="let item of chronicConditions">{{ item }}</b>
+            </div>
+
+            <ng-template #noConditions>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">RX</div>
+
+          <div>
+            <span>Current Medication</span>
+
+            <div class="chip-list" *ngIf="currentMedications.length > 0; else noMedication">
+              <b *ngFor="let item of currentMedications">{{ item }}</b>
+            </div>
+
+            <ng-template #noMedication>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+      </section>
+
+      <section class="update-card">
+        <div>
+          <span>Emergency Profile Updated</span>
+          <h3>{{ lastUpdatedAt }}</h3>
+          <p>Updated by: {{ lastUpdatedBy }}</p>
+        </div>
+
+        <a routerLink="/patient/medical-records" class="btn-primary">
+          View Medical Records
+        </a>
+      </section>
+    </ng-container>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+</div>

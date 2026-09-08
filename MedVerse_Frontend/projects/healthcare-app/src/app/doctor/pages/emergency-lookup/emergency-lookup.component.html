@@ -1,0 +1,263 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Emergency Lookup"
+      title="Emergency Lookup"
+      subtitle="Search patient emergency details using Patient ID, name, emergency contact, location, pincode, or blood group."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/doctor/notifications"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <section class="lookup-hero-card">
+      <div class="lookup-copy">
+        <span class="eyebrow">Emergency search</span>
+        <h2>Find the right patient profile quickly</h2>
+        <p>
+          Start typing and matching profiles will appear instantly below. Exact Patient ID matches open the emergency record automatically.
+        </p>
+
+        <div class="lookup-points">
+          <span>Patient ID</span>
+          <span>Name</span>
+          <span>Contact</span>
+          <span>Location</span>
+          <span>Blood Group</span>
+        </div>
+      </div>
+
+      <form class="lookup-search-panel" (ngSubmit)="searchNow()">
+        <label for="emergencySearch">Search emergency profiles</label>
+
+        <div class="search-box" [class.searching]="isSearching">
+          <span class="search-icon">⌕</span>
+          <input
+            id="emergencySearch"
+            type="text"
+            name="query"
+            autocomplete="off"
+            [(ngModel)]="query"
+            (input)="onSearchInput()"
+            placeholder="Type PAT ID, patient name, phone, district, state, pincode..." />
+
+          <button type="button" class="clear-search" *ngIf="query" (click)="clearSearch()" aria-label="Clear search">
+            ×
+          </button>
+
+          <button type="submit" class="search-btn" [disabled]="isSearching || !cleanQuery">
+            {{ isSearching ? 'Searching' : 'Search' }}
+          </button>
+        </div>
+
+        <p class="search-helper" *ngIf="!hasSearched">
+          Results update automatically as you type.
+        </p>
+
+        <p class="search-helper active" *ngIf="hasSearched && cleanQuery">
+          Showing matches for <strong>“{{ cleanQuery }}”</strong>
+        </p>
+      </form>
+    </section>
+
+    <section class="lookup-status" *ngIf="isSearching || resultMessage || searchError">
+      <span *ngIf="isSearching">Searching matching patient records...</span>
+      <span *ngIf="!isSearching && resultMessage && !searchError">{{ resultMessage }}</span>
+      <span class="error-text" *ngIf="!isSearching && searchError">{{ searchError }}</span>
+    </section>
+
+    <section class="matches-section" *ngIf="!isSearching && matches.length > 0">
+      <div class="section-head">
+        <div>
+          <span>Matching records</span>
+          <h3>Select a profile to view emergency details</h3>
+        </div>
+        <strong>{{ matches.length }} result{{ matches.length > 1 ? 's' : '' }}</strong>
+      </div>
+
+      <div class="match-grid">
+        <article class="match-card" *ngFor="let patient of matches; trackBy: trackByPatient">
+          <div class="match-avatar">
+            <img *ngIf="patient.photoUrl" [src]="patient.photoUrl" alt="Patient photo">
+            <span *ngIf="!patient.photoUrl">{{ patientInitial(patient) }}</span>
+          </div>
+
+          <div class="match-body">
+            <h4>{{ patientName(patient) }}</h4>
+            <p>Patient ID: <strong>{{ patient.patientId }}</strong></p>
+
+            <div class="match-meta">
+              <span>{{ displayValue(patient.age) }} yrs</span>
+              <span>{{ displayValue(patient.gender) }}</span>
+              <span>{{ displayValue(patient.bloodGroup) }}</span>
+            </div>
+
+            <div class="matched-fields" *ngIf="patient.matchedFields.length > 0">
+              <small>Matched because of</small>
+
+              <span class="matched-chip" *ngFor="let field of patient.matchedFields">
+                <strong>{{ field.label }}:</strong>
+                <ng-container *ngFor="let part of highlightMatchParts(field.value)">
+                  <mark *ngIf="part.match">{{ part.text }}</mark>
+                  <ng-container *ngIf="!part.match">{{ part.text }}</ng-container>
+                </ng-container>
+              </span>
+            </div>
+          </div>
+
+          <button type="button" class="open-record-btn" (click)="selectPatient(patient)">
+            View emergency record
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section #emergencyRecordSection class="emergency-record" *ngIf="selectedPatient">
+      <div class="record-header-card">
+        <div class="patient-identity">
+          <div class="record-photo">
+            <img *ngIf="selectedPatientPhotoUrl" [src]="selectedPatientPhotoUrl" alt="Patient photo">
+            <span *ngIf="!selectedPatientPhotoUrl">{{ patientInitial(selectedPatient) }}</span>
+          </div>
+
+          <div>
+            <span class="eyebrow">Emergency record</span>
+            <h2>{{ patientName(selectedPatient) }}</h2>
+            <p>Patient ID: <strong>{{ selectedPatient.patientId }}</strong></p>
+          </div>
+        </div>
+
+        <div class="record-header-actions">
+          <div class="record-badges">
+            <span>{{ displayValue(selectedPatient.bloodGroup) }}</span>
+            <span>{{ displayValue(selectedPatient.age) }} yrs</span>
+            <span>{{ displayValue(selectedPatient.gender) }}</span>
+          </div>
+
+          <button type="button" class="export-pdf-btn" (click)="exportSelectedRecordAsPdf()">
+            Export PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="record-grid">
+        <article class="record-card wide-card">
+          <span class="card-kicker">Patient details</span>
+          <h3>Identity & contact</h3>
+
+          <div class="detail-grid">
+            <div>
+              <small>Full Name</small>
+              <strong>{{ patientName(selectedPatient) }}</strong>
+            </div>
+
+            <div>
+              <small>Emergency Contact</small>
+              <strong>{{ displayValue(selectedPatient.contactNumber || selectedPatient.emergencyContact) }}</strong>
+            </div>
+
+            <div>
+              <small>Address</small>
+              <strong>{{ formatAddress(selectedPatient) }}</strong>
+            </div>
+
+            <div>
+              <small>Last Updated</small>
+              <strong>{{ formatDate(selectedPatient.lastUpdatedAt) }}</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="record-card alert-card">
+          <span class="card-kicker">Blood group</span>
+          <h3>{{ displayValue(selectedPatient.bloodGroup) }}</h3>
+          <p>Use this as a quick emergency reference with hospital protocol verification.</p>
+        </article>
+
+        <article class="record-card stack-card">
+          <span class="card-kicker">Allergies</span>
+          <h3>Recorded allergies</h3>
+
+          <div class="stack-list" *ngIf="allergiesList.length; else noAllergies">
+            <span *ngFor="let item of allergiesList">{{ item }}</span>
+          </div>
+
+          <ng-template #noAllergies>
+            <p class="empty-text">Not recorded</p>
+          </ng-template>
+        </article>
+
+        <article class="record-card stack-card">
+          <span class="card-kicker">Chronic conditions</span>
+          <h3>Ongoing conditions</h3>
+
+          <div class="stack-list" *ngIf="chronicConditionsList.length; else noConditions">
+            <span *ngFor="let item of chronicConditionsList">{{ item }}</span>
+          </div>
+
+          <ng-template #noConditions>
+            <p class="empty-text">Not recorded</p>
+          </ng-template>
+        </article>
+
+        <article class="record-card stack-card">
+          <span class="card-kicker">Current medication</span>
+          <h3>Active medicines</h3>
+
+          <div class="stack-list" *ngIf="currentMedicationList.length; else noMedication">
+            <span *ngFor="let item of currentMedicationList">{{ item }}</span>
+          </div>
+
+          <ng-template #noMedication>
+            <p class="empty-text">Not recorded</p>
+          </ng-template>
+        </article>
+
+        <article class="record-card vitals-card">
+          <span class="card-kicker">Vitals</span>
+          <h3>Latest physical metrics</h3>
+
+          <div class="vitals-grid">
+            <div *ngFor="let item of vitalsItems">
+              <small>{{ item.label }}</small>
+              <strong>{{ item.value }}</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="empty-start" *ngIf="!hasSearched && !selectedPatient">
+      <div class="illustration-card" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div>
+        <h3>Search will begin as soon as you type</h3>
+        <p>Matching records will appear below the search card. Use exact Patient ID for fastest access.</p>
+      </div>
+    </section>
+
+    <app-healthcare-footer tagline="Emergency-ready clinical access"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage"></app-toast-message>
+</div>

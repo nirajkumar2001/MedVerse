@@ -1,0 +1,43 @@
+<section class="learning-section">
+
+  <div class="learning-header">
+    <div>
+      <h2>Keep Learning. Keep Growing.</h2>
+
+      <p>
+        Curated resources to sharpen your clinical knowledge.
+      </p>
+    </div>
+  </div>
+
+  <div class="learning-grid">
+
+    <div
+      class="learning-card"
+      *ngFor="let item of resources"
+      [ngClass]="item.color"
+    >
+
+      <!-- <div class="card-icon">
+        {{ item.icon }}
+      </div> -->
+
+      <div class="card-content">
+        <h3>{{ item.title }}</h3>
+
+        <p>
+          {{ item.description }}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <img
+    class="doctor-image"
+    src="assets/dashboard-footer-img.png"
+    alt="Doctor"
+  />
+
+</section>

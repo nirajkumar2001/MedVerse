@@ -1,0 +1,128 @@
+<section class="emergency-grid" *ngIf="patient">
+  <h2 class="print-record-title">Emergency Patient Record</h2>
+
+  <div>
+    <section class="card">
+      <h3 class="card-title">Patient Information</h3>
+
+      <div class="info-grid">
+        <div>
+          <label>Full Name</label>
+          <p>{{ patient.fullName }}</p>
+        </div>
+
+        <div>
+          <label>Patient ID</label>
+          <p>{{ patient.patientId }}</p>
+        </div>
+
+        <div>
+          <label>Age</label>
+          <p>{{ patient.age }}</p>
+        </div>
+
+        <div>
+          <label>Gender</label>
+          <p>{{ patient.gender }}</p>
+        </div>
+
+        <div>
+          <label>Emergency Contact</label>
+          <p>{{ patient.emergencyContact }}</p>
+        </div>
+
+        <div>
+          <label>Pincode</label>
+          <p>{{ patient.pincode }}</p>
+        </div>
+
+        <div class="full">
+          <label>Address</label>
+          <p>{{ patient.address }}</p>
+        </div>
+
+        <div>
+          <label>District</label>
+          <p>{{ patient.district }}</p>
+        </div>
+
+        <div>
+          <label>State</label>
+          <p>{{ patient.state }}</p>
+        </div>
+      </div>
+    </section>
+
+    <app-medical-record-card
+      [record]="patient.emergencyRecord">
+    </app-medical-record-card>
+  </div>
+
+  <aside>
+    <section class="card photo-card">
+      <h3 class="card-title">Patient Photo</h3>
+
+      <div class="photo-box">
+        <img *ngIf="patient.photoUrl; else photoFallback" [src]="patient.photoUrl" [alt]="patient.fullName + ' photo'">
+
+        <ng-template #photoFallback>
+          <div class="photo-icon">P</div>
+          <p>{{ patient.photoText }}</p>
+          <small>Patient image will appear here</small>
+        </ng-template>
+      </div>
+
+      <div class="photo-id">
+        Unique ID: <strong>{{ patient.patientId }}</strong>
+      </div>
+    </section>
+
+    <section class="card quick-actions-card">
+      <div class="quick-actions-heading">
+        <span>QA</span>
+        <div>
+          <h3 class="card-title">Quick Actions</h3>
+          <p>Keep a printable copy ready for emergency handoffs.</p>
+        </div>
+      </div>
+
+      <button class="print-record-btn" type="button" (click)="printRecord()">
+        <span class="print-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M6 9V3h12v6" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <path d="M6 14h12v7H6z" />
+          </svg>
+        </span>
+        <span>
+          <strong>Print Emergency Record</strong>
+        </span>
+      </button>
+    </section>
+
+    <section class="card emergency-benefits-card">
+      <div class="benefits-heading">
+        <span>ER</span>
+        <div>
+          <h3 class="card-title">Emergency Details Benefits</h3>
+          <p>Fast access to critical information when every minute matters.</p>
+        </div>
+      </div>
+
+      <div class="benefit-list">
+        <div>
+          <strong>Faster decisions</strong>
+          <p>Blood group, allergies, and medicines are easy to scan during urgent care.</p>
+        </div>
+        <div>
+          <strong>Safer treatment</strong>
+          <p>Doctors can avoid risky medicines or procedures based on known conditions.</p>
+        </div>
+        <div>
+          <strong>Better handoff</strong>
+          <p>Printed emergency records help teams share patient context clearly.</p>
+        </div>
+      </div>
+    </section>
+  </aside>
+</section>

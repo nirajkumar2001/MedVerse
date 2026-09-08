@@ -1,0 +1,89 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Doctor Profile"
+      title="Doctor Profile"
+      subtitle="Keep your professional identity, hospital details, and clinical contact information accurate."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/doctor/notifications"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <div class="loading-card" *ngIf="isLoading">
+      <span class="loader-dot"></span>
+      Loading doctor profile...
+    </div>
+
+    <ng-container *ngIf="!isLoading">
+      <section class="profile-overview-strip">
+        <article>
+          <span>Department</span>
+          <strong>{{ doctor.department || 'Not updated' }}</strong>
+        </article>
+
+        <article>
+          <span>Experience</span>
+          <strong>{{ doctor.experience || 0 }} years</strong>
+        </article>
+
+        <article>
+          <span>Active access</span>
+          <strong>{{ activeAccessCount }}</strong>
+        </article>
+
+        <article>
+          <span>Completed sessions</span>
+          <strong>{{ completedCount }}</strong>
+        </article>
+      </section>
+
+      <section class="profile-purpose-card">
+        <div>
+          <span>Professional profile</span>
+          <h2>Clinical identity used across MedVerse</h2>
+          <p>
+            Your designation, department, hospital, contact number, and profile photo appear in access requests,
+            patient care workflows, and emergency lookup audit context.
+          </p>
+        </div>
+
+        <button type="button" class="btn-secondary" (click)="openChangePassword()">
+          Change Password
+        </button>
+      </section>
+
+      <app-doctor-profile-form
+        [doctor]="doctor"
+        (saved)="saveDoctorProfile($event)"
+        (photoSelected)="uploadDoctorProfileImage($event)"
+        (photoRemoved)="removeDoctorProfileImage()"
+        (cancelled)="onProfileCancel()"
+        (passwordChangeRequested)="openChangePassword()">
+      </app-doctor-profile-form>
+    </ng-container>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage"></app-toast-message>
+</div>

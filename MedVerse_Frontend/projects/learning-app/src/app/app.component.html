@@ -1,0 +1,28 @@
+<!-- <div class="app-layout">
+
+  <app-sidebar *ngIf="!isAuthOfficerRoute && !isAuthRoute"></app-sidebar>
+  <div [class.page-content]="!isAuthOfficerRoute && !isAuthRoute" [class.authofficer-content]="isAuthOfficerRoute"> 
+    <router-outlet></router-outlet>
+  </div>
+
+</div> -->
+<div
+  class="app-layout"
+  [class.sidebar-collapsed]="isCollapsed"
+>
+
+  <app-sidebar
+    *ngIf="!isAuthOfficerRoute && !isAuthRoute"
+    (collapsedChange)="isCollapsed = $event"
+  >
+  </app-sidebar>
+
+  <div
+    [class.page-content]="!isAuthOfficerRoute && !isAuthRoute"
+    [class.authofficer-content]="isAuthOfficerRoute"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer *ngIf="!isAuthOfficerRoute && !isAuthRoute"></app-footer>
+
+</div>

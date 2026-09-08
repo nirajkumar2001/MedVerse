@@ -1,0 +1,372 @@
+/* ---------- Base Page ---------- */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eed7fc 1%, #eef0ff 30%,#e7e6ff 70%,#e2e0ff 100%);
+  font-family: 'Inter', Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 60px 9%;
+}
+
+/* ---------- Content Left ---------- */
+.content {
+  width: 42%;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 44px;
+  line-height: 1.1;
+  color: #0d1635;
+  margin: 0 0 22px;
+  font-weight: 800;
+}
+
+h1 span,
+.login-card h2 span {
+  color: #ba4eb6;
+  /* animation: glow 2s ease-in-out infinite alternate; */
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 6px #4f6eea; }
+  100% { text-shadow: 0 0 18px #4f6eea; }
+}
+
+.content > p {
+  color: #3d4764;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+/* ---------- Features ---------- */
+.features {
+  margin-top: 40px;
+  display: grid;
+  gap: 24px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: #eef2ff;
+  color: #4f46e5;
+  box-shadow: 0 12px 25px rgba(73, 92, 180, 0.18);
+  font-size: 24px;
+}
+
+.icon.green { background: #e7fbf6; }
+.icon.purple { background: #f2ecff; }
+
+.feature h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #111936;
+}
+
+.feature p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #69728c;
+}
+
+/* ---------- Doctors Image Parallax ---------- */
+.doctors {
+  position: absolute;
+  left: 30%;
+  bottom: 0;
+  width: 38%;
+  max-height: 78vh;
+  object-fit: contain;
+  z-index: 1;
+  transition: transform 0.6s ease, filter 0.5s ease;
+}
+
+.hero:hover .doctors {
+  transform: translateY(-10px) scale(1.02);
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+/* ---------- Login Card ---------- */
+.login-card {
+  margin-left: auto;
+  width: 430px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 46px 42px;
+  box-shadow: 0 30px 60px rgba(31, 47, 96, 0.25);
+  z-index: 3;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 80px rgba(31, 47, 96, 0.35);
+}
+
+.login-card h2 {
+  margin: 0;
+  font-size: 36px;
+  color: #0d1635;
+}
+
+.login-card > p {
+  color: #5d667d;
+  font-size: 15px;
+  margin: 12px 0 28px;
+}
+
+/* ---------- Input Fields ---------- */
+label {
+  height: 58px;
+  border: 1px solid #dfe4ee;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 18px;
+  margin-bottom: 18px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+label input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  font-size: 15px;
+  color: #111936;
+}
+
+label input:focus {
+  border-color: #4f6eea;
+  /* box-shadow: 0 0 10px rgba(79, 110, 234, 0.4); */
+}
+
+/* ---------- Links ---------- */
+.forgot {
+  display: block;
+  text-align: right;
+  color: #bb7bf7;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  margin: -4px 0 22px;
+}
+
+/* ---------- Button ---------- */
+button {
+  width: 100%;
+  height: 58px;
+  border: 0;
+  border-radius: 14px;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(90deg, #d4b4ec, #23cfdd);
+  transition: all 0.4s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #d4b4ec, #23cfdd);
+  transform: scale(1.05);
+  /* box-shadow: 0 12px 30px rgba(35, 194, 221, 0.6); */
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  margin: 32px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #8a92a8;
+  font-weight: 800;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #dde3ee;
+}
+
+/* ---------- Sign Up ---------- */
+.signup {
+  text-align: center;
+  margin: 0;
+}
+
+.signup a {
+  color: #bb7bf7;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .hero {
+    flex-direction: column;
+    padding: 40px 24px;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .doctors {
+    position: relative;
+    left: auto;
+    width: 90%;
+    margin: 20px 0;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 430px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+}
+.password-field {
+  position: relative;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 14px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #9c9c9c;
+  background: rgba(255, 255, 255, 0.04);
+  transition: 0.4s;
+  z-index: 5;
+}
+
+.eye-btn svg {
+  transition: 0.35s;
+}
+
+.eye-btn:hover {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.18);
+  transform: scale(1.08);
+}
+
+.eye-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.account-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(12, 18, 42, 0.48);
+  backdrop-filter: blur(8px);
+}
+
+.account-modal {
+  width: min(440px, 100%);
+  border-radius: 24px;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 30px 70px rgba(31, 47, 96, 0.32);
+  text-align: center;
+}
+
+.account-modal-icon {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #5b2cff, #23cfdd);
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.account-modal h2 {
+  margin: 0 0 10px;
+  color: #0d1635;
+  font-size: 26px;
+}
+
+.account-modal p {
+  margin: 0;
+  color: #4d5874;
+  line-height: 1.55;
+}
+
+.account-user {
+  margin: 20px 0 14px;
+  border: 1px solid #e4e8f4;
+  border-radius: 14px;
+  padding: 12px;
+  background: #f8faff;
+}
+
+.account-user span {
+  display: block;
+  margin-bottom: 4px;
+  color: #7a849c;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.account-user strong {
+  color: #111936;
+  font-size: 18px;
+}
+
+.redirect-count {
+  font-size: 13px;
+}
+
+.redirect-count strong {
+  color: #5b2cff;
+}
+
+.modal-action {
+  margin-top: 22px;
+  width: 100%;
+}

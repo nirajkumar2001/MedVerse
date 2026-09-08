@@ -1,0 +1,25 @@
+
+<nav class="nav" [class.scrolled]="scrolled">
+  <div class="progress"></div>
+  <a class="brand" routerLink="/" (click)="close()">
+    <span><img src = "shared-assets/Medverse_images/logo_medverse.png" alt="logo"></span>
+    <!-- <div>
+      <strong>MedVerse</strong>
+      <small>Medical Trust Network</small>
+    </div> -->
+  </a>
+
+  <button class="menu" type="button" (click)="toggle()">
+    <i></i>
+    <i></i>
+  </button>
+
+  <div class="links" [class.open]="open">
+    <a href="#emergency" (click)="close()">Emergency</a>
+    <a href="#consent" (click)="close()">Consent</a>
+    <a href="#learning" (click)="close()">Learning</a>
+    <a href="#roles" (click)="close()">Roles</a>
+    <a class="ghost" routerLink="/login" (click)="close()">Login</a>
+    <a class="primary" routerLink="/signup" (click)="close()">Sign Up</a>
+  </div>
+</nav>

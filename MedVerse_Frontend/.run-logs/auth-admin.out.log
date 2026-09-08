@@ -1,0 +1,24 @@
+[33m>[39m Building...
+[32m√[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m                    [2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m                     [2m | [22m[36m279.05 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m                [2m | [22m [36m90.20 kB[39m[2m | [22m
+[32mchunk-47QRY4NO.js[39m  [2m | [22m[2m-[22m                        [2m | [22m  [36m4.90 kB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m                   [2m | [22m[36m317 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m            [2m | [22m[1m374.46 kB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m                    [2m | [22m [1mRaw size[22m
+[32mchunk-D4X6V2RY.js[39m  [2m | [22m[2madmin-dashboard-component[22m[2m | [22m [36m42.18 kB[39m[2m | [22m
+[32mchunk-XXBAFWSN.js[39m  [2m | [22m[2m-[22m                        [2m | [22m [36m22.57 kB[39m[2m | [22m
+[32mchunk-GBTTMVXE.js[39m  [2m | [22m[2mprofile-details-component[22m[2m | [22m [36m17.34 kB[39m[2m | [22m
+[32mchunk-U4FSM47Z.js[39m  [2m | [22m[2mprofiles-component[22m       [2m | [22m [36m14.94 kB[39m[2m | [22m
+[32mchunk-LMLW6HRH.js[39m  [2m | [22m[2malerts-component[22m         [2m | [22m [36m12.70 kB[39m[2m | [22m
+[32mchunk-PI5UI5S3.js[39m  [2m | [22m[2mreports-component[22m        [2m | [22m [36m12.69 kB[39m[2m | [22m
+
+Application bundle generation complete. [53.067 seconds]
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.1.36:[1m4200[22m/[39m

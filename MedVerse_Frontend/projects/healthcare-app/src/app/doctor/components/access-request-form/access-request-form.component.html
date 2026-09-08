@@ -1,0 +1,109 @@
+<section class="access-request-card">
+  <div class="card-header">
+    <div>
+      <span class="eyebrow">Consent based access</span>
+      <h3>Request Patient Medical Profile</h3>
+      <p>
+        Send a secure access request to the patient. Editing is enabled only after approval.
+      </p>
+    </div>
+  </div>
+
+  <div class="request-grid">
+    <label class="field-wrap">
+      <span class="field-label">
+        Patient ID
+        <i class="required-dot" aria-hidden="true"></i>
+      </span>
+
+      <input
+        type="text"
+        maxlength="12"
+        appTrimLeadingSpace
+        [(ngModel)]="patientId"
+        (input)="onPatientIdInput()"
+        [class.input-error]="patientIdError"
+        placeholder="PAT00001" />
+
+      <small class="field-error" *ngIf="patientIdError">{{ patientIdError }}</small>
+    </label>
+
+    <label class="field-wrap request-reason">
+      <span class="field-label">
+        Reason for Access
+        <i class="required-dot" aria-hidden="true"></i>
+      </span>
+
+      <textarea
+        rows="3"
+        maxlength="240"
+        appTrimLeadingSpace
+        [(ngModel)]="accessReason"
+        [class.input-error]="reasonError"
+        placeholder="Example: Current consultation, follow-up review, emergency care support">
+      </textarea>
+
+      <div class="field-meta-row">
+        <small class="field-error" *ngIf="reasonError">{{ reasonError }}</small>
+        <small class="char-count">{{ accessReason.length || 0 }}/240</small>
+      </div>
+    </label>
+  </div>
+
+  <div class="request-action-strip">
+    <label class="consent-toggle">
+      <input type="checkbox" [(ngModel)]="requestPreviousRecords" />
+      <span></span>
+
+      <div>
+        <strong>Request previous medical records too</strong>
+        <p>
+          If enabled, the patient will clearly see that previous records were requested.
+          Even if disabled, the patient can still allow previous records during approval.
+        </p>
+      </div>
+    </label>
+
+    <button
+      class="btn-primary send-request-btn"
+      type="button"
+      (click)="sendAccessRequest()"
+      [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Sending...' : 'Send Request' }}
+    </button>
+  </div>
+
+  <div class="ownership-note">
+    <strong>Consent rule</strong>
+    <p>
+      Patient approval controls access. Previous medical records are shown only when the patient allows them.
+    </p>
+  </div>
+
+  <div class="success-alert" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="error-alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div class="access-flow">
+    <article>
+      <span>1</span>
+      <strong>Doctor requests</strong>
+      <small>Clinical reason sent</small>
+    </article>
+
+    <i></i>
+
+    <article>
+      <span>2</span>
+      <strong>Patient decides</strong>
+      <small>Profile only or with history</small>
+    </article>
+
+    <i></i>
+
+    <article>
+      <span>3</span>
+      <strong>Doctor updates</strong>
+      <small>Medical fields only</small>
+    </article>
+  </div>
+</section>

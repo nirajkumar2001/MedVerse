@@ -1,0 +1,222 @@
+<div class="page-shell">
+  <app-layout-sidebar [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Patient Portal"
+      breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Access Requests"
+      title="Access Requests"
+      subtitle="Review doctor access requests, approve active sessions, and manage completed or dismissed access history."
+      [badgeText]="patientBadgeText"
+      [avatarText]="patientAvatarText"
+      [avatarImage]="patientPhotoUrl"
+      [showSearch]="false"
+      [showNotificationButton]="false"
+      theme="patient">
+    </app-page-header>
+
+    <section class="notification-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Medical access control</span>
+        <h2>Manage who can access your medical profile</h2>
+        <p>
+          New requests require your approval. Active sessions can be dismissed by you at any time.
+          Completed and denied sessions are shown separately for your records.
+        </p>
+
+        <div class="hero-actions">
+          <button type="button" class="btn-soft" (click)="refreshRequests()" [disabled]="isRefreshing">
+            {{ isRefreshing ? 'Refreshing...' : 'Refresh Requests' }}
+          </button>
+
+          <a routerLink="/patient/medical-records" class="btn-link-card">
+            View Medical Records
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <article>
+          <strong>{{ newCount }}</strong>
+          <span>New</span>
+        </article>
+
+        <article>
+          <strong>{{ activeCount }}</strong>
+          <span>Active</span>
+        </article>
+
+        <article>
+          <strong>{{ dismissedCount }}</strong>
+          <span>Denied</span>
+        </article>
+
+        <article>
+          <strong>{{ completedCount }}</strong>
+          <span>Completed</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="latest-panel" *ngIf="latestRequest as latest">
+      <div>
+        <span>Latest access event</span>
+        <strong>{{ latest.status === 'Dismissed' ? 'Denied' : latest.status }}</strong>
+        <p>{{ latest.doctorName }} · {{ latest.reason }}</p>
+      </div>
+
+      <small>{{ latest.displayCompletedTime || latest.displayGrantedTime || latest.displayNotificationTime || 'Time not available' }}</small>
+    </section>
+
+    <section class="filter-tabs">
+      <button
+        type="button"
+        *ngFor="let filter of filters"
+        [class.active]="activeFilter === filter.key"
+        (click)="setFilter(filter.key)">
+        <span class="tab-copy">
+          <strong>{{ filter.label }}</strong>
+          <small>{{ filter.helper }}</small>
+        </span>
+
+        <span class="tab-count">{{ getFilterCount(filter.key) }}</span>
+      </button>
+    </section>
+
+    <section class="loading-card" *ngIf="isLoading">
+      Fetching latest access requests...
+    </section>
+
+    <ng-container *ngIf="!isLoading">
+      <app-empty-state
+        *ngIf="filteredRequests.length === 0"
+        icon="🔐"
+        title="No requests found"
+        message="There are no access requests in this section right now.">
+      </app-empty-state>
+
+      <section class="request-list" *ngIf="filteredRequests.length > 0">
+        <article
+          class="request-card"
+          *ngFor="let request of filteredRequests; trackBy: trackBySession"
+          [class.unread]="!request.read"
+          [class.new]="request.status === 'New'"
+          [class.active-session]="request.status === 'Active Session'"
+          [class.dismissed]="request.status === 'Dismissed'"
+          [class.completed]="request.status === 'Completed'"
+          [class.expired]="request.status === 'Expired'"
+          [class.revoked]="request.status === 'Revoked'">
+
+          <div class="request-top">
+            <div class="doctor-avatar">
+              {{ request.doctorName ? request.doctorName.charAt(0).toUpperCase() : 'D' }}
+            </div>
+
+            <div class="request-title">
+              <span>{{ request.read ? 'Viewed request' : 'Unread request' }}</span>
+              <h3>{{ request.doctorName }}</h3>
+              <p>{{ request.reason }}</p>
+            </div>
+
+            <div class="status-stack">
+              <div class="status-pill">
+                {{ request.status === 'Dismissed' ? 'Denied' : request.status }}
+              </div>
+
+              <button
+                type="button"
+                class="mark-read-btn"
+                *ngIf="!request.read"
+                (click)="markAsRead(request)">
+                Mark read
+              </button>
+            </div>
+          </div>
+
+          <div class="timeline-grid">
+            <div>
+              <span>Notification Received</span>
+              <strong>{{ request.displayNotificationTime || 'Not available' }}</strong>
+            </div>
+
+            <div>
+              <span>Access Granted</span>
+              <strong>{{ request.displayGrantedTime || 'Not granted yet' }}</strong>
+            </div>
+
+            <div>
+              <span>Session Closed</span>
+              <strong>{{ request.displayCompletedTime || 'Not closed yet' }}</strong>
+            </div>
+
+            <div>
+              <span>Expiry</span>
+              <strong>{{ request.displayExpiryTime || 'Not specified' }}</strong>
+            </div>
+          </div>
+
+          <div class="permission-row">
+            <span>Previous Records Permission</span>
+
+            <strong>
+              {{ request.allowPrevious ? 'Allowed with previous medical records' : 'Profile only' }}
+            </strong>
+          </div>
+
+          <div class="reason-grid" *ngIf="request.rejectionReason || request.endReason">
+            <div *ngIf="request.rejectionReason">
+              <span>Denied Reason</span>
+              <p>{{ request.rejectionReason }}</p>
+            </div>
+
+            <div *ngIf="request.endReason">
+              <span>Session Reason</span>
+              <p>{{ request.endReason }}</p>
+            </div>
+          </div>
+
+          <div class="request-actions" *ngIf="request.status === 'New'">
+            <label class="checkbox-line">
+              <input type="checkbox" [(ngModel)]="request.allowPrevious">
+
+              <span>
+                Allow doctor to view previous medical records also
+              </span>
+            </label>
+
+            <div class="action-buttons">
+              <button type="button" class="btn-reject" (click)="reject(request)">
+                Deny Request
+              </button>
+
+              <button type="button" class="btn-approve" (click)="approve(request)">
+                Approve Access
+              </button>
+            </div>
+          </div>
+
+          <div class="request-actions compact" *ngIf="request.status === 'Active Session'">
+            <p>
+              This doctor currently has access to your approved medical profile.
+              You can dismiss the active session anytime.
+            </p>
+
+            <button type="button" class="btn-end-session" (click)="dismissActiveSession(request)">
+              End Active Session
+            </button>
+          </div>
+        </article>
+      </section>
+    </ng-container>
+
+    <app-healthcare-footer></app-healthcare-footer>
+
+    <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage">
+    </app-toast-message>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

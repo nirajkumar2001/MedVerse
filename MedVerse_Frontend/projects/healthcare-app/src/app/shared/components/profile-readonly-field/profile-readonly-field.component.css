@@ -1,0 +1,27 @@
+.readonly-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.readonly-field {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--c-border);
+  background: rgba(187,225,250,0.22);
+  font-weight: 700;
+  color: var(--c-darkest);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.readonly-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .72);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+  flex: 0 0 auto;
+}

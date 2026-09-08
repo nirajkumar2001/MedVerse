@@ -1,0 +1,101 @@
+<div class="page-shell">
+
+  <app-layout-sidebar
+    [menuItems]="sidebarItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Dashboard"
+      titlePrefix="Welcome back,"
+      [titleEmphasis]="doctor.fullName"
+      subtitle="Here is what is happening with your patients today."
+      [badgeText]="'ID: ' + doctor.doctorId"
+      [avatarText]="doctor.initials"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      [notificationCount]="unreadCount"
+      theme="dark">
+    </app-page-header>
+
+  <section class="stats-grid">
+    <app-stat-card icon="P" iconType="orange" label="Pending Requests" [value]="pendingRequestCount.toString()"
+      description="Waiting for patient consent">
+    </app-stat-card>
+  
+    <app-stat-card icon="A" iconType="blue" label="Approved Sessions" [value]="approvedSessionCount.toString()"
+      description="Ready for profile access">
+    </app-stat-card>
+  
+    <app-stat-card icon="C" iconType="red" label="Completed Sessions" [value]="completedSessionCount.toString()"
+      description="Ended or updated sessions">
+    </app-stat-card>
+  </section>
+
+    <section class="hero-panel">
+      <div>
+        <span class="hero-eyebrow">Clinical response workspace</span>
+        <h2>Emergency lookup, consent, and visit updates in one flow.</h2>
+        <p>Search critical details immediately, request consent for deeper access, and record current visit findings once the patient approves.</p>
+        <a routerLink="/doctor/emergency-lookup" class="btn-primary">Emergency Lookup</a>
+      </div>
+    </section>
+
+    <section class="workflow-board">
+      <article><span class="step-index">01</span><div><strong>Find patient</strong><p>Search by patient ID, address, location, or other attributes for emergency situations.</p></div><b>Q</b></article>
+      <article><span class="step-index">02</span><div><strong>Request consent</strong><p>Explain access reason and wait for patient approval to proceed securely.</p></div><b>S</b></article>
+      <article><span class="step-index">03</span><div><strong>Update visit</strong><p>Add current findings and emergency details without overwriting previous records.</p></div><b>E</b></article>
+    </section>
+
+    <section class="dashboard-grid">
+      <app-access-request-form
+        (requestSent)="onAccessRequestSent($event)">
+      </app-access-request-form>
+
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Recent Notifications</h3>
+            <p class="card-subtitle">Latest patient access updates</p>
+          </div>
+
+          <a routerLink="/doctor/notifications" class="btn-secondary">
+            View All
+          </a>
+        </div>
+
+        <div class="notif-list" *ngIf="recentNotifications.length > 0; else noRecentNotifications">
+          <app-notification-card *ngFor="let notification of recentNotifications" [notification]="notification"
+            [showStatusChip]="false" (endSessionClicked)="onEndSession($event)" (dismissed)="dismissNotification($event)">
+          </app-notification-card>
+        </div>
+        
+        <ng-template #noRecentNotifications>
+          <div class="empty-dashboard-state">
+            No recent access notifications yet. Patient decisions will appear here in realtime.
+          </div>
+        </ng-template>
+      </section>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    type="success"
+    [message]="toastMessage">
+  </app-toast-message>
+
+</div>

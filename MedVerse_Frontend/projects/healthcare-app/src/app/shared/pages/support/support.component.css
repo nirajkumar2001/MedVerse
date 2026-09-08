@@ -1,0 +1,44 @@
+.support-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(300px, 0.8fr);
+  gap: 20px;
+}
+
+.support-layout .card {
+  min-height: 420px;
+}
+
+label {
+  display: block;
+  color: var(--c-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 18px 0;
+}
+
+.knowledge-card {
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.97), rgba(245,241,255,0.88)),
+    url('/ui-reference-elements/generated-patient-care-graphic.svg') bottom right/78% no-repeat;
+}
+
+.help-item {
+  border-bottom: 1px solid var(--c-border);
+  padding: 14px 0;
+}
+
+.help-item:last-child {
+  border-bottom: 0;
+}
+
+.help-item p {
+  color: var(--c-muted);
+  margin: 5px 0 0;
+}
+
+@media (max-width: 900px) {
+  .support-layout {
+    grid-template-columns: 1fr;
+  }
+}

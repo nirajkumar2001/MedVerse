@@ -1,0 +1,272 @@
+<div class="page-shell">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Patient Portal"
+      breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Dashboard"
+      [titleEmphasis]="patientName"
+      subtitle="Track your medical records, doctor access requests, active sessions, and latest doctor-updated health information."
+      [badgeText]="patientBadgeText"
+      [avatarText]="patientAvatarText"
+      [avatarImage]="patientPhotoUrl"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/patient/notifications"
+      [notificationCount]="pendingAccessCount"
+      theme="patient">
+    </app-page-header>
+
+    <section class="loading-card" *ngIf="isLoading">
+      Loading your dashboard...
+    </section>
+
+    <ng-container *ngIf="!isLoading">
+      <!-- Dynamic Stats -->
+      <section class="dashboard-stat-grid">
+        <article class="dashboard-stat-card">
+          <div class="stat-icon purple">ID</div>
+
+          <div>
+            <span>Patient ID</span>
+            <strong>{{ patientId }}</strong>
+            <p>System generated</p>
+          </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+          <div class="stat-icon red">BG</div>
+
+          <div>
+            <span>Blood Group</span>
+            <strong>{{ bloodGroup }}</strong>
+            <p>Emergency visible</p>
+          </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+          <div class="stat-icon amber">PR</div>
+
+          <div>
+            <span>Pending Requests</span>
+            <strong>{{ pendingAccessCount }}</strong>
+            <p>Awaiting your consent</p>
+          </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+          <div class="stat-icon green">AS</div>
+
+          <div>
+            <span>Active Sessions</span>
+            <strong>{{ activeSessionCount }}</strong>
+            <p>Currently approved</p>
+          </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+          <div class="stat-icon blue">MV</div>
+
+          <div>
+            <span>Medical Visits</span>
+            <strong>{{ completedVisits }}</strong>
+            <p>Saved visit records</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Current Access Request -->
+      <section class="current-access-card card" *ngIf="currentAccessRequest as request; else noCurrentRequest">
+
+        <div class="current-access-copy">
+          <div class="request-icon">AR</div>
+
+          <div class="request-main">
+            <span class="request-kicker">Current Access Request</span>
+            <h3>{{ request.doctorName }}</h3>
+            <p>{{ request.reason }}</p>
+          </div>
+        </div>
+
+        <div class="current-access-actions">
+          <strong class="request-status pending">
+            {{ request.status }}
+          </strong>
+
+          <button type="button" class="btn-secondary" (click)="dismissRequest(request)">
+            Dismiss
+          </button>
+
+          <button type="button" class="btn-secondary" (click)="approveRequest(request, false)">
+            Approve Profile Only
+          </button>
+
+          <button type="button" class="btn-primary" (click)="approveRequest(request, true)">
+            Approve With History
+          </button>
+        </div>
+      </section>
+
+      <ng-template #noCurrentRequest>
+        <section class="current-access-card card">
+          <div class="current-access-copy">
+            <div class="request-icon muted">AR</div>
+
+            <div class="request-main">
+              <span class="request-kicker">Current Access Request</span>
+              <h3>No pending access request</h3>
+              <p>
+                New doctor requests will appear here with options to approve or dismiss directly.
+              </p>
+            </div>
+          </div>
+
+          <a routerLink="/patient/notifications" class="btn-secondary review-link">
+            View Requests
+          </a>
+        </section>
+      </ng-template>
+
+      <!-- Snapshot + Recent Activity -->
+      <section class="dashboard-main-grid">
+        <article class="card snapshot-card">
+          <div class="panel-header">
+            <div>
+              <h3>Health Snapshot</h3>
+              <p>Live summary from your medical records.</p>
+            </div>
+
+            <a routerLink="/patient/medical-records" class="btn-secondary small-btn">
+              View
+            </a>
+          </div>
+
+          <div class="snapshot-metrics">
+            <div>
+              <span>Allergies</span>
+              <strong>{{ allergyCount }}</strong>
+              <small>Recorded</small>
+            </div>
+
+            <div>
+              <span>Chronic Conditions</span>
+              <strong>{{ chronicConditionCount }}</strong>
+              <small>Active</small>
+            </div>
+
+            <div>
+              <span>Medications</span>
+              <strong>{{ medicationCount }}</strong>
+              <small>Current</small>
+            </div>
+
+            <div>
+              <span>Last Update</span>
+              <strong>{{ lastCheckupText }}</strong>
+              <small>Medical record</small>
+            </div>
+          </div>
+
+          <div class="snapshot-note">
+            This snapshot is based on doctor-updated medical records. Open My Medical Records to view complete visit history and reports.
+          </div>
+        </article>
+
+        <article class="card activity-card">
+          <div class="panel-header">
+            <div>
+              <h3>Recent Activity</h3>
+              <p>Latest access request notifications from the backend.</p>
+            </div>
+
+            <a routerLink="/patient/notifications" class="btn-secondary small-btn">
+              View All
+            </a>
+          </div>
+
+          <div class="activity-list" *ngIf="recentActivities.length > 0; else noActivity">
+
+            <div class="activity-row" *ngFor="let activity of recentActivities">
+
+              <span class="activity-dot"></span>
+
+              <div>
+                <strong>{{ activity.title }}</strong>
+                <small>{{ formatDate(activity.time) }}</small>
+              </div>
+
+              <b [class.pending]="activity.status === 'Pending'" [class.done]="activity.status === 'Completed'"
+                [class.active]="activity.status === 'Active'"
+                [class.rejected]="activity.status === 'Denied' || activity.status === 'Revoked' || activity.status === 'Expired'">
+                {{ activity.status }}
+              </b>
+            </div>
+          </div>
+
+          <ng-template #noActivity>
+            <div class="empty-activity">
+              No recent activity yet.
+            </div>
+          </ng-template>
+        </article>
+      </section>
+
+      <!-- Better Bottom Actions -->
+      <section class="quick-action-grid">
+        <a class="quick-action-card" routerLink="/patient/notifications">
+          <span>AR</span>
+
+          <div>
+            <h3>Review Access Requests</h3>
+            <p>Approve or dismiss doctor access requests instantly.</p>
+          </div>
+
+          <b>›</b>
+        </a>
+
+        <a class="quick-action-card" routerLink="/patient/emergency-details">
+          <span>ED</span>
+
+          <div>
+            <h3>View Emergency Details</h3>
+            <p>Emergency details are view-only for patients and are updated by doctors.</p>
+          </div>
+
+          <b>›</b>
+        </a>
+
+        <a class="quick-action-card" routerLink="/patient/profile">
+          <span>PF</span>
+
+          <div>
+            <h3>Edit My Profile</h3>
+            <p>Update your general details, emergency contact, address, and profile photo.</p>
+          </div>
+
+          <b>›</b>
+        </a>
+
+        <a class="quick-action-card" routerLink="/patient/medical-records">
+          <span>MR</span>
+
+          <div>
+            <h3>View Medical Records</h3>
+            <p>Review completed visits, findings, reports, and prescriptions.</p>
+          </div>
+
+          <b>›</b>
+        </a>
+      </section>
+
+      <app-healthcare-footer></app-healthcare-footer>
+    </ng-container>
+
+    <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage">
+    </app-toast-message>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

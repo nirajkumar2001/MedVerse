@@ -1,0 +1,208 @@
+<main class="case-details-page">
+
+  <!-- Header -->
+  <section class="case-header">
+    <button class="back-btn" (click)="goBack()">
+      ← Back
+    </button>
+
+    <div class="header-main">
+      <div>
+
+        <h1>{{ caseData.title }}</h1>
+
+      <div class="meta-row">
+        <span>{{ caseData.department }}</span>
+        <span *ngIf="caseData.disease">{{ caseData.disease }}</span>
+      </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="status-pill" [ngClass]="getStatusClass(caseData.status)">
+          {{ caseData.status }}
+        </span>
+        <!-- <button class="secondary-btn" (click)="bookmarkCase()">
+          🔖 Save
+        </button> -->
+
+        <button
+  class="bookmark-btn details-bookmark"
+  [class.bookmarked]="caseBookmarked"
+  (click)="toggleBookmark()"
+>
+
+  <!-- Outline Bookmark -->
+  <svg
+    *ngIf="!caseBookmarked"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+  </svg>
+
+  <!-- Filled Bookmark -->
+  <svg
+    *ngIf="caseBookmarked"
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+  </svg>
+
+</button>
+
+
+        <button class="primary-btn" (click)="openPdf()">
+          Open PDF
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary Cards -->
+
+  <!-- Main Layout -->
+  <section class="details-layout">
+
+    <!-- Left Content -->
+    <div class="main-column">
+
+      <div class="content-card">
+
+  <!-- Description -->
+  <section class="detail-section">
+
+    <!-- <div class="section-header">
+      <h2>Case Description</h2>
+    </div>
+    <p class="case-description">
+      {{ caseData.description }}
+    </p> -->
+
+  </section>
+
+  <!-- PDF Preview -->
+  <section class="pdf-section">
+
+    <div class="pdf-header">
+
+      <div>
+        <h2>Case Report Preview</h2>
+
+        <p>
+          Preview the uploaded medical case report below.
+        </p>
+      </div>
+
+      <button
+        class="primary-btn"
+        (click)="downloadPdf()"
+      >
+        Download PDF
+      </button>
+
+    </div>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-preview">
+
+      <iframe
+  *ngIf="safePdfUrl"
+  [src]="safePdfUrl"
+  type="application/pdf"
+  title="Medical Case PDF">
+</iframe>
+
+    </div>
+
+    <!-- Open Full PDF -->
+    <div class="pdf-footer">
+
+      <button
+        class="secondary-btn"
+        (click)="openPdf()"
+      >
+        Open PDF in New Tab
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+    </div>
+
+    <!-- Right Sidebar -->
+    <aside class="side-column">
+
+      <!-- Description -->
+  <div class="side-card">
+
+    <h2>Case Description</h2>
+
+    <p class="sidebar-description">
+      {{ caseData.description }}
+    </p>
+
+  </div>
+
+      <div class="side-card" *ngIf="caseData.remarks">
+        <h2>Auth Officer Remarks</h2>
+
+        <p class="sidebar-description">
+          {{ caseData.remarks }}
+        </p>
+      </div>
+
+      <div class="side-card">
+        <h2>Author Details</h2>
+
+        <div class="author-box">
+          <div class="author-avatar">
+            {{ caseData.author.charAt(0) }}
+          </div>
+
+          <div>
+            <h3>{{ caseData.author }}</h3>
+            <p>{{ caseData.institution }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h2>Case Information</h2>
+
+        <div class="info-list">
+          <div>
+            <span>Submitted On</span>
+            <b>{{ caseData.submittedOn }}</b>
+          </div>
+
+          <div>
+            <span>Published On</span>
+            <b>{{ caseData.publishedOn }}</b>
+          </div>
+
+          <div>
+            <span>Specialty</span>
+            <b>{{ caseData.department }}</b>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </section>
+
+</main>

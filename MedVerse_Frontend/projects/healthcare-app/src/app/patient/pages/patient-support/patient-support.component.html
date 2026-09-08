@@ -1,0 +1,122 @@
+<div class="page-shell">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Help & Support" title="Help & Support"
+      subtitle="Quick answers for profile, emergency details, medical records, and access requests."
+      [badgeText]="patientBadgeText" [avatarText]="patientAvatarText" [avatarImage]="patientPhotoUrl"
+      [showSearch]="false" [showNotificationButton]="true" notificationRoute="/patient/notifications"
+      [notificationCount]="pendingAccessCount" theme="patient">
+    </app-page-header>
+
+    <section class="support-hero">
+      <div>
+        <span class="eyebrow">Patient guidance center</span>
+        <h2>Understand what you can edit, view, and control</h2>
+        <p>
+          Your profile is patient-managed. Emergency medical information and medical records are doctor-managed
+          so clinical details stay trusted and accurate.
+        </p>
+      </div>
+
+      <div class="support-contact-card">
+        <span class="support-logo">MV</span>
+        <strong>Need urgent help?</strong>
+        <p>For account, consent, or access concerns, contact the MedVerse healthcare support desk.</p>
+        <a href="mailto:support@medverse.com">support&#64;medverse.com</a>
+      </div>
+    </section>
+
+    <section class="support-topic-grid" aria-label="Patient support categories">
+      <article *ngFor="let topic of supportTopics">
+        <span>{{ topic.icon }}</span>
+        <div>
+          <strong>{{ topic.title }}</strong>
+          <p>{{ topic.description }}</p>
+          <a [routerLink]="topic.route">{{ topic.action }}</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="rules-card">
+      <div>
+        <span class="rules-icon">✓</span>
+        <strong>Patient can edit</strong>
+        <p>Name, age, gender, address, pincode, emergency contact number, and profile photo.</p>
+      </div>
+
+      <div>
+        <span class="rules-icon doctor">+</span>
+        <strong>Doctor manages</strong>
+        <p>Blood group, allergies, chronic conditions, medication, diagnosis, prescription, vitals, and reports.</p>
+      </div>
+    </section>
+
+    <section class="faq-toolbar">
+      <div>
+        <span>FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <label class="support-search">
+        <span>Search</span>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search profile, records, consent...">
+      </label>
+    </section>
+
+    <section class="category-pills" aria-label="FAQ categories">
+      <button type="button" *ngFor="let category of categories" [class.active]="selectedCategory === category"
+        (click)="selectCategory(category)">
+        {{ category }}
+      </button>
+    </section>
+
+    <section class="faq-layout">
+      <div class="faq-list" aria-label="Frequently asked questions">
+        <details class="faq-item" *ngFor="let faq of filteredFaqs; let first = first" [open]="first">
+          <summary>
+            <span>{{ faq.category }}</span>
+            <strong>{{ faq.question }}</strong>
+          </summary>
+
+          <p>{{ faq.answer }}</p>
+        </details>
+
+        <div class="no-faq-card" *ngIf="filteredFaqs.length === 0">
+          <strong>No matching help article found</strong>
+          <p>Try searching for profile, emergency contact, access request, or medical records.</p>
+        </div>
+      </div>
+
+      <aside class="support-panel" aria-label="Support contact">
+        <span class="panel-icon">24</span>
+        <h2>Support Desk</h2>
+        <p>
+          For urgent profile, consent, or access concerns, contact the healthcare desk.
+          Do not approve an access request if you do not recognize the doctor.
+        </p>
+
+        <div class="contact-line">
+          <strong>Email</strong>
+          <span>support&#64;medverse.com</span>
+        </div>
+
+        <div class="contact-line">
+          <strong>Phone</strong>
+          <span>+91 1800 100 204</span>
+        </div>
+
+        <a routerLink="/patient/notifications" class="panel-link">
+          Review Access Requests
+        </a>
+      </aside>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

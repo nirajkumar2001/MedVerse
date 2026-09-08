@@ -1,0 +1,214 @@
+<div class="dashboard-layout">
+
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="main-content" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <!-- Header -->
+    <header class="topbar">
+
+      <div>
+        <h1>Welcome, {{ profile.fullName || 'Authentication Officer' }}!</h1>
+        <p>Review, verify and take action on medical cases.</p>
+      </div>
+
+      <div class="top-actions">
+<!-- 
+        <div class="search-box">
+          <span>⌕</span>
+          <input
+            type="text"
+            placeholder="Search cases, patients, IDs..."
+            [(ngModel)]="searchText"
+          />
+        </div> -->
+
+        <!-- <button class="notification">
+          🔔
+          <span>2</span>
+        </button> -->
+
+        <div class="profile-box">
+
+          <div class="profile-image-wrapper">
+            <img *ngIf="profileImage" [src]="profileImage" alt="Profile Image" />
+
+            <label class="upload-btn">
+              📷
+              <input
+                type="file"
+                accept="image/*"
+                (change)="onImageUpload($event)"
+              />
+            </label>
+          </div>
+
+          <div>
+            <h4>{{ profile.fullName || 'Auth Officer' }}</h4>
+            <p>{{ profile.role || 'Authentication Officer' }}</p>
+          </div>
+
+          <!-- <span class="arrow">⌄</span> -->
+
+        </div>
+
+      </div>
+
+    </header>
+
+    <!-- Stats Cards -->
+    <section class="stats-grid">
+
+      <div
+  class="stat-card"
+  *ngFor="let card of statsCards"
+  [ngClass]="card.color"
+>
+
+        <div class="stat-icon">
+          {{ card.icon }}
+        </div>
+
+        <div>
+          <h3>{{ card.title }}</h3>
+          <h2>{{ card.value }}</h2>
+          <p>{{ card.subtitle }}</p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Middle Section -->
+    <section class="middle-grid">
+
+      <div class="hero-card">
+
+        <div class="hero-text">
+          <h2>Every verification</h2>
+          <h2 class="purple-text">makes a difference</h2>
+
+          <div class="line"></div>
+
+          <p>
+            Your care, attention and time can truly authenticate and validate
+            medical cases which change a life and build trust.
+          </p>
+        </div>
+
+        <div class="hero-illustration">
+          <img [src]="middleImage" alt="Verification Illustration" />
+        </div>
+
+      </div>
+
+      <section class="progress-card-modern">
+
+  <div class="progress-card-header">
+    <div class="progress-icon">
+      ◔
+    </div>
+
+    <h3>Today's Progress</h3>
+
+    
+  </div>
+
+  <div class="progress-card-body">
+
+    <div class="speedometer-box">
+
+      <svg viewBox="0 0 220 140" class="speedometer">
+
+        <!-- Background arc -->
+        <path
+          d="M35 115 A75 75 0 0 1 185 115"
+          class="meter-bg"
+        />
+
+        <!-- Dynamic progress arc -->
+        <path
+          d="M35 115 A75 75 0 0 1 185 115"
+          class="meter-progress"
+          [attr.stroke-dasharray]="speedometerDash"
+        />
+
+        <!-- Tick marks -->
+        <line x1="35" y1="115" x2="45" y2="110" class="tick"></line>
+        <line x1="75" y1="48" x2="80" y2="60" class="tick"></line>
+        <line x1="110" y1="35" x2="110" y2="49" class="tick"></line>
+        <line x1="145" y1="48" x2="140" y2="60" class="tick"></line>
+        <line x1="185" y1="115" x2="175" y2="110" class="tick"></line>
+
+        <!-- Dynamic needle -->
+        <g [attr.transform]="'rotate(' + needleRotation + ' 110 112)'">
+          <line
+            x1="110"
+            y1="112"
+            x2="110"
+            y2="55"
+            class="needle"
+          ></line>
+        </g>
+
+        <circle cx="110" cy="112" r="8" class="needle-center"></circle>
+
+      </svg>
+
+      <div class="percent-text">
+        {{ todayProgress }}%
+      </div>
+
+      <div class="meter-labels">
+        <span>0%</span>
+        <span>100%</span>
+      </div>
+
+    </div>
+
+    <div class="progress-details">
+      <h2>{{ verifiedToday }} of {{ totalToday }}</h2>
+      <p>cases verified today</p>
+
+     
+    </div>
+
+  </div>
+
+</section>
+
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-section">
+
+  <h3>Quick Actions</h3>
+
+  <div class="quick-grid">
+
+    <div
+      class="quick-card"
+      *ngFor="let action of quickActions"
+      [ngClass]="action.color"
+      (click)="navigateToPage(action.route)"
+    >
+
+      <div class="quick-icon">
+        {{ action.icon }}
+      </div>
+
+      <div>
+        <h4>{{ action.title }}</h4>
+        <p>{{ action.description }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+  <app-authofficer-footer></app-authofficer-footer>
+  </main>
+
+</div>

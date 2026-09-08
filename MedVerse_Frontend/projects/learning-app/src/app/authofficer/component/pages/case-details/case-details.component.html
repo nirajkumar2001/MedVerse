@@ -1,0 +1,150 @@
+<div class="case-detail-layout">
+
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="case-detail-page" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <section class="page-header">
+
+      <div>
+        <button class="back-btn" type="button" (click)="goBack()">
+          ← Back
+        </button>
+
+        <h1>Case Details</h1>
+        <p>View medical case information and verification status.</p>
+      </div>
+
+      <span class="status-badge" [ngClass]="getStatusClass()">
+        ● {{ caseData.status }}
+      </span>
+
+    </section>
+
+    <section class="details-card">
+
+      <div class="case-title-row">
+        <div class="case-icon">📄</div>
+
+        <div>
+          <h2>{{ caseData.title }}</h2>
+          <p>{{ caseData.caseId }}</p>
+        </div>
+      </div>
+
+      <div class="description-box">
+        <h3>Description</h3>
+        <p>{{ caseData.description }}</p>
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info-item">
+          <label>Disease</label>
+          <h4>{{ caseData.disease }}</h4>
+        </div>
+
+        <div class="info-item">
+          <label>Department</label>
+          <h4>{{ caseData.departmentId }}</h4>
+        </div>
+
+      </div>
+
+      <div class="pdf-section">
+        <!-- <div>
+          <h3>Case PDF</h3>
+          <p>{{ caseData.pdfName }}</p>
+        </div> -->
+
+        <button type="button" class="pdf-btn" (click)="viewPdf()">
+          📄 View PDF
+        </button>
+      </div>
+
+      <!-- Pending Case -->
+      <section class="action-card" *ngIf="isPendingCase()">
+
+        <h3>Verification Action</h3>
+
+        <label>Remarks</label>
+
+        <textarea
+          placeholder="Add remarks before approving or rejecting this case..."
+          [(ngModel)]="remarksText"
+        ></textarea>
+
+        <div class="action-buttons">
+          <button class="approve-btn" type="button" (click)="approveCase()">
+            ✓ Approve Case
+          </button>
+
+          <button class="reject-btn" type="button" (click)="rejectCase()">
+            ✕ Reject Case
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Rejected Case -->
+      <section class="remarks-card" *ngIf="isRejectedCase()">
+
+        <h3>Rejection Remarks</h3>
+
+        <p>
+          {{ caseData.remarks || 'No remarks available for this rejected case.' }}
+        </p>
+
+      </section>
+
+      <!-- Approved Case -->
+      <section class="approved-card" *ngIf="isApprovedCase()">
+
+        <h3>Approval Status</h3>
+
+        <p>This case has been verified and approved for publication.</p>
+
+      </section>
+
+    </section>
+
+  <app-authofficer-footer></app-authofficer-footer>
+  </main>
+
+</div>
+
+<div class="pdf-preview-overlay" *ngIf="showPdfPreview">
+  <section class="pdf-preview-dialog" role="dialog" aria-modal="true" aria-label="Case PDF preview">
+    <header>
+      <div>
+        <h2>{{ caseData.pdfName }}</h2>
+        <p>{{ caseData.caseId }}</p>
+      </div>
+
+      <button type="button" (click)="closePdfPreview()">Close</button>
+    </header>
+
+    <iframe *ngIf="safePdfUrl" [src]="safePdfUrl" title="Case PDF preview"></iframe>
+  </section>
+</div>
+
+<!-- Custom Popup -->
+<div class="popup-overlay" *ngIf="showPopup">
+
+  <div class="custom-popup">
+
+    <div class="popup-icon" [ngClass]="popupData.type">
+      {{ popupData.type === 'success' ? '✓' : '!' }}
+    </div>
+
+    <h2>{{ popupData.title }}</h2>
+
+    <p>{{ popupData.message }}</p>
+
+    <button type="button" (click)="closePopup()">
+      Done
+    </button>
+
+  </div>
+
+</div>

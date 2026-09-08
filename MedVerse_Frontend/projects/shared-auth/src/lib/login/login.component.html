@@ -1,0 +1,110 @@
+<div class="login-page">
+  <section class="hero">
+    <div class="content">
+      <h1>
+        Healthcare access<br />
+        redesigned for<br />
+        <span>emergencies, trust<br />and learning.</span>
+      </h1>
+
+      <p>
+        Medverse connects patients, doctors, learners and
+        authentication officers in one secure medical universe.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">⌁</div>
+          <div>
+            <h3>Emergency Access</h3>
+            <p>Instant critical patient details</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon green">🔒</div>
+          <div>
+            <h3>Consent Protected</h3>
+            <p>Medical records stay secure</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon purple">🎓</div>
+          <div>
+            <h3>Verified Learning</h3>
+            <p>Authentic medical case studies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img class="doctors" src="/shared-assets/Medverse_images/login-bg.png" alt="Healthcare team" />
+
+    <form class="login-card" (ngSubmit)="onLogin()">
+      <h2>Welcome <span>Back</span></h2>
+      <p>Continue your secure healthcare journey.</p>
+
+      <label>
+        <span>👤</span>
+        <input
+          type="text"
+          name="userId"
+          [(ngModel)]="form.userId"
+          placeholder="User ID"
+        />
+      </label>
+
+      <label class="password-field">
+        <span>🔒</span>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          [(ngModel)]="form.password"
+          placeholder="Password"
+        />
+        <button type="button" class="eye-btn" (click)="showPassword = !showPassword">
+          {{ showPassword ? '👁️‍🗨️' : '👁️' }}
+        </button>
+      </label>
+
+      <a class="forgot" routerLink="/forgot-password">Forgot Password?</a>
+
+      <button type="submit" [disabled]="isLoggingIn || isCheckingSession">
+        {{ isLoggingIn ? 'Logging in...' : 'Login' }}
+      </button>
+
+      <div class="divider">
+        <span></span>
+        SECURE ACCESS
+        <span></span>
+      </div>
+
+      <p class="signup">
+        Don't have an account?
+        <a routerLink="/signup">Create Account</a>
+      </p>
+    </form>
+  </section>
+
+  <div class="account-modal-backdrop" *ngIf="accountPopupOpen">
+    <section class="account-modal" role="dialog" aria-modal="true" [attr.aria-label]="accountPopupTitle">
+      <div class="account-modal-icon">!</div>
+      <h2>{{ accountPopupTitle }}</h2>
+      <p>{{ accountPopupMessage }}</p>
+
+      <div class="account-user">
+        <span>User ID</span>
+        <strong>{{ accountPopupUserId }}</strong>
+      </div>
+
+      <p class="redirect-count">
+        Redirecting to login in <strong>{{ accountPopupSeconds }}s</strong>.
+      </p>
+
+      <button type="button" class="modal-action" (click)="goToLoginNow()">
+        OK, go to login
+      </button>
+    </section>
+  </div>
+</div>

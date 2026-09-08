@@ -1,0 +1,97 @@
+<main class="notifications-page">
+
+  <!-- HEADER -->
+  <section class="page-header">
+    <div>
+      <h1>Notifications</h1>
+      <p>
+        Stay updated with your cases, comments, approvals, and community activity.
+      </p>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="search-row">
+    <div class="search-box">
+      <span>⌕</span>
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search notifications..."
+      />
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <section class="tabs-row">
+    <div class="tabs">
+      <button
+        *ngFor="let tab of tabs"
+        [class.active]="activeTab === tab.name"
+        (click)="setActiveTab(tab.name)"
+      >
+        {{ tab.name }}
+
+        <span>
+          {{ tab.name === 'Unread' ? unreadCount : tab.count }}
+        </span>
+      </button>
+    </div>
+
+    <button class="mark-read-btn" (click)="markAllAsRead()">
+      ✓ Mark all as read
+    </button>
+  </section>
+
+  <!-- LIST -->
+  <section class="notification-list">
+
+    <article
+      class="notification-card"
+      *ngFor="let item of filteredNotifications"
+      [class.unread]="item.unread"
+      (click)="markAsRead(item)"
+    >
+
+      <span class="left-dot" *ngIf="item.unread"></span>
+
+      <div class="icon-wrap" [ngClass]="item.color">
+        <ng-container *ngIf="item.avatar; else normalIcon">
+          <img [src]="item.avatar" alt="User" />
+        </ng-container>
+
+        <ng-template #normalIcon>
+          {{ item.icon }}
+        </ng-template>
+      </div>
+
+      <div class="notification-content">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.message }}</p>
+      </div>
+
+      <div class="notification-time">
+        <span>{{ item.time }}</span>
+        <i *ngIf="item.unread"></i>
+      </div>
+
+    </article>
+
+  </section>
+
+  <!-- EMPTY -->
+  <section class="empty-state" *ngIf="filteredNotifications.length === 0">
+    <div>🔔</div>
+    <h2>No notifications found</h2>
+    <p>Try changing the selected tab or search keyword.</p>
+  </section>
+
+  <!-- END -->
+  <div class="end-line" *ngIf="filteredNotifications.length > 0">
+    <span></span>
+    <p>You’ve reached the end</p>
+    <span></span>
+  </div>
+
+</main>

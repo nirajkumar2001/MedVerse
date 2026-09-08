@@ -1,0 +1,52 @@
+.empty-state {
+  text-align: center;
+  padding: 55px 20px;
+  color: var(--c-muted);
+}
+
+.empty-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 12px;
+  color: var(--c-dark);
+  background: var(--c-light);
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.empty-icon svg {
+  display: none;
+}
+
+.empty-icon.bell-icon {
+  color: #92400e;
+  background: linear-gradient(145deg, #fff8db, #fbbf24);
+  box-shadow: 0 14px 28px rgba(245, 158, 11, .2);
+}
+
+.empty-icon.bell-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.empty-icon.bell-icon span {
+  display: none;
+}
+
+h3 {
+  margin: 0 0 6px;
+  color: var(--c-darkest);
+}
+
+p {
+  margin: 0;
+}

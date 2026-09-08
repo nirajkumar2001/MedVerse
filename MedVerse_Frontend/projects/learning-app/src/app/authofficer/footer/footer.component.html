@@ -1,0 +1,63 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-row">
+        <div class="brand-icon">
+          <img src="assets/logo.png" alt="MedVerse" />
+        </div>
+
+        <div>
+          <h2>MedVerse</h2>
+          <p>Authentication Officer Desk</p>
+        </div>
+      </div>
+
+      <p class="brand-desc">
+        Review and verify submitted medical cases with consistency, compliance,
+        and clear reviewer guidance to maintain trusted publishing quality.
+      </p>
+
+      <div class="footer-badges">
+        <span>Verification workflow</span>
+        <span>Audit ready</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Case Review</h3>
+      <a *ngFor="let link of quickLinks" [routerLink]="link.route">
+        {{ link.label }}
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Resources</h3>
+      <a *ngFor="let item of resources" [routerLink]="item.route">
+        {{ item.label }}
+      </a>
+    </div>
+
+    <div class="footer-col footer-info">
+      <h3>For Auth Officers</h3>
+      <p>
+        Ensure each decision is clinically clear, policy-aligned, and traceable.
+      </p>
+
+      <button type="button" routerLink="/authofficer/verification-queue">
+        Review Pending Cases
+      </button>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} MedVerse. All rights reserved.</p>
+
+    <div>
+      <a routerLink="/terms-conditions">Terms</a>
+      <span>&bull;</span>
+      <a routerLink="/privacy-policy">Privacy</a>
+      <span>&bull;</span>
+      <a routerLink="/authofficer/support">Support</a>
+    </div>
+  </div>
+</footer>

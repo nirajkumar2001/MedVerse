@@ -1,0 +1,130 @@
+<main class="explore-page">
+  <section class="page-header">
+    <div>
+      <h1>Explore Cases</h1>
+      <p>Discover real patient cases and learn from clinical experiences shared by the community.</p>
+    </div>
+    <div class="top-actions">
+      <div class="notification" role="button" tabindex="0" (click)="openNotifications()">
+        🔔
+          <span *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="search-banner">
+    <div class="big-search">
+      <span>🔍</span>
+      <input type="text" [(ngModel)]="searchText" (ngModelChange)="goToPage(1)"
+        placeholder="Search cases by title, condition, keyword, or author..." />
+    </div>
+    <button class="primary-btn">Search</button>
+  </section>
+
+  <section class="filters-panel">
+    <div class="filter-card">
+      <span class="filter-icon purple">⚕</span>
+      <div>
+        <label>Department</label>
+        <select [(ngModel)]="selecteddepartment" (ngModelChange)="goToPage(1)">
+          <option *ngFor="let item of specialties" [value]="item">{{ item }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-card">
+      <span class="filter-icon blue">⇄</span>
+      <div>
+        <label>Sort By</label>
+        <select [(ngModel)]="selectedSort" (ngModelChange)="goToPage(1)">
+          <option value="Most Recent">Most Recent</option>
+          <option value="Most Comments">Most Bookmarked</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="section-header">
+      <div>
+        <h2>Trending Cases</h2>
+        <p>Popular bookmarked cases from the centralized system.</p>
+      </div>
+    </div>
+
+    <div class="featured-grid">
+      <article class="featured-card" *ngFor="let item of featuredCases" (click)="openFeaturedCase(item)">
+        <img [src]="getImageForFeaturedCase(item)" [alt]="item.title" />
+        <div class="featured-overlay">
+          <span>{{ item.label }}</span>
+          <h3>{{ item.title }}</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="case-list-header">
+    <div>
+      <h2>Published cases Library</h2>
+      <p>Browse verified medical cases published by learners and doctors.</p>
+    </div>
+
+    <div class="view-toggle">
+      <button [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')">Grid</button>
+      <button [class.active]="viewMode === 'list'" (click)="setViewMode('list')">List</button>
+      <button class="clear-btn" (click)="clearFilters()">Clear</button>
+    </div>
+  </section>
+
+  <section class="cases-grid" [class.list-view]="viewMode === 'list'">
+    <article class="case-card" *ngFor="let item of pagedCases">
+      <div class="case-image" (click)="openCase(item)">
+        <img [src]="getImageForCase(item)" [alt]="item.title" />
+        <button class="bookmark-btn" [class.bookmarked]="item.bookmarked" (click)="toggleBookmark(item, $event)">
+          <svg *ngIf="!item.bookmarked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <svg *ngIf="item.bookmarked" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="case-content">
+        <div class="case-top">
+          <span class="department">{{ item.department }}</span>
+          <span class="date">{{ item.date }}</span>
+        </div>
+        <h3 (click)="openCase(item)">{{ item.title }}</h3>
+        <p class="description">{{ item.description }}</p>
+        <div class="tags"><span *ngFor="let tag of item.tags"></span></div>
+        <div class="author-row">
+          <div class="avatar">{{ item.author.charAt(0) }}</div>
+          <div><h4>{{ item.author }}</h4></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="empty-state" *ngIf="filteredCases.length === 0">
+    <div>🔍</div>
+    <h2>No cases found</h2>
+    <p>Try changing your search or filters.</p>
+    <button class="primary-btn" (click)="clearFilters()">Clear Filters</button>
+  </section>
+
+  <section class="pagination" *ngIf="filteredCases.length > 0">
+    <p>
+      Showing {{ (currentPage - 1) * pageSize + 1 }} to {{ ((currentPage - 1) * pageSize) + pagedCases.length }} of {{ filteredCases.length }} cases
+    </p>
+    <div class="pages">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">‹</button>
+      <button *ngFor="let page of pageNumbers" [class.active]="currentPage === page" (click)="goToPage(page)">
+        {{ page }}
+      </button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">›</button>
+    </div>
+  </section>
+</main>

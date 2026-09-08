@@ -1,0 +1,754 @@
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:12:15:
+[37m      12 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impp'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpp[37m
+        ╵ [32m~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'im'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mim[37m
+        ╵ [32m~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impo'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpo[37m
+        ╵ [32m~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mUnexpected ";"[0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:7:
+[37m      2 │ import [32m;[37m
+        ╵        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1109: Expression expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: 'from' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: 'from' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:3:0:
+[37m      3 │ [32mimport[37m { FormsModule } from '@angular/forms';
+        ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'impor'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:2:0:
+[37m      2 │ [32mimpor[37m
+        ╵ [32m~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:38:14:
+[37m      38 │         <div *[32mngIf[37m="errorMessage" class="error-message">{{ errorMe...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.html:39:14:
+[37m      39 │         <div *[32mngIf[37m="message" class="success-message">{{ message }}...
+         ╵               [32m~~~~[0m
+
+  Error occurs in the template of component ForgotPasswordComponent.
+
+    projects/shared-auth/src/lib/forgot-password/forgot-password.component.ts:13:15:
+[37m      13 │   templateUrl: [32m'./forgot-password.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS-992008: Could not find template file './explore-cases.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/explore-cases/explore-cases.component.ts:50:15:
+[37m      50 │   templateUrl: [32m'./explore-cases.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "medverse". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:9:36:
+[37m      9 │ ...lass="meta">support.learning[32m@medverse[37m.local • +91 1800 100 204...
+        ╵                                [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:9:15:
+[37m      9 │   templateUrl: [32m'./support.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "medverse". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:9:36:
+[37m      9 │ ...lass="meta">support.learning[32m@medverse[37m.local • +91 1800 100 204...
+        ╵                                [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:9:15:
+[37m      9 │   templateUrl: [32m'./support.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Incomplete block "medverse". If you meant to write the @ character, you should use the "&#64;" HTML entity instead.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:9:36:
+[37m      9 │ ...lass="meta">support.learning[32m@medverse[37m.local • +91 1800 100 204...
+        ╵                                [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:9:15:
+[37m      9 │   templateUrl: [32m'./support.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:12:23:
+[37m      12 │     <input type="text" [32m[(ngModel)]="subject"[37m placeholder="Enter yo...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'subject' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:12:36:
+[37m      12 │ ...ut type="text" [(ngModel)]="[32msubject[37m" placeholder="Enter your is...
+         ╵                                [32m~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'subject' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:12:36:
+[37m      12 │ ...ut type="text" [(ngModel)]="[32msubject[37m" placeholder="Enter your is...
+         ╵                                [32m~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG8002: Can't bind to 'ngModel' since it isn't a known property of 'textarea'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:15:14:
+[37m      15 │     <textarea [32m[(ngModel)]="details"[37m rows="6" placeholder="Describe...
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'details' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:15:27:
+[37m      15 │     <textarea [(ngModel)]="[32mdetails[37m" rows="6" placeholder="Describe...
+         ╵                            [32m~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'details' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:15:27:
+[37m      15 │     <textarea [(ngModel)]="[32mdetails[37m" rows="6" placeholder="Describe...
+         ╵                            [32m~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'submit' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:17:35:
+[37m      17 │     <button type="button" (click)="[32msubmit[37m()">Submit</button>
+         ╵                                    [32m~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'submitted' does not exist on type 'SupportComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.html:18:30:
+[37m      18 │     <p class="success" *ngIf="[32msubmitted[37m">Your support request has ...
+         ╵                               [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component SupportComponent.
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS-992008: Could not find template file './support.component.html'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:14:15:
+[37m      14 │   templateUrl: [32m'./support.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS-992008: Could not find stylesheet file './support.component.css'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/support/support.component.ts:15:12:
+[37m      15 │   styleUrl: [32m'./support.component.css'[37m
+         ╵             [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/terms-conditions/terms-conditions.component"[0m
+
+    projects/shared-auth/src/public-api.ts:18:14:
+[37m      18 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./lib/privacy-policy/privacy-policy.component"[0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/terms-conditions/terms-conditions.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:19:14:
+[37m      19 │ export * from [32m'./lib/terms-conditions/terms-conditions.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './lib/privacy-policy/privacy-policy.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/shared-auth/src/public-api.ts:20:14:
+[37m      20 │ export * from [32m'./lib/privacy-policy/privacy-policy.component'[37m;
+         ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'PrivacyPolicyComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:141:
+[37m      24 │ ...rificationComponent, [32mPrivacyPolicyComponent[37m, ResetPasswordCompo...
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'PrivacyPolicyComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:141:
+[37m      24 │ ...rificationComponent, [32mPrivacyPolicyComponent[37m, ResetPasswordCompo...
+         ╵                         [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"../../../shared-auth/src/public-api"' has no exported member 'TermsConditionsComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:24:206:
+[37m      24 │ ...t, SignupComponent, [32mTermsConditionsComponent[37m } from '../../../s...
+         ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m

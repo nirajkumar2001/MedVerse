@@ -1,0 +1,51 @@
+<div
+  class="notif-item"
+  [class.read]="!notification.unread"
+  [ngClass]="'notif-' + notification.type">
+
+  <div class="unread-dot" *ngIf="notification.unread"></div>
+
+  <div class="notif-icon">
+    {{ icon }}
+  </div>
+
+  <div class="notif-body-wrap">
+    <div class="notif-title">{{ notification.title }}</div>
+
+    <div class="notif-body">
+      {{ notification.message }}
+    </div>
+
+    <div class="access-scope" *ngIf="notification.accessScope">
+      Access Scope: <strong>{{ notification.accessScope }}</strong>
+    </div>
+
+    <div class="notif-time">
+      {{ notification.time }}
+    </div>
+
+    <div class="notif-actions">
+      <button
+        class="btn-view-profile"
+        type="button"
+        *ngIf="notification.actionLabel"
+        (click)="actionClicked.emit(notification)">
+        {{ notification.actionLabel }}
+      </button>
+
+      <button
+        class="btn-dismiss"
+        type="button"
+        *ngIf="showDismiss"
+        (click)="dismissed.emit(notification.id)">
+        Dismiss
+      </button>
+    </div>
+  </div>
+
+  <app-access-status-chip
+    *ngIf="showStatusChip"
+    [type]="notification.type"
+    [label]="statusLabel">
+  </app-access-status-chip>
+</div>

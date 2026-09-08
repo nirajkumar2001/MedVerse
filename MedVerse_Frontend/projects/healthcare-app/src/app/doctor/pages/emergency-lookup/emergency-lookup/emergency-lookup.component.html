@@ -1,0 +1,467 @@
+<div class="page-shell">
+  <app-layout-sidebar [menuItems]="sidebarItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Doctor Portal" breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Emergency Lookup" title="Emergency Patient Lookup"
+      subtitle="Search patient emergency details by Patient ID, name, address, district, state, pincode, or emergency contact number."
+      [badgeText]="'ID: ' + doctor.doctorId" [avatarText]="doctor.initials" [showSearch]="false"
+      [showNotificationButton]="true" [notificationCount]="unreadCount" theme="dark">
+    </app-page-header>
+
+    <section class="lookup-hero-card">
+      <div class="lookup-copy">
+        <span>Emergency Response Search</span>
+
+        <h2>Find critical patient details quickly and securely.</h2>
+
+        <p>
+          Search using Patient ID, patient name, address, district, state, pincode,
+          or emergency contact number to retrieve treatment-critical information.
+        </p>
+      </div>
+
+      <form class="lookup-search" (ngSubmit)="searchPatient()">
+        <div class="search-input-wrap">
+          <span>⌕</span>
+
+          <input type="text" name="searchQuery" [(ngModel)]="searchQuery"
+            placeholder="Example: PAT00001, Riya, Pune, 411001, Maharashtra">
+        </div>
+
+        <button class="btn-primary" type="submit" [disabled]="isSearching">
+          {{ isSearching ? 'Searching...' : 'Search Patient' }}
+        </button>
+
+        <button class="btn-secondary" type="button" *ngIf="hasSearched" (click)="clearSearch()">
+          Clear
+        </button>
+      </form>
+    </section>
+
+    <section class="result-message" *ngIf="hasSearched && resultMessage">
+      {{ resultMessage }}
+    </section>
+
+    <section class="loading-card" *ngIf="isSearching">
+      Searching patient emergency details...
+    </section>
+
+    <!-- MULTIPLE RESULT MODE -->
+    <section class="multiple-results-card" *ngIf="!isSearching && hasMultipleResults">
+
+      <div class="section-header">
+        <div>
+          <h3>Matching Patients</h3>
+          <p>
+            More than one patient matched your search. Open a patient card to view
+            emergency details. Opening another card automatically collapses the previous one.
+          </p>
+        </div>
+
+        <span class="count-pill">{{ matchedPatients.length }} found</span>
+      </div>
+
+      <div class="patients-grid expandable-patients-grid">
+        <article class="patient-match-card expandable-card" *ngFor="let patient of matchedPatients"
+          [class.expanded]="isPatientExpanded(patient)">
+
+          <div class="match-card-main">
+            <div class="match-avatar" [class.has-image]="patientPhotoUrl(patient)">
+              <img *ngIf="patientPhotoUrl(patient); else matchInitial" [src]="patientPhotoUrl(patient)"
+                alt="Patient profile photo">
+
+              <ng-template #matchInitial>
+                {{ patientInitial(patient) }}
+              </ng-template>
+            </div>
+
+            <div class="match-content">
+              <span>{{ patient.patientId }}</span>
+
+              <h4>{{ patient.name }}</h4>
+
+              <p>
+                {{ patient.age || 'N/A' }} Years • {{ patient.gender || 'N/A' }}
+              </p>
+
+              <div class="match-info">
+                <b>Emergency Contact:</b>
+                {{ patient.emergencyContact || 'Not added' }}
+              </div>
+
+              <div class="match-info">
+                <b>Address:</b>
+                {{ formatAddress(patient) }}
+              </div>
+
+              <div class="match-info">
+                <b>Blood Group:</b>
+                {{ patient.bloodGroup || 'Not recorded' }}
+              </div>
+            </div>
+
+            <button class="btn-open" type="button" (click)="openPatient(patient)">
+              {{ isPatientExpanded(patient) ? 'Hide Details' : 'View Details' }}
+            </button>
+          </div>
+
+          <div class="inline-loading" *ngIf="isPatientLoading(patient)">
+            Loading emergency details...
+          </div>
+
+          <section class="inline-patient-details" *ngIf="getExpandedPatientDetails(patient) as details">
+
+            <button type="button" class="btn-collapse-inline" title="Collapse details" (click)="collapsePatient()">
+              ×
+            </button>
+
+            <div class="inline-details-header">
+              <div class="inline-profile">
+                <div class="inline-avatar" [class.has-image]="patientPhotoUrl(details)">
+                  <img *ngIf="patientPhotoUrl(details); else inlineInitial" [src]="patientPhotoUrl(details)"
+                    alt="Patient profile photo">
+
+                  <ng-template #inlineInitial>
+                    {{ patientInitial(details) }}
+                  </ng-template>
+                </div>
+
+                <div>
+                  <span>General Patient Information</span>
+                  <h3>{{ details.name }}</h3>
+                  <p>
+                    {{ details.age || 'N/A' }} Years • {{ details.gender || 'N/A' }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="inline-blood-card">
+                <span>Blood Group</span>
+                <strong>{{ details.bloodGroup || 'Not recorded' }}</strong>
+              </div>
+            </div>
+
+            <!-- PRIORITY 1: Emergency treatment-critical details -->
+            <div class="critical-care-grid inline-critical-grid priority-critical-grid">
+              <article class="critical-card blood">
+                <div class="alert-icon">BG</div>
+
+                <div>
+                  <span>Blood Group</span>
+                  <strong>{{ details.bloodGroup || 'Not recorded' }}</strong>
+                </div>
+              </article>
+
+              <article class="critical-card">
+                <div class="alert-icon">AL</div>
+
+                <div>
+                  <span>Allergies</span>
+
+                  <div class="chip-list" *ngIf="listFrom(details.allergies).length > 0; else noInlineAllergies">
+                    <b *ngFor="let item of listFrom(details.allergies)">
+                      {{ item }}
+                    </b>
+                  </div>
+
+                  <ng-template #noInlineAllergies>
+                    <strong>Not recorded</strong>
+                  </ng-template>
+                </div>
+              </article>
+
+              <article class="critical-card">
+                <div class="alert-icon">CC</div>
+
+                <div>
+                  <span>Chronic Conditions</span>
+
+                  <div class="chip-list"
+                    *ngIf="listFrom(details.chronicConditions).length > 0; else noInlineConditions">
+                    <b *ngFor="let item of listFrom(details.chronicConditions)">
+                      {{ item }}
+                    </b>
+                  </div>
+
+                  <ng-template #noInlineConditions>
+                    <strong>Not recorded</strong>
+                  </ng-template>
+                </div>
+              </article>
+
+              <article class="critical-card">
+                <div class="alert-icon">RX</div>
+
+                <div>
+                  <span>Current Medication</span>
+
+                  <div class="chip-list"
+                    *ngIf="listFrom(details.currentMedication).length > 0; else noInlineMedication">
+                    <b *ngFor="let item of listFrom(details.currentMedication)">
+                      {{ item }}
+                    </b>
+                  </div>
+
+                  <ng-template #noInlineMedication>
+                    <strong>Not recorded</strong>
+                  </ng-template>
+                </div>
+              </article>
+            </div>
+
+            <!-- PRIORITY 2: Patient identity and contact -->
+            <div class="inline-details-grid supporting-details-grid">
+              <article class="inline-info-card">
+                <div class="inline-section-title">
+                  <span>01</span>
+
+                  <div>
+                    <h4>Patient Identity</h4>
+                    <p>Basic identity and location details required during emergency care.</p>
+                  </div>
+                </div>
+
+                <div class="info-row">
+                  <span>Patient ID</span>
+                  <strong>{{ details.patientId }}</strong>
+                </div>
+
+                <div class="info-row">
+                  <span>Full Name</span>
+                  <strong>{{ details.name }}</strong>
+                </div>
+
+                <div class="info-row">
+                  <span>Age / Gender</span>
+                  <strong>
+                    {{ details.age || 'N/A' }} Years • {{ details.gender || 'N/A' }}
+                  </strong>
+                </div>
+
+                <div class="info-row">
+                  <span>Address</span>
+                  <strong>{{ formatAddress(details) }}</strong>
+                </div>
+              </article>
+
+              <article class="inline-info-card emergency-contact-card">
+                <div class="inline-section-title">
+                  <span>02</span>
+
+                  <div>
+                    <h4>Emergency Contact</h4>
+                    <p>Contact number available for urgent care coordination.</p>
+                  </div>
+                </div>
+
+                <div class="contact-display">
+                  <span>Emergency Contact Number</span>
+                  <strong>{{ details.emergencyContact || details.contactNumber || 'Not added' }}</strong>
+                </div>
+
+                <div class="contact-note">
+                  Use this contact only for urgent medical coordination and patient safety communication.
+                </div>
+              </article>
+            </div>
+
+            <!-- PRIORITY 3: Supporting identification -->
+            <div class="identification-grid inline-identification-grid compact-identification-grid">
+              <article>
+                <span>Height</span>
+                <strong>{{ formatHeight(details) }}</strong>
+              </article>
+
+              <article>
+                <span>Weight</span>
+                <strong>{{ formatWeight(details) }}</strong>
+              </article>
+            </div>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <!-- SINGLE RESULT MODE -->
+    <ng-container *ngIf="!isSearching && selectedPatient">
+      <section class="patient-emergency-hero">
+        <div class="patient-main">
+          <div class="patient-avatar" [class.has-image]="selectedPatientPhotoUrl">
+            <img *ngIf="selectedPatientPhotoUrl; else patientInitialTpl" [src]="selectedPatientPhotoUrl"
+              alt="Patient profile photo">
+
+            <ng-template #patientInitialTpl>
+              {{ patientInitial(selectedPatient) }}
+            </ng-template>
+          </div>
+
+          <div>
+            <span>General Patient Information</span>
+
+            <h2>{{ selectedPatient.name }}</h2>
+
+            <p>
+              {{ selectedPatient.age || 'N/A' }} Years • {{ selectedPatient.gender || 'N/A' }}
+            </p>
+          </div>
+        </div>
+
+        <div class="blood-card">
+          <span>Blood Group</span>
+          <strong>{{ selectedPatient.bloodGroup || 'Not recorded' }}</strong>
+        </div>
+      </section>
+
+      <!-- PRIORITY 1: Emergency treatment-critical details -->
+      <section class="critical-care-grid priority-critical-grid">
+        <article class="critical-card blood">
+          <div class="alert-icon">BG</div>
+
+          <div>
+            <span>Blood Group</span>
+            <strong>{{ selectedPatient.bloodGroup || 'Not recorded' }}</strong>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">AL</div>
+
+          <div>
+            <span>Allergies</span>
+
+            <div class="chip-list" *ngIf="allergiesList.length > 0; else noAllergies">
+              <b *ngFor="let item of allergiesList">{{ item }}</b>
+            </div>
+
+            <ng-template #noAllergies>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">CC</div>
+
+          <div>
+            <span>Chronic Conditions</span>
+
+            <div class="chip-list" *ngIf="chronicConditionsList.length > 0; else noConditions">
+              <b *ngFor="let item of chronicConditionsList">{{ item }}</b>
+            </div>
+
+            <ng-template #noConditions>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+
+        <article class="critical-card">
+          <div class="alert-icon">RX</div>
+
+          <div>
+            <span>Current Medication</span>
+
+            <div class="chip-list" *ngIf="currentMedicationList.length > 0; else noMedication">
+              <b *ngFor="let item of currentMedicationList">{{ item }}</b>
+            </div>
+
+            <ng-template #noMedication>
+              <strong>Not recorded</strong>
+            </ng-template>
+          </div>
+        </article>
+      </section>
+
+      <!-- PRIORITY 2: Patient identity and contact -->
+      <section class="details-grid supporting-details-grid">
+        <article class="info-card">
+          <div class="section-title">
+            <span>01</span>
+
+            <div>
+              <h3>Patient Identity</h3>
+              <p>Basic identity and location details required during emergency care.</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span>Patient ID</span>
+            <strong>{{ selectedPatient.patientId }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Full Name</span>
+            <strong>{{ selectedPatient.name }}</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Age / Gender</span>
+            <strong>
+              {{ selectedPatient.age || 'N/A' }} Years • {{ selectedPatient.gender || 'N/A' }}
+            </strong>
+          </div>
+
+          <div class="info-row">
+            <span>Address</span>
+            <strong>{{ fullAddress }}</strong>
+          </div>
+        </article>
+
+        <article class="info-card emergency-contact-card">
+          <div class="section-title">
+            <span>02</span>
+
+            <div>
+              <h3>Emergency Contact</h3>
+              <p>Contact number available for urgent care coordination.</p>
+            </div>
+          </div>
+
+          <div class="contact-display">
+            <span>Emergency Contact Number</span>
+            <strong>{{ selectedPatient.emergencyContact || selectedPatient.contactNumber || 'Not added' }}</strong>
+          </div>
+
+          <div class="contact-note">
+            Use this contact only for urgent medical coordination and patient safety communication.
+          </div>
+        </article>
+      </section>
+
+      <!-- PRIORITY 3: Supporting identification -->
+      <section class="identification-grid compact-identification-grid">
+        <article>
+          <span>Height</span>
+          <strong>{{ latestHeight }}</strong>
+        </article>
+
+        <article>
+          <span>Weight</span>
+          <strong>{{ latestWeight }}</strong>
+        </article>
+      </section>
+    </ng-container>
+
+    <section class="empty-lookup-card"
+      *ngIf="!isSearching && hasSearched && !hasSelectedPatient && !hasMultipleResults">
+      <div>⌕</div>
+
+      <h3>No patient found</h3>
+
+      <p>
+        Try searching with Patient ID, name, address, district, state, pincode,
+        or emergency contact number.
+      </p>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage">
+  </app-toast-message>
+</div>

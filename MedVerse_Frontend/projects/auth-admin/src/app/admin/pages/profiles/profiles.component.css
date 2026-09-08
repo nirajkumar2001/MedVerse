@@ -1,0 +1,170 @@
+.layout{
+  display:flex;
+  min-height:100vh;
+  background: linear-gradient(135deg, #eed7fc 1%, #eef0ff 30%,#e7e6ff 70%,#e2e0ff 100%);
+}
+
+.content{
+  flex:1;
+  padding:30px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.top h1{
+  margin:0;
+  font-size:34px;
+  font-weight:800;
+}
+
+.top p{
+  color:#64748b;
+}
+
+.actions{
+  display:flex;
+  gap:14px;
+}
+
+.actions input{
+  width:320px;
+  height:50px;
+  border-radius:14px;
+  border:1px solid #e2e8f0;
+  padding:0 18px;
+  background:white;
+}
+
+.tabs{
+  display:flex;
+  gap:24px;
+  margin-top:28px;
+  margin-bottom:26px;
+}
+
+.tabs button{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  font-weight:700;
+  color:#64748b;
+  padding:0 0 10px;
+}
+
+.tabs .active{
+  color:#0f766e;
+  border-bottom:3px solid #0f766e;
+}
+
+.tabs b{
+  margin-left:8px;
+  background:#dcfce7;
+  padding:3px 8px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+.table-card{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.05);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  text-align:left;
+  color:#64748b;
+  font-size:14px;
+  padding-bottom:18px;
+}
+
+td{
+  padding:18px 0;
+  border-top:1px solid #edf2f7;
+}
+
+.user-cell{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-photo{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  overflow:hidden;
+  display:inline-block;
+  background:#eef2ff;
+  border:1px solid #e2e8f0;
+}
+
+.user-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.id-badge{
+  background:#d1fae5;
+  color:#0f766e;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.status-pill{
+  display:inline-flex;
+  min-width:86px;
+  justify-content:center;
+  background:#fef3c7;
+  color:#d97706;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.status-pill.approved{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.status-pill.rejected{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.status-pill.pending{
+  background:#fef3c7;
+  color:#d97706;
+}
+
+.status-pill.suspended{
+  background:#ede9fe;
+  color:#6d28d9;
+}
+
+.view-btn{
+  min-width:64px;
+  height:42px;
+  border:0;
+  border-radius:12px;
+  background:#f8fafc;
+  color:#0f172a;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  font-weight:700;
+}

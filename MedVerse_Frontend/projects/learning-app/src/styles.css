@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import othe@r style files */
+@tailwind base;
+@tailwind conponents;
+@tailwind utilities;
+body {
+  font-family: Arial, sans-serif;
+  background:#f4f6f9;
+  /* padding:20px; */
+  margin: 0px;
+}

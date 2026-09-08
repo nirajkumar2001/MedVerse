@@ -1,0 +1,99 @@
+<section class="card">
+  <div class="card-header">
+    <div>
+      <h3 class="card-title">Request Patient Medical Profile</h3>
+      <p class="card-subtitle">
+        Enter Patient ID and reason. Patient can approve with previous records,
+        approve profile only, or reject.
+      </p>
+    </div>
+  </div>
+
+  <div class="request-grid">
+    <div class="field-wrap">
+      <label>
+        Patient ID <span>*</span>
+      </label>
+
+      <input
+        type="text"
+        maxlength="8"
+        appTrimLeadingSpace
+        [(ngModel)]="patientId"
+        (input)="onPatientIdInput()"
+        [class.input-error]="patientIdError"
+        placeholder="Enter Patient ID, e.g. PAT00001" />
+
+      <app-form-field-error [message]="patientIdError"></app-form-field-error>
+    </div>
+
+    <div class="field-wrap">
+      <label>
+        Reason for Access <span>*</span>
+      </label>
+
+      <textarea
+        rows="3"
+        appTrimLeadingSpace
+        [(ngModel)]="accessReason"
+        [class.input-error]="reasonError"
+        placeholder="Example: Follow-up consultation, diagnosis review, current visit update"></textarea>
+
+      <app-form-field-error [message]="reasonError"></app-form-field-error>
+    </div>
+  </div>
+
+  <div class="consent-options">
+    <article>
+      <strong>Profile only</strong>
+      <span>Patient identity and current emergency details</span>
+    </article>
+    <article>
+      <strong>Profile + history</strong>
+      <span>Previous records visible, not editable</span>
+    </article>
+    <article>
+      <strong>Reject</strong>
+      <span>Session closes and doctor is notified</span>
+    </article>
+  </div>
+
+  <div class="access-flow">
+    <div class="flow-step">
+      <span>1</span>
+      <p>Doctor sends request</p>
+    </div>
+
+    <div class="flow-line"></div>
+
+    <div class="flow-step">
+      <span>2</span>
+      <p>Patient receives notification</p>
+    </div>
+
+    <div class="flow-line"></div>
+
+    <div class="flow-step">
+      <span>3</span>
+      <p>Patient approves or rejects</p>
+    </div>
+  </div>
+
+  <div class="request-info">
+    <div>
+      <strong>Access rule</strong>
+      <p>
+        Doctor can add current visit details after approval, but previous medical
+        records remain protected and cannot be edited.
+      </p>
+    </div>
+
+    <button class="btn-primary" type="button" (click)="sendAccessRequest()" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Sending...' : 'Send Access Request' }}
+    </button>
+  </div>
+
+  <div class="success-alert" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+</section>

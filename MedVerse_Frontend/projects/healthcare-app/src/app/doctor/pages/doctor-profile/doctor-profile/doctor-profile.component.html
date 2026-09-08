@@ -1,0 +1,41 @@
+<div class="page-shell">
+  <app-layout-sidebar
+    [menuItems]="sidebarItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Doctor Profile"
+      title="Doctor Profile"
+      subtitle="Maintain professional and contact details"
+      [badgeText]="'ID: ' + doctor.doctorId"
+      [avatarText]="doctor.initials"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      [notificationCount]="notificationCount"
+      theme="dark">
+    </app-page-header>
+
+    <app-doctor-profile-form
+      [doctor]="doctor"
+      (saved)="saveDoctorProfile($event)"
+      (cancelled)="onProfileCancel()">
+    </app-doctor-profile-form>
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    type="success"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

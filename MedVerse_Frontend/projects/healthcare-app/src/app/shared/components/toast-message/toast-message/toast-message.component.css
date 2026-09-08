@@ -1,0 +1,23 @@
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 1000;
+  color: white;
+  font-weight: 800;
+  padding: 13px 22px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.toast.success {
+  background: var(--c-success);
+}
+
+.toast.danger {
+  background: var(--c-danger);
+}
+
+.toast.info {
+  background: var(--c-mid);
+}

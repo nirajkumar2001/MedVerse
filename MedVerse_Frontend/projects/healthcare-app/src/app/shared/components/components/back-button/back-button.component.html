@@ -1,0 +1,12 @@
+<button
+  class="back-button"
+  type="button"
+  (click)="pressed.emit()"
+  [attr.aria-label]="ariaLabel">
+  <span class="back-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  </span>
+  <span class="back-label">{{ label }}</span>
+</button>

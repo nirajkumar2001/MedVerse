@@ -1,0 +1,109 @@
+<section id="hero" data-section="hero" class="hero">
+  <div class="grid-bg"></div>
+  <div class="orb"></div>
+
+  <div class="copy reveal" #reveal>
+    <div class="badge">
+      <span></span>
+      Medical platform
+    </div>
+
+    <h1 class="scramble-title">
+      <span>A new </span>
+      <span>medical universe</span>
+      <span> where care moves</span>
+      <span> without friction.</span>
+    </h1>
+
+    <p>
+      Medverse protects patient records, supports emergency access,
+      verifies medical case studies, and connects every healthcare role
+      inside one platform.
+    </p>
+
+    <div class="actions">
+
+      <a
+        #btn1
+        class="primary"
+        routerLink="/signup"
+        (mousemove)="magnet($event, btn1)"
+        (mouseleave)="resetMagnet(btn1)"
+      >
+        Create Account
+      </a>
+    
+      <a
+        #btn2
+        class="glass"
+        routerLink="/login"
+        (mousemove)="magnet($event, btn2)"
+        (mouseleave)="resetMagnet(btn2)"
+      >
+        Login
+      </a>
+    
+    </div>
+
+    <div class="mini-grid">
+      <article class="magnetic">
+        <strong>Emergency</strong>
+        <small>Basic details when seconds matter</small>
+      </article>
+
+      <article class="magnetic">
+        <strong>Consent</strong>
+        <small>Medical history stays protected</small>
+      </article>
+
+      <article class="magnetic">
+        <strong>Verified</strong>
+        <small>Cases approved by experts</small>
+      </article>
+    </div>
+  </div>
+
+  <div
+    class="visual reveal"
+    #reveal
+    #stage
+    (mousemove)="tilt($event, stage)"
+    (mouseleave)="reset(stage)"
+  >
+    <div class="world">
+      <div class="core">
+        <span><img src = "shared-assets/Medverse_images/medverse_logo.png" alt="logo"></span>
+      </div>
+
+      <div class="ring ring-a"></div>
+      <div class="ring ring-b"></div>
+      <div class="ring ring-c"></div>
+
+      <div class="role-card patient magnetic">
+        <b>Patient</b>
+        <small>Health identity</small>
+      </div>
+
+      <div class="role-card doctor magnetic">
+        <b>Doctor</b>
+        <small>Emergency view</small>
+      </div>
+
+      <div class="role-card learner magnetic">
+        <b>Learner</b>
+        <small>Case studies</small>
+      </div>
+
+      <div class="role-card officer magnetic">
+        <b>Officer</b>
+        <small>Authenticates</small>
+      </div>
+
+      <div class="record-panel">
+        <div></div>
+        <h4>Consent Required</h4>
+        <p>Medical records are locked until access is approved.</p>
+      </div>
+    </div>
+  </div>
+</section>

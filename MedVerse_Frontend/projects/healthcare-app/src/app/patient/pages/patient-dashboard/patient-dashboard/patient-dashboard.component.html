@@ -1,0 +1,158 @@
+<div class="page-shell" *ngIf="patient">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home" breadcrumbCurrent="Dashboard"
+      titlePrefix="Welcome back," [titleEmphasis]="patient.fullName"
+      subtitle="Track your profile status, emergency details, and doctor access requests."
+      [badgeText]="'ID: ' + patient.patientId" [avatarText]="patient.fullName.charAt(0)" [avatarImage]="patientPhoto"
+      [showSearch]="false" [showNotificationButton]="true" notificationRoute="/patient/notifications"
+      [notificationCount]="pendingAccessCount" theme="patient">
+    </app-page-header>
+
+    <section class="stats-grid">
+      <app-stat-card icon="ID" iconType="blue" label="Patient ID" [value]="patient.patientId"
+        description="System generated">
+      </app-stat-card>
+
+      <app-stat-card icon="BG" iconType="red" label="Blood Group"
+        [value]="patient.emergencyRecord.bloodGroup || 'Not added'" description="Emergency visible">
+      </app-stat-card>
+
+      <app-stat-card icon="AR" iconType="green" label="Pending Requests" [value]="pendingAccessCount.toString()"
+        description="Awaiting your consent">
+      </app-stat-card>
+    </section>
+
+    <section class="current-access-card card">
+      <div class="current-access-copy">
+        <div class="request-icon">AR</div>
+
+        <div class="request-main" *ngIf="latestAccessRequest as request; else noAccessRequest">
+          <span class="request-kicker">Latest Access Request</span>
+          <h3>{{ request.doctorName }}</h3>
+          <p>{{ request.reason }}</p>
+        </div>
+
+        <ng-template #noAccessRequest>
+          <div class="request-main">
+            <span class="request-kicker">Current Access Request</span>
+            <h3>No doctor access requests yet</h3>
+            <p>New requests will appear here when a doctor asks for access.</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="current-access-actions" *ngIf="latestAccessRequest as request">
+        <strong class="request-status" [class.approved]="request.status === 'Approved'"
+          [class.rejected]="request.status === 'Rejected'" [class.done]="request.status === 'Completed'">
+          {{ request.status }}
+        </strong>
+
+        <a routerLink="/patient/notifications" class="btn-primary review-link">
+          Review request
+        </a>
+      </div>
+    </section>
+
+    <section class="lower-grid">
+      <article class="card snapshot-card">
+        <h3>Health Snapshot</h3>
+
+        <div class="snapshot-metrics">
+          <div>
+            <span>Allergies</span>
+            <strong>{{ patient.emergencyRecord.allergies.length }}</strong>
+            <small>Active</small>
+          </div>
+
+          <div>
+            <span>Chronic Conditions</span>
+            <strong>{{ patient.emergencyRecord.chronicConditions.length }}</strong>
+            <small>Active</small>
+          </div>
+
+          <div>
+            <span>Medications</span>
+            <strong>{{ patient.emergencyRecord.currentMedications.length }}</strong>
+            <small>Current</small>
+          </div>
+
+          <div>
+            <span>Completed Sessions</span>
+            <strong>{{ completedAccessCount }}</strong>
+            <small>Doctor access</small>
+          </div>
+        </div>
+
+        <div class="snapshot-note">
+          Keep your profile updated for better and faster care.
+        </div>
+      </article>
+
+      <article class="card activity-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Access Request Timeline</h3>
+            <p class="card-subtitle">Latest doctor access activity</p>
+          </div>
+
+          <a routerLink="/patient/notifications" class="btn-secondary">
+            View All
+          </a>
+        </div>
+
+        <div *ngIf="isRequestsLoading" class="empty-activity">
+          Loading access activity...
+        </div>
+
+        <ng-container *ngIf="!isRequestsLoading">
+          <div class="activity-row" *ngFor="let request of recentAccessActivities">
+            <span></span>
+
+            <div>
+              <strong>{{ request.doctorName }}</strong>
+              <small>{{ request.reason }}</small>
+            </div>
+
+            <b [class.pending]="request.status === 'Pending'"
+              [class.done]="request.status === 'Approved' || request.status === 'Completed'"
+              [class.rejected]="request.status === 'Rejected'">
+              {{ request.status }}
+            </b>
+          </div>
+
+          <div class="empty-activity" *ngIf="recentAccessActivities.length === 0">
+            No access activity yet. Doctor requests will appear here in realtime.
+          </div>
+        </ng-container>
+      </article>
+    </section>
+
+    <section class="care-grid">
+      <article class="care-card">
+        <span>CC</span>
+        <h3>Consent Control</h3>
+        <p>Approve doctor access with or without previous medical records.</p>
+      </article>
+
+      <article class="care-card">
+        <span>ER</span>
+        <h3>Emergency Ready</h3>
+        <p>Keep blood group, allergies, chronic conditions, and medication visible.</p>
+      </article>
+
+      <article class="care-card">
+        <span>TS</span>
+        <h3>Trusted & Secure</h3>
+        <p>System generated fields remain protected after admin approval.</p>
+      </article>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

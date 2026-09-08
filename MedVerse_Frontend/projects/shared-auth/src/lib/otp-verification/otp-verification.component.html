@@ -1,0 +1,152 @@
+<div class="auth-page">
+  <div class="page-otp-dropdown">
+    <button class="otp-dropdown-btn" type="button" (click)="showOtpDropdown = !showOtpDropdown">
+      MedVerse_Otp
+    </button>
+
+    <div class="otp-dropdown-panel" *ngIf="showOtpDropdown">
+      <span>WEBSOCKET OTP</span>
+      <strong>{{ receivedOtp || 'Waiting...' }}</strong>
+      <small>{{ receivedOtp ? receivedOtpMessage : 'OTP will appear here after it is received.' }}</small>
+    </div>
+  </div>
+
+  <div class="auth-container">
+
+    <!-- LEFT SIDE BRANDING -->
+    <section class="auth-left">
+      <!-- <div class="brand"> -->
+        <!-- <div class="brand-icon">✚</div> -->
+        <!-- <div>
+          <h1>MedAuth</h1>
+          <p>Healthcare, <span>Simplified</span></p>
+        </div> -->
+        <div class="image">
+        <img src="/shared-assets/Medverse_images/logo_medverse.png" alt="Medical Team" />
+      <!-- </div> -->
+      </div>
+
+      <div class="image-box">
+        <img src="/shared-assets/Medverse_images/medical-team.png" alt="Medical Team" />
+      </div>
+
+      <div class="left-content">
+        <h2>Verify Your Identity</h2>
+        <p>
+          Enter the OTP sent to your registered email to activate your secure MedAuth account.
+        </p>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDE OTP CARD -->
+    <section class="auth-right">
+      <div class="otp-card">
+        <div class="mobile-brand">
+          <div class="brand-icon">✚</div>
+          <div>
+            <h1>MedAuth</h1>
+            <p>Healthcare, <span>Simplified</span></p>
+          </div>
+        </div>
+
+        <div class="otp-icon">
+          🛡️
+        </div>
+
+        <div class="form-heading">
+          <h2>OTP <span>Verification</span></h2>
+          <p>
+            We have sent a 6-digit verification code to
+            <strong>{{ email }}</strong>
+          </p>
+        </div>
+
+        <form (ngSubmit)="verifyOtp()">
+
+          <div class="otp-inputs" (paste)="onPaste($event)">
+            <input
+              #otpInput
+              *ngFor="let item of otp; let i = index; trackBy: trackByIndex"
+              type="text"
+              maxlength="1"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              [value]="otp[i]"
+              [name]="'otp' + i"
+              (input)="onOtpInput($event, i)"
+              (keydown)="onKeyDown($event, i)"
+              (focus)="onOtpFocus($event)"
+            />
+          </div>
+
+          <p class="error-message" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </p>
+
+          <p class="success-message" *ngIf="successMessage">
+            {{ successMessage }}
+          </p>
+
+          <button
+            type="submit"
+            class="main-btn"
+            [disabled]="!isOtpComplete || isVerifying"
+          >
+            {{ isVerifying ? 'Verifying...' : 'Verify OTP' }}
+          </button>
+
+          <div class="resend-box">
+            <p class="resend-limit" *ngIf="resendLimitMessage">
+              {{ resendLimitMessage }}
+            </p>
+
+            <p *ngIf="!canResend && !resendLimitMessage">
+              Resend OTP in <strong>{{ timer }}s</strong>
+            </p>
+
+            <button
+              type="button"
+              class="resend-btn"
+              *ngIf="canResend && !resendLimitMessage"
+              (click)="resendOtp()"
+            >
+              Resend OTP ({{ maxResendAttempts - resendAttempts }} left)
+            </button>
+          </div>
+
+          <p class="switch-text">
+            Already verified?
+            <a routerLink="/login">Login</a>
+          </p>
+
+        </form>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="popup-overlay" *ngIf="showAccountCreatedPopup">
+  <div class="popup-box">
+    <div class="popup-icon success">✓</div>
+
+    <h2>Account Created</h2>
+
+    <p>
+      Your account has been created and sent to admin for verification.
+    </p>
+
+    <div class="user-id-box" *ngIf="createdUserId">
+      <span>Your User ID</span>
+      <strong>{{ createdUserId }}</strong>
+    </div>
+
+    <p class="redirect-note">
+      You will be redirected to login in <strong>{{ redirectSeconds }}s</strong>.
+    </p>
+
+    <button type="button" (click)="goToLogin()">
+      Done
+    </button>
+  </div>
+</div>

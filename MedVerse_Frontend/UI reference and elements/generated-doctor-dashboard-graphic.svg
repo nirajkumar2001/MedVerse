@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 330" role="img" aria-label="Doctor clinical dashboard illustration">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1">
+      <stop offset="0" stop-color="#ddd4ff"/>
+      <stop offset=".46" stop-color="#bbe7ff"/>
+      <stop offset="1" stop-color="#2f7cff"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".82"/>
+      <stop offset="1" stop-color="#dfe9ff" stop-opacity=".42"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#3045c9" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="980" height="330" rx="22" fill="url(#panel)"/>
+  <g opacity=".20" fill="#fff">
+    <path d="M395 186h34v34h-34zM407 174h10v58h-10zM879 190h32v32h-32zM890 178h10v56h-10z"/>
+    <circle cx="245" cy="52" r="4"/><circle cx="326" cy="86" r="3"/><circle cx="760" cy="64" r="4"/>
+  </g>
+  <g transform="translate(545 43)" filter="url(#shadow)">
+    <ellipse cx="136" cy="241" rx="140" ry="22" fill="#2e52f5" opacity=".25"/>
+    <rect x="0" y="18" width="178" height="138" rx="18" fill="url(#card)"/>
+    <circle cx="42" cy="52" r="18" fill="#fff"/>
+    <path d="M22 97h42M22 117h88M22 137h72" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+    <rect x="202" y="40" width="138" height="98" rx="18" fill="#fff" opacity=".24"/>
+    <path d="M228 88h84M228 108h50" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+    <rect x="92" y="172" width="128" height="70" rx="35" fill="#45d7ff" opacity=".34"/>
+    <path d="M142 173c14-45 92-40 104 6" fill="none" stroke="#fff" stroke-width="7" opacity=".62"/>
+  </g>
+  <g transform="translate(710 45)" filter="url(#shadow)">
+    <circle cx="92" cy="58" r="42" fill="#ffd4bc"/>
+    <path d="M55 61c-4-40 35-66 74-45 29 16 25 47 3 67-10-25-42-28-77-22z" fill="#26376f"/>
+    <path d="M50 118c30-24 79-26 110 4 26 26 35 69 36 119H13c4-48 13-92 37-123z" fill="#f7fbff"/>
+    <path d="M82 117l19 35 25-35" fill="#fff"/>
+    <path d="M101 152l-16 72h58l-17-72z" fill="#4d5ff0"/>
+    <path d="M36 160c40 2 53 30 52 70M156 154c-36 16-40 45-32 80" fill="none" stroke="#7b8bd6" stroke-width="8" stroke-linecap="round"/>
+    <rect x="150" y="132" width="92" height="112" rx="16" fill="#435389"/>
+    <rect x="163" y="146" width="66" height="78" rx="9" fill="#6d7bb7"/>
+  </g>
+  <g transform="translate(395 76)" filter="url(#shadow)">
+    <path d="M78 0l78 32v67c0 49-29 83-78 105C29 182 0 148 0 99V32z" fill="#ffffff" opacity=".34"/>
+    <path d="M78 30l44 19v45c0 29-16 50-44 65-28-15-44-36-44-65V49z" fill="#fff" opacity=".38"/>
+    <rect x="64" y="70" width="28" height="65" rx="8" fill="#fff" opacity=".82"/>
+    <rect x="50" y="84" width="56" height="28" rx="8" fill="#fff" opacity=".82"/>
+  </g>
+</svg>

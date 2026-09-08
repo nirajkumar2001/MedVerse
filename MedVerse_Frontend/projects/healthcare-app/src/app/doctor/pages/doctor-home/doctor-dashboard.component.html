@@ -1,0 +1,148 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Dashboard"
+      titlePrefix="Good day,"
+      [titleEmphasis]="doctor.fullName"
+      subtitle="Manage consent-based care sessions, emergency lookup, and patient medical updates from one secure workspace."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showBackButton]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/doctor/notifications"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <section class="stats-grid">
+      <article class="doctor-stat" *ngFor="let stat of dashboardStats">
+        <span class="stat-icon">{{ stat.icon }}</span>
+        <div>
+          <p>{{ stat.label }}</p>
+          <strong>{{ stat.value }}</strong>
+          <small>{{ stat.helper }}</small>
+        </div>
+      </article>
+    </section>
+
+    <section class="doctor-grid">
+      <div class="primary-column">
+        <app-access-request-form
+          (requestSent)="onAccessRequestSent($event)">
+        </app-access-request-form>
+      </div>
+
+      <aside class="activity-panel">
+        <div class="panel-heading">
+          <div>
+            <span>Live care updates</span>
+            <h2>Recent Activity</h2>
+            <p>Track patient approval, denial, reminders, and session completion updates.</p>
+          </div>
+
+          <button type="button" class="ghost-btn" (click)="reloadNotifications()">
+            Refresh
+          </button>
+        </div>
+
+        <div class="loading-card" *ngIf="isLoading">
+          Loading doctor activity...
+        </div>
+
+        <ng-container *ngIf="!isLoading">
+          <div class="empty-state" *ngIf="recentNotifications.length === 0">
+            <strong>No recent activity yet</strong>
+            <p>Send an access request or open patient care when patient responses arrive.</p>
+          </div>
+
+          <div class="activity-list" *ngIf="recentNotifications.length > 0">
+            <article
+              class="activity-card"
+              *ngFor="let item of recentNotifications | slice:0:4"
+              [class.unread]="item.unread">
+
+              <div class="activity-copy">
+                <span class="status-pill" [ngClass]="statusOf(item).toLowerCase()">
+                  {{ formatStatus(item) }}
+                </span>
+
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.message }}</p>
+                <small>{{ item.time }}</small>
+              </div>
+
+              <div class="activity-actions">
+                <button
+                  *ngIf="statusOf(item) === 'APPROVED' && !item.accessEndedAt"
+                  class="btn-primary mini"
+                  type="button"
+                  (click)="openApprovedProfile(item)">
+                  Open
+                </button>
+
+                <button
+                  *ngIf="statusOf(item) === 'PENDING'"
+                  class="btn-secondary mini"
+                  type="button"
+                  (click)="sendReminder(item)">
+                  Remind
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <a class="view-all" routerLink="/doctor/notifications">
+            View all notifications
+          </a>
+        </ng-container>
+      </aside>
+    </section>
+
+    <section class="workflow-section">
+      <div class="section-heading">
+        <div>
+          <span>Clinical shortcuts</span>
+          <h2>Continue your doctor workflow</h2>
+          <p>Quickly navigate to the most frequently used doctor workspace actions.</p>
+        </div>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-card" *ngFor="let item of workflowLinks">
+          <span class="workflow-dot"></span>
+
+          <div class="workflow-copy">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.text }}</p>
+            <a [routerLink]="item.route">{{ item.label }}</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    [type]="toastType"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

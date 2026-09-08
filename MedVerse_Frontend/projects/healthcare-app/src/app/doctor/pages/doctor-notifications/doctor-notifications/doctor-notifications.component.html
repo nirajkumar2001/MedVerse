@@ -1,0 +1,87 @@
+<div class="page-shell">
+  <app-layout-sidebar [menuItems]="sidebarItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Doctor Portal" breadcrumbRootRoute="/doctor/home" breadcrumbCurrent="Notifications"
+      title="Notifications"
+      subtitle="Track new patient requests, active sessions, dismissed requests, and completed access history."
+      [badgeText]="'ID: ' + doctor.doctorId" [avatarText]="doctor.initials" [showSearch]="false" theme="dark">
+    </app-page-header>
+
+    <section class="card notifications-card">
+      <div class="card-header">
+        <div>
+          <h3 class="card-title">
+            Access Notifications
+            <span class="title-count">{{ unreadCount }} unread</span>
+          </h3>
+
+          <p class="card-subtitle">
+            Manage patient access requests and approved medical profile sessions.
+          </p>
+        </div>
+
+        <button class="btn-text" type="button" [disabled]="unreadCount === 0" (click)="openMarkAllModal()">
+          Mark all as read
+        </button>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'new'" (click)="setFilter('new')">
+          New
+          <span>{{ newCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'active'"
+          (click)="setFilter('active')">
+          Active Session
+          <span>{{ activeCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'dismissed'"
+          (click)="setFilter('dismissed')">
+          Dismissed
+          <span>{{ dismissedCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'completed'"
+          (click)="setFilter('completed')">
+          Completed
+          <span>{{ completedCount }}</span>
+        </button>
+      </div>
+
+      <div class="notif-list" *ngIf="filteredNotifications.length > 0; else emptyNotifications">
+        <app-notification-card *ngFor="let notification of filteredNotifications" [notification]="notification"
+          [showStatusChip]="true" [showDismiss]="false" (actionClicked)="onNotificationAction($event)"
+          (endSessionClicked)="requestEndSession($event)">
+        </app-notification-card>
+      </div>
+
+      <ng-template #emptyNotifications>
+        <app-empty-state icon="notification" title="No notifications found"
+          message="There are no notifications for the selected filter.">
+        </app-empty-state>
+      </ng-template>
+    </section>
+  </main>
+
+  <app-confirm-modal [open]="showEndSessionModal" icon="!" iconType="warning" title="End Approved Session"
+    message="Are you sure you want to end this approved patient access session? This action will also notify the patient."
+    cancelText="Cancel" confirmText="End Session" confirmType="danger" (cancelled)="closeEndSessionModal()"
+    (confirmed)="confirmEndSession()">
+  </app-confirm-modal>
+
+  <app-confirm-modal [open]="showMarkAllModal" icon="OK" iconType="info" title="Mark All as Read"
+    message="This will mark all unread patient access notifications as read." cancelText="Cancel"
+    confirmText="Yes, Continue" confirmType="primary" (cancelled)="closeMarkAllModal()"
+    (confirmed)="confirmMarkAllRead()">
+  </app-confirm-modal>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message [show]="showToast" type="success" [message]="toastMessage">
+  </app-toast-message>
+</div>

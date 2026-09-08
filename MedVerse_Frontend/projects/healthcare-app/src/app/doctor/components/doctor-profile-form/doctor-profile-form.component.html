@@ -1,0 +1,194 @@
+<section class="doctor-profile-card" *ngIf="editableDoctor">
+  <div class="profile-top-actions">
+    <button class="ghost-action" type="button" (click)="changePassword()">
+      Change Password
+    </button>
+
+    <button class="edit-action" type="button" *ngIf="!isEditMode" (click)="enableEditMode()">
+      Edit Profile
+    </button>
+
+    <div class="edit-actions" *ngIf="isEditMode">
+      <button class="ghost-action" type="button" (click)="resetForm()">Cancel</button>
+      <button class="save-action" type="button" (click)="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+
+  <section class="identity-card">
+    <div class="profile-photo-wrap">
+      <div class="profile-photo">
+        <img *ngIf="photoPreview; else doctorInitials" [src]="photoPreview" alt="Doctor profile photo">
+
+        <ng-template #doctorInitials>
+          <span>{{ editableDoctor.initials || 'DR' }}</span>
+        </ng-template>
+      </div>
+
+      <input
+        #photoInput
+        type="file"
+        hidden
+        accept="image/*"
+        [disabled]="!isEditMode"
+        (change)="onPhotoSelected($event)" />
+
+      <button class="photo-action" type="button" *ngIf="isEditMode" (click)="photoInput.click()">
+        Upload
+      </button>
+    </div>
+
+    <div class="identity-copy">
+      <span class="eyebrow">Doctor identity</span>
+      <h2>{{ editableDoctor.fullName }}</h2>
+      <p>{{ displayValue(editableDoctor.designation) }} · {{ displayValue(editableDoctor.department) }}</p>
+      <small>{{ displayValue(editableDoctor.email) }}</small>
+
+      <button
+        class="remove-photo"
+        type="button"
+        *ngIf="photoPreview && isEditMode"
+        (click)="removePhoto(photoInput)">
+        Remove profile photo
+      </button>
+    </div>
+
+    <div class="id-panel">
+      <span>Doctor ID</span>
+      <strong>{{ displayValue(editableDoctor.doctorId) }}</strong>
+      <small>Read-only identity</small>
+    </div>
+  </section>
+
+  <section class="profile-form-grid">
+    <article class="form-field locked-field">
+      <span class="field-icon">ID</span>
+      <div>
+        <label>Doctor ID</label>
+        <strong>{{ displayValue(editableDoctor.doctorId) }}</strong>
+        <small>Locked</small>
+      </div>
+    </article>
+
+    <article class="form-field locked-field">
+      <span class="field-icon">DR</span>
+      <div>
+        <label>Full Name</label>
+        <strong>{{ displayValue(editableDoctor.fullName) }}</strong>
+        <small>Locked</small>
+      </div>
+    </article>
+
+    <article class="form-field locked-field">
+      <span class="field-icon">&#64;</span>
+      <div>
+        <label>Email Address</label>
+        <strong>{{ displayValue(editableDoctor.email) }}</strong>
+        <small>Locked</small>
+      </div>
+    </article>
+
+    <article class="form-field">
+      <span class="field-icon">PH</span>
+      <div>
+        <label>Phone Number</label>
+        <strong *ngIf="!isEditMode">{{ displayValue(editableDoctor.phone) }}</strong>
+        <input
+          *ngIf="isEditMode"
+          type="tel"
+          [(ngModel)]="editableDoctor.phone"
+          (input)="validatePhone()"
+          [class.input-error]="errors.phone"
+          placeholder="9876543210" />
+        <small class="field-error" *ngIf="isEditMode && errors.phone">{{ errors.phone }}</small>
+        <small *ngIf="!isEditMode">Editable</small>
+      </div>
+    </article>
+
+    <article class="form-field">
+      <span class="field-icon">DS</span>
+      <div>
+        <label>Designation</label>
+        <strong *ngIf="!isEditMode">{{ displayValue(editableDoctor.designation) }}</strong>
+        <input
+          *ngIf="isEditMode"
+          type="text"
+          [(ngModel)]="editableDoctor.designation"
+          (input)="validateDesignation()"
+          [class.input-error]="errors.designation"
+          placeholder="Consultant Physician" />
+        <small class="field-error" *ngIf="isEditMode && errors.designation">{{ errors.designation }}</small>
+        <small *ngIf="!isEditMode">Editable</small>
+      </div>
+    </article>
+
+    <article class="form-field">
+      <span class="field-icon">HP</span>
+      <div>
+        <label>Hospital / Institution</label>
+        <strong *ngIf="!isEditMode">{{ displayValue(editableDoctor.hospital) }}</strong>
+        <input
+          *ngIf="isEditMode"
+          type="text"
+          [(ngModel)]="editableDoctor.hospital"
+          (input)="validateHospital()"
+          [class.input-error]="errors.hospital"
+          placeholder="City Care Hospital" />
+        <small class="field-error" *ngIf="isEditMode && errors.hospital">{{ errors.hospital }}</small>
+        <small *ngIf="!isEditMode">Editable</small>
+      </div>
+    </article>
+
+    <article class="form-field">
+      <span class="field-icon">DP</span>
+      <div>
+        <label>Department</label>
+        <strong *ngIf="!isEditMode">{{ displayValue(editableDoctor.department) }}</strong>
+        <select
+          *ngIf="isEditMode"
+          [(ngModel)]="editableDoctor.department"
+          (change)="validateDepartment()"
+          [class.input-error]="errors.department">
+          <option value="">Select Department</option>
+          <option *ngFor="let department of departmentOptions" [value]="department">
+            {{ department }}
+          </option>
+        </select>
+        <small class="field-error" *ngIf="isEditMode && errors.department">{{ errors.department }}</small>
+        <small *ngIf="!isEditMode">Editable</small>
+      </div>
+    </article>
+
+    <article class="form-field">
+      <span class="field-icon">EX</span>
+      <div>
+        <label>Experience</label>
+        <strong *ngIf="!isEditMode">{{ editableDoctor.experience || 0 }} years</strong>
+        <input
+          *ngIf="isEditMode"
+          type="number"
+          min="0"
+          max="60"
+          [(ngModel)]="editableDoctor.experience"
+          (input)="validateExperience()"
+          [class.input-error]="errors.experience"
+          placeholder="8" />
+        <small class="field-error" *ngIf="isEditMode && errors.experience">{{ errors.experience }}</small>
+        <small *ngIf="!isEditMode">Editable</small>
+      </div>
+    </article>
+  </section>
+
+  <section class="workflow-note">
+    <div>
+      <span>Workspace usage</span>
+      <h3>This information appears across doctor workflows</h3>
+      <p>Your profile supports consent requests, approved patient care sessions, notifications, and emergency lookup context.</p>
+    </div>
+
+    <ul>
+      <li>Consent request identity</li>
+      <li>Patient care queue</li>
+      <li>Emergency lookup audit context</li>
+    </ul>
+  </section>
+</section>

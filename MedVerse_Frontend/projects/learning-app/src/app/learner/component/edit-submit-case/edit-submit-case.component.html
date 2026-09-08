@@ -1,0 +1,216 @@
+<main class="edit-case-page">
+
+  <section class="page-header">
+    <div>
+      <button class="back-link" type="button" (click)="goBack()">
+        ← Back to submissions
+      </button>
+
+      <h1>Edit Submitted Case</h1>
+
+      <p>
+        Update your case details and resubmit changes for review.
+      </p>
+    </div>
+
+    <div class="status-badge">
+      <span></span>
+      Editing Mode
+    </div>
+  </section>
+
+  <section class="loading-card" *ngIf="isLoading">
+    <div class="loader"></div>
+    <p>Loading case details...</p>
+  </section>
+
+  <section class="edit-layout" *ngIf="!isLoading">
+
+    <!-- LEFT INFO CARD -->
+    <aside class="info-card">
+
+      <div class="info-visual">
+        <img src="assets/case-images/new-case.png" alt="Edit case" />
+      </div>
+
+      <div class="info-content">
+        <span class="info-pill">Case Update</span>
+
+        <h2>Refine your case before review.</h2>
+
+        <p>
+          You can update the title, description, disease, department, and replace the PDF file if needed.
+        </p>
+
+        <div class="review-flow">
+          <div>
+            <b>1</b>
+            <span>Edit Details</span>
+          </div>
+
+          <div>
+            <b>2</b>
+            <span>Upload PDF</span>
+          </div>
+
+          <div>
+            <b>3</b>
+            <span>Update Case</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- FORM CARD -->
+    <section class="form-card">
+
+      <div class="form-title">
+        <div>
+          <h2>Case Information</h2>
+          <p>Modify the case details below.</p>
+        </div>
+
+        <div class="case-id">
+          ID: {{ id }}
+        </div>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="update()">
+
+        <div class="form-group">
+          <label>Case Title</label>
+
+          <input
+            type="text"
+            formControlName="title"
+            placeholder="Enter case title"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Case Description</label>
+
+          <textarea
+            rows="5"
+            formControlName="description"
+            placeholder="Enter case description"
+          ></textarea>
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Disease</label>
+
+            <input
+              type="text"
+              formControlName="disease"
+              placeholder="Example: Pneumonia"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Department</label>
+
+            <select
+              formControlName="department"
+            >
+              <option value="">Select department</option>
+              <option *ngFor="let department of departmentOptions" [value]="department.value">
+                {{ department.label }}
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- FILE UPLOAD -->
+        <div class="upload-box">
+
+          <input
+            type="file"
+            accept="application/pdf"
+            hidden
+            #fileInput
+            (change)="onFileChange($event)"
+          />
+
+          <div class="upload-content" (click)="fileInput.click()">
+            <div class="upload-icon">⇧</div>
+
+            <div>
+              <h3>Replace PDF File</h3>
+              <p>Upload a new PDF only if you want to replace the existing report.</p>
+              <span>PDF file only</span>
+            </div>
+          </div>
+
+          <div class="selected-file" *ngIf="selectedFileName">
+            <div>
+              <b>{{ selectedFileName }}</b>
+              <p>New PDF selected</p>
+            </div>
+
+            <button type="button" (click)="removeFile()">
+              Remove
+            </button>
+          </div>
+
+        </div>
+
+        <div class="notice-box">
+          <span>ⓘ</span>
+
+          <p>
+            After updating, the case may be reviewed again by the auth officer before publishing.
+          </p>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" (click)="goBack()">
+            Cancel
+          </button>
+
+          <button type="submit" class="update-btn" [disabled]="isUpdating">
+            {{ isUpdating ? 'Updating...' : 'Update Case' }}
+          </button>
+        </div>
+
+      </form>
+
+    </section>
+
+  </section>
+
+</main>
+
+<div class="assignment-popup-backdrop" *ngIf="showAssignmentPopup">
+  <section class="assignment-popup" role="dialog" aria-modal="true" aria-labelledby="updateAssignmentTitle">
+    <h3 id="updateAssignmentTitle">Case Updated Successfully</h3>
+    <p>Your case has been assigned for verification.</p>
+
+    <div class="assignment-grid">
+      <div>
+        <span>Case ID</span>
+        <b>{{ submittedCaseId }}</b>
+      </div>
+      <div>
+        <span>Assigned Officer</span>
+        <b>{{ assignedOfficerName }}</b>
+      </div>
+      <div>
+        <span>Officer ID</span>
+        <b>{{ assignedOfficerId }}</b>
+      </div>
+    </div>
+
+    <p class="redirect-note">
+      Redirecting to <strong>My Cases</strong> in {{ redirectCountdown }} seconds.
+    </p>
+
+    <button type="button" class="go-now-btn" (click)="redirectToMyCasesNow()">
+      Go To My Cases Now
+    </button>
+  </section>
+</div>

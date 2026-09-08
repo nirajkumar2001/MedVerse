@@ -1,0 +1,51 @@
+<!-- 
+<div class="dashboard-container">
+  <div class="card" *ngFor="let item of dashboardItems" >
+    
+    <div class="left-section">
+      <div class="icon" [ngClass]="item.bgColor">
+        <img [src]="item.icon" alt="icon" />
+      </div>
+
+      <div class="content">
+        <h4>{{ item.title }}</h4>
+        <h2>{{ item.count }}</h2>
+        <p>{{ item.subtitle }}</p>
+
+      </div>
+    </div>
+
+    <div class="arrow">
+      →
+    </div>
+
+  </div>
+</div>
+
+ -->
+
+ <div class="dashboard-container">
+  <div 
+    class="card" 
+    *ngFor="let item of dashboardItems"
+    [routerLink]="getRoute(item.title)"
+  >
+    
+    <div class="left-section">
+      <div class="icon" [ngClass]="item.bgColor">
+        <img [src]="item.icon" alt="icon" />
+      </div>
+
+      <div class="content">
+        <h4>{{ item.title }}</h4>
+        <h2>{{ item.count }}</h2>
+        <p>{{ item.subtitle }}</p>
+      </div>
+    </div>
+
+    <div class="arrow">
+      <img src="/assets/departmentIcons/right-arrow1.png" alt=">"/>
+    </div>
+
+  </div>
+</div>

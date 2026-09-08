@@ -1,0 +1,190 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #eed7fc 1%, #eef0ff 30%,#e7e6ff 70%,#e2e0ff 100%);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 850;
+  color: #0f172a;
+}
+
+.top p {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+}
+
+.actions input {
+  width: 320px;
+  height: 50px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0 18px;
+  background: white;
+  outline: none;
+}
+
+.actions button {
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  gap: 28px;
+  margin-top: 34px;
+  margin-bottom: 18px;
+}
+
+.tabs span {
+  color: #64748b;
+  font-weight: 700;
+  padding-bottom: 12px;
+}
+
+.tabs span.active {
+  color: #0f766e;
+  border-bottom: 3px solid #0f766e;
+}
+
+.tabs b {
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-size: 12px;
+}
+
+.table-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #e5eaf1;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding-bottom: 18px;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+td {
+  padding: 18px 0;
+  border-top: 1px solid #edf2f7;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.type,
+.status {
+  padding: 7px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.invalid {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.system {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.open {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.resolved {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+}
+
+.resolve {
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+}
+
+.delete {
+  border: 1px solid #fecaca;
+  color: #ef4444;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.footer p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.pagination button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pagination .active-page {
+  background: #0f766e;
+  color: white;
+}

@@ -1,0 +1,12 @@
+<app-confirm-modal
+  [open]="open"
+  icon="!"
+  iconType="danger"
+  title="Confirm Logout"
+  message="Are you sure you want to logout from your MedVerse workspace?"
+  cancelText="Cancel"
+  confirmText="Yes, Logout"
+  confirmType="danger"
+  (cancelled)="cancelled.emit()"
+  (confirmed)="confirmed.emit()">
+</app-confirm-modal>

@@ -1,0 +1,99 @@
+.notifications-card {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 26px;
+}
+
+.title-count {
+  margin-left: 10px;
+  background: rgba(229, 57, 53, 0.11);
+  color: var(--c-danger);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  border: 1px solid rgba(229, 57, 53, 0.22);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-text {
+  background: transparent;
+  border: none;
+  color: var(--c-mid);
+  font-weight: 850;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px;
+  font-family: inherit;
+}
+
+.btn-text:hover {
+  color: var(--c-dark);
+}
+
+.btn-text:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  border: 1.5px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--c-muted);
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.filter-tab.active,
+.filter-tab:hover {
+  background: linear-gradient(135deg, var(--c-dark), var(--c-mid));
+  color: white;
+  border-color: transparent;
+}
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:host ::ng-deep .notifications-card .notif-item {
+  padding: 20px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.96), rgba(246,244,255,0.78));
+}
+
+:host ::ng-deep .notifications-card .notif-body {
+  line-height: 1.55;
+  max-width: 820px;
+}
+.filter-tab span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  margin-left: 8px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: rgba(90, 53, 240, 0.08);
+  color: #5a35f0;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.filter-tab.active span {
+  background: rgba(255, 255, 255, 0.22);
+  color: inherit;
+}

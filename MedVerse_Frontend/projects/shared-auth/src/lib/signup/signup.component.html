@@ -1,0 +1,153 @@
+<!-- signup.component.html -->
+<div class="signup-page">
+
+  <!-- Background Image -->
+  
+
+  <!-- Left Content -->
+  <div class="signup-content">
+    <h1>Join <span>Medverse</span></h1>
+    <h2>Be part of a secure healthcare ecosystem.</h2>
+    <h2>Create your account as a Patient, Doctor, Learner, or Authentication Officer.</h2>
+
+    <div class="features">
+      <div class="feature">
+        <div class="icon orange">🔒</div>
+        <div>
+          <h3>Secure & Trusted</h3>
+          <p>Your data and identity are always protected.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon purple">👥</div>
+        <div>
+          <h3>Role Based Access</h3>
+          <p>Get access tailored to your role and responsibilities.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon green">📚</div>
+        <div>
+          <h3>Learning & Growth</h3>
+          <p>Access verified case studies and medical knowledge.</p>
+        </div>
+      </div>
+      <!-- New Trusted Sections -->
+      <div class="feature">
+        <div class="icon blue">🩺</div>
+        <div>
+          <h3>Your Health, Your Data</h3>
+          <p>Manage your medical records safely and securely anytime.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="icon teal">✅</div>
+        <div>
+          <h3>Trusted Professionals</h3>
+          <p>Verified doctors and healthcare officers ensure quality and safety.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="/shared-assets/Medverse_images/signup-bg.png" class="background-image" alt="Doctors">
+
+  <!-- Centered Signup Card -->
+  <div class="signup-card">
+    <h1>Create Your <span>Account</span></h1>
+    <p>Fill in the details below to get started.</p>
+
+    <form (ngSubmit)="onSignup()">
+
+      <!-- Full Name -->
+      <label class="input-icon">
+        <span class="icon-left">👤</span>
+        <input type="text" placeholder="Full Name" [(ngModel)]="form.fullName" name="fullName" (blur)="fullNameTouched = true">
+      </label>
+      <div class="error" *ngIf="fullNameTouched && !form.fullName">Full Name is required.</div>
+
+      <!-- Email -->
+      <label class="input-icon">
+        <span class="icon-left">📧</span>
+        <input type="email" placeholder="Email Address" [(ngModel)]="form.email" name="email" (blur)="emailTouched = true">
+      </label>
+      <div class="error" *ngIf="emailTouched && !form.email">Email is required.</div>
+
+      <!-- Role Dropdown -->
+      <label>
+        <select [(ngModel)]="form.role" name="role" (blur)="roleTouched = true">
+          <option value="">Select Role</option>
+          <option *ngFor="let r of roles">{{ r }}</option>
+        </select>
+      </label>
+      <div class="error" *ngIf="roleTouched && !form.role">Please select a role.</div>
+
+      <!-- Password -->
+      <label class="password-field input-icon">
+        <span class="icon-left">🔒</span>
+        <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" [(ngModel)]="form.password" name="password" (blur)="passwordTouched = true">
+        <button type="button" class="eye-btn" (click)="showPassword = !showPassword">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+            <path *ngIf="!showPassword" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            <circle *ngIf="showPassword" cx="8" cy="8" r="3"/>
+          </svg>
+        </button>
+      </label>
+      <div class="error" *ngIf="passwordTouched && !isPasswordValid">
+        Password must be at least 8 chars, include uppercase, lowercase, number & special char.
+      </div>
+
+      <!-- Confirm Password -->
+      <label class="password-field input-icon">
+        <span class="icon-left">🔒</span>
+        <input [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm Password" [(ngModel)]="form.confirmPassword" name="confirmPassword" (blur)="confirmPasswordTouched = true">
+        <button type="button" class="eye-btn" (click)="showConfirmPassword = !showConfirmPassword">
+          <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+            <path *ngIf="!showConfirmPassword" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            <circle *ngIf="showConfirmPassword" cx="8" cy="8" r="3"/>
+          </svg>
+        </button>
+      </label>
+      <div class="error" *ngIf="confirmPasswordTouched && !passwordMatched">
+        Passwords do not match.
+      </div>
+
+      <div class="requirements" *ngIf="!form.document && documentTouched">
+        If you are a doctor, Authentication Officer please upload a valid Gov ID, Medical Licence, Hospital Affiliation, and Employement Proof in one PDF.
+        <br>If you are a patient please upload a valid Gov ID in a PDF.
+        <br>If you are a learner please upload a valid Gov ID, and Instititional ID in a PDF.
+      </div>
+      <!-- File Upload -->
+      <label class="file-upload">
+        <input type="file" (change)="onFileSelected($event)">
+        <span>{{ selectedFileName }}</span>
+      </label>
+      
+      <div class="error" *ngIf="!form.document && documentTouched">
+        Please upload a PDF file (max 5MB).
+      </div>
+
+      <!-- Terms -->
+      <label class="terms">
+        <input type="checkbox" [(ngModel)]="termsChecked" name="termsChecked">
+        I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
+      </label>
+      <div class="error" *ngIf="!termsChecked && termsTouched">
+        You must accept the terms.
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" [disabled]="!form.fullName || !form.email || !form.role || !form.password || !form.confirmPassword || !form.document || !termsChecked">
+        Create Account
+      </button>
+
+      <!-- Login Redirection -->
+      <div class="already-account">
+        <p>
+          Already have an account?
+          <a routerLink="/login" class="login-link">Login</a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+</div>

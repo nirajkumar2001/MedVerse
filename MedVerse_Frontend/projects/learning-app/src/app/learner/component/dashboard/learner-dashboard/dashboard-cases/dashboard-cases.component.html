@@ -1,0 +1,143 @@
+<!-- <div class="cases-container">
+
+
+  <div class="left-card">
+
+    <div class="card-header">
+      <h3>Recent Cases</h3>
+
+    </div>
+
+
+    <div class="case-item" *ngFor="let case of continueCases">
+
+
+      <img [src]="case.image"
+           (error)="case.image='assets/medicalImg/default.png'" />
+
+      <div class="case-details">
+        <h4>{{ case.title }}</h4>
+        <p>{{ case.department }} • {{ case.lastEdited }}</p>
+      </div>
+
+      <div class="case-meta">
+        <span class="status">Draft</span>
+        <div class="progress">{{ case.progress }}%</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="right-card">
+
+    <div class="card-header">
+      <h3>Featured Cases</h3>
+
+    </div>
+
+
+    <div class="featured-card">
+      <img class="featured-img" src="assets/medicalImg/cardiology.jpg"/>
+      
+
+      <div class="badge">Case of the Week</div>
+
+      <div class="featured-content">
+        <h4>
+          Rare Presentation of Splenic Infarction Mimicking Acute Abdomen
+        </h4>
+
+        <p>General Surgery • Dr. Neha Kapoor</p>
+
+        <div class="stats">
+          <span>👁 3.2K</span>
+          <span>💬 22</span>
+          <span>⭐ 134</span>
+        </div>
+      </div>
+
+    </div>
+
+    
+    <div class="dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+</div> -->
+
+
+
+<div class="cases-container">
+
+  <!-- LEFT CARD -->
+  <div class="left-card">
+
+    <div class="card-header">
+      <h3>Cases you might like</h3>
+    </div>
+
+    <div *ngFor="let case of continueCases" class="case-item">
+
+      <img [src]="case.image"
+           (error)="case.image='assets/medicalImg/default.png'" />
+
+      <div class="case-details">
+        <h4>{{ case.title }}</h4>
+        <p>{{ case.department }}  • {{ case.disease }} </p>
+      </div>
+
+      <div class="case-meta">
+        • {{ case.lastEdited }}
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT CARD -->
+  <div class="right-card">
+
+    <div class="card-header">
+      <h3>Featured Cases</h3>
+    </div>
+
+    <div class="featured-card">
+
+      <img [src]="featuredCases[currentIndex]?.image" />
+
+      <div class="overlay">
+
+        <div class="badge">Case of the Week</div>
+
+        <h4>{{ featuredCases[currentIndex]?.title }}</h4>
+
+        <p>
+          {{ featuredCases[currentIndex]?.department }} •
+          {{ featuredCases[currentIndex]?.doctor }}
+        </p>
+
+        <!-- <div class="stats">
+          <span>👁 {{ featuredCases[currentIndex]?.views }}</span>
+          <span>💬 {{ featuredCases[currentIndex]?.comments }}</span>
+          <span>⭐ {{ featuredCases[currentIndex]?.likes }}</span>
+        </div> -->
+
+      </div>
+
+    </div>
+
+    <div class="dots">
+      <span *ngFor="let item of featuredCases; let i = index"
+            [class.active]="i === currentIndex">
+      </span>
+    </div>
+
+  </div>
+
+</div>

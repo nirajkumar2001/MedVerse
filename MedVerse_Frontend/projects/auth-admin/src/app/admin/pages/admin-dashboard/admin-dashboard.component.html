@@ -1,0 +1,306 @@
+<div class="admin-layout">
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="admin-content">
+
+    <header class="topbar">
+      <div>
+        <h1>Welcome back, Admin! 👋</h1>
+        <p>Here's an overview of user approval performance.</p>
+      </div>
+
+      <div class="top-actions">
+        <!-- <button class="bell">
+          🔔
+          <span>5</span>
+        </button> -->
+<!-- 
+        <button class="date">
+          📅 May 24 - May 31, 2025⌄
+        </button> -->
+      </div>
+    </header>
+
+    <!-- <section class="stats">
+      <div class="stat-card" *ngFor="let card of cards">
+        <div class="card-top">
+          <div class="icon" [ngClass]="card.cls">
+            {{ card.icon }}
+          </div>
+
+          <div>
+            <h4>{{ card.title }}</h4>
+            <h2>{{ card.value }}</h2>
+          </div>
+        </div>
+
+        <p>{{ card.sub }}</p>
+
+        <div class="sparkline" [ngClass]="card.cls">
+          <svg viewBox="0 0 220 60" preserveAspectRatio="none">
+            <polyline points="0,45 25,38 50,39 75,32 100,34 125,24 150,18 175,20 200,8 220,0"></polyline>
+            <circle cx="220" cy="0" r="3"></circle>
+          </svg>
+        </div>
+
+        <span class="trend" *ngIf="card.trend">
+          {{ card.trend }}
+          <small>vs last month</small>
+        </span>
+      </div>
+    </section> -->
+
+    <section class="stats">
+  <div class="stat-card" *ngFor="let card of cards">
+
+    <div class="card-top">
+      <div class="icon" [ngClass]="card.cls">
+        {{ card.icon }}
+      </div>
+
+      <div>
+        <h4>{{ card.title }}</h4>
+        <h2>{{ card.value }}</h2>
+      </div>
+    </div>
+
+    <p>{{ card.sub }}</p>
+
+    <!-- Dynamic Histogram -->
+    <div class="sparkline" [ngClass]="card.cls">
+
+      <div class="histogram">
+        <div
+          class="hist-bar"
+          *ngFor="let value of card.graphData"
+          [style.height.%]="value">
+        </div>
+      </div>
+
+    </div>
+
+    <span class="trend" *ngIf="card.trend">
+      {{ card.trend }}
+      <small>vs last month</small>
+    </span>
+
+  </div>
+</section>
+
+    <section class="main-grid">
+      <div class="card overview">
+        <div class="card-head">
+          <h3>Approval Overview</h3>
+          <!-- <button>This Month⌄</button> -->
+        </div>
+
+        <div class="overview-body">
+          <div class="donut-box">
+            <canvas
+              baseChart
+              [data]="doughnutChartData"
+              [options]="doughnutChartOptions"
+              [type]="'doughnut'">
+            </canvas>
+
+            <div class="donut-center">
+              <h2>{{ overview.approved }}</h2>
+              <p>Approved</p>
+              <span>{{ overview.approvalRate }}%</span>
+            </div>
+          </div>
+
+          <div class="approval-list">
+            <div>
+              <span class="dot green-dot"></span>
+              <label>Approved</label>
+              <b>{{ overview.approved }}</b>
+              <p>{{ overview.approvalRate }}%</p>
+            </div>
+
+            <div>
+              <span class="dot red-dot"></span>
+              <label>Rejected</label>
+              <b>{{ overview.rejected }}</b>
+              <p>{{ overview.rejectedRate }}%</p>
+            </div>
+
+            <div>
+              <span class="dot gray-dot"></span>
+              <label>Pending / Other</label>
+              <b>{{ overview.pending }}</b>
+              <p>{{ overview.pendingRate }}%</p>
+            </div>
+
+            <div class="total">
+              <label>Total Users</label>
+              <b>{{ overview.total }}</b>
+              <p>Live profile data</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card quick">
+        <h3>Quick Actions</h3>
+
+        <a class="quick-row q-green" routerLink="/admin/approved-users">
+          <span>👥</span>
+          <div>
+            <h4>View Approved Users</h4>
+            <p>See all approved users</p>
+          </div>
+          <b>›</b>
+        </a>
+
+        <a class="quick-row q-red" routerLink="/admin/rejected-users">
+          <span>👤</span>
+          <div>
+            <h4>View Rejected Users</h4>
+            <p>See all rejected users</p>
+          </div>
+          <b>›</b>
+        </a>
+
+        <!-- <a class="quick-row q-blue" routerLink="/admin/reports">
+          <span>⬇</span>
+          <div>
+            <h4>Export Report</h4>
+            <p>Download user approval report</p>
+          </div>
+          <b>›</b>
+        </a> -->
+      </div>
+    </section>
+
+    <section class="profile-queues">
+      <div class="queue-panel pending-panel">
+        <div class="card-head">
+          <h3>Pending Review Queue</h3>
+          <a routerLink="/admin/profiles">View all</a>
+        </div>
+
+        <p class="empty-row" *ngIf="isLoadingUsers">Loading pending profiles...</p>
+        <p class="empty-row" *ngIf="!isLoadingUsers && pendingUsers.length === 0">No pending profiles.</p>
+
+        <a
+          class="queue-row"
+          *ngFor="let user of pendingUsers | slice:0:5"
+          [routerLink]="['/admin/profile-details', user.userId]">
+          <div>
+            <h4>{{ user.name }}</h4>
+            <p>{{ user.userId }} · {{ toTitleCase(user.role) }}</p>
+          </div>
+          <span class="status new">{{ toTitleCase(getStatus(user)) }}</span>
+        </a>
+      </div>
+
+      <div class="queue-panel approved-panel">
+        <div class="card-head">
+          <h3>Approved Profiles</h3>
+          <a routerLink="/admin/approved-users">View all</a>
+        </div>
+
+        <p class="empty-row" *ngIf="isLoadingUsers">Loading approved profiles...</p>
+        <p class="empty-row" *ngIf="!isLoadingUsers && approvedUsers.length === 0">No approved profiles.</p>
+
+        <a
+          class="queue-row"
+          *ngFor="let user of approvedUsers | slice:0:5"
+          [routerLink]="['/admin/profile-details', user.userId]">
+          <div>
+            <h4>{{ user.name }}</h4>
+            <p>{{ user.userId }} · {{ formatDate(user.reviewedAt || user.updatedAt) }}</p>
+          </div>
+          <span class="status approved">Approved</span>
+        </a>
+      </div>
+
+      <div class="queue-panel rejected-panel">
+        <div class="card-head">
+          <h3>Rejected Profiles</h3>
+          <a routerLink="/admin/rejected-users">View all</a>
+        </div>
+
+        <p class="empty-row" *ngIf="isLoadingUsers">Loading rejected profiles...</p>
+        <p class="empty-row" *ngIf="!isLoadingUsers && rejectedUsers.length === 0">No rejected profiles.</p>
+
+        <a
+          class="queue-row"
+          *ngFor="let user of rejectedUsers | slice:0:5"
+          [routerLink]="['/admin/profile-details', user.userId]">
+          <div>
+            <h4>{{ user.name }}</h4>
+            <p>{{ user.userId }} · {{ user.reviewRemark || 'No remark' }}</p>
+          </div>
+          <span class="status rejected">Rejected</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="card insights">
+        <h3>Insights</h3>
+
+        <div class="insight-grid">
+          <div class="insight">
+            <span class="round green-light">↗</span>
+            <h2>{{ overview.approvalRate }}%</h2>
+            <p>Approved profile rate<br>from live data</p>
+            <div class="mini green-mini"></div>
+          </div>
+
+          <div class="insight">
+            <span class="round red-light">↘</span>
+            <h2>{{ overview.rejectedRate }}%</h2>
+            <p>Rejected profile rate<br>from live data</p>
+            <div class="mini red-mini"></div>
+          </div>
+
+          <div class="insight">
+            <span class="round blue-light">◔</span>
+            <h2>{{ overview.pending }}</h2>
+            <p>Profiles waiting<br>for admin review</p>
+            <div class="mini blue-mini"></div>
+          </div>
+
+          <div class="insight">
+            <span class="round purple-light">👥</span>
+            <h2>{{ overview.total }}</h2>
+            <p>Total submitted profiles<br>from Profile Manage</p>
+            <div class="mini purple-mini"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card activity">
+        <div class="card-head">
+          <h3>Recent Activity</h3>
+          <a>View all</a>
+        </div>
+
+        <div class="activity-row" *ngFor="let item of activities">
+          <div
+            class="activity-icon"
+            [class.reject]="item.status === 'Rejected'"
+            [class.new-icon]="item.status === 'New'">
+            {{ item.icon }}
+          </div>
+
+          <div>
+            <h4>{{ item.text }}</h4>
+            <p>{{ item.time }}</p>
+          </div>
+
+          <span class="status" [ngClass]="item.status.toLowerCase()">
+            {{ item.status }}
+          </span>
+        </div>
+
+        <a class="view-all">View all activity →</a>
+      </div>
+    </section>
+
+  <app-admin-footer></app-admin-footer>
+  </main>
+</div>

@@ -1,0 +1,14 @@
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/auth-admin/src/app/admin/pages/profile-details/profile-details.component.ts:65:30:
+[37m      65 │       opened.document.title = [32mthis.user[37m.documentName || 'Submitted...
+         ╵                               [32m~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/auth-admin/src/app/admin/pages/profile-details/profile-details.component.ts:62:30:
+[37m      62 │       opened.document.title = [32mthis.user[37m.documentName || 'Submitted...
+         ╵                               [32m~~~~~~~~~[0m
+
+[39m[22m

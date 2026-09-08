@@ -1,0 +1,55 @@
+<!-- <p>hero works!</p>
+<section class="hero">
+  <div class="hero-container">
+
+    <div class="hero-text">
+      <h1>Learn from Cases,<br> Share Knowledge. <br></h1>
+      
+      <p>a community of heathcare learners and professionals advancing medicine through real-world cases.</p>
+
+      <div class="hero-buttons">
+        <button class="btn primary">Get Started</button>
+        <button class="btn secondary">Learn More</button>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/hero-image.png">
+    </div>
+
+  </div>
+</section> -->
+
+<div class="hero-container">
+  <div class="hero-left">
+
+    <p class="welcome-line" *ngIf="learnerName">Welcome back, {{ learnerName }}</p>
+
+    <h1>
+      Every Case Tells a Story. <br />
+      Every Story <span>Teaches Medicine.</span>
+    </h1>
+
+    <p>
+      Document real patient experiences and discover insights
+      that go beyond textbooks.
+    </p>
+
+    <div class="buttons">
+  <button class="primary-btn" (click)="goToSubmitCase()">
+    Submit a New Case
+  </button>
+
+  <button class="secondary-btn" (click)="goToExploreCases()">
+    Explore Cases
+  </button>
+</div>
+
+
+  </div>
+
+  <div class="hero-right">
+     <!-- <img src="https://tse1.mm.bing.net/th/id/OIP.fEgn9FudLb074PFHB07dkgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Heart Image" /> -->
+    <img src="assets/heart1.png" alt="Heart Image" />
+  </div>
+</div>

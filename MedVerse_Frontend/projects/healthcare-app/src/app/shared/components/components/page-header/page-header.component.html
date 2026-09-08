@@ -1,0 +1,68 @@
+<header class="page-header" [ngClass]="'theme-' + theme">
+  <div class="breadcrumb">
+    <a *ngIf="breadcrumbRootRoute; else breadcrumbRootText" [routerLink]="breadcrumbRootRoute">
+      {{ breadcrumbRoot }}
+    </a>
+
+    <ng-template #breadcrumbRootText>
+      <span>{{ breadcrumbRoot }}</span>
+    </ng-template>
+
+    <span class="breadcrumb-separator">/</span>
+    <strong>{{ breadcrumbCurrent }}</strong>
+  </div>
+
+  <div class="header-main">
+    <div class="header-copy">
+      <h1 *ngIf="title; else splitTitle">
+        {{ title }}
+      </h1>
+
+      <ng-template #splitTitle>
+        <h1>
+          <span *ngIf="titlePrefix">{{ titlePrefix }}</span>
+          <strong *ngIf="titleEmphasis">{{ titleEmphasis }}</strong>
+        </h1>
+      </ng-template>
+
+      <p *ngIf="subtitle">
+        {{ subtitle }}
+      </p>
+
+      <div class="header-badge" *ngIf="badgeText">
+        {{ badgeText }}
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-box" *ngIf="showSearch">
+        <span>⌕</span>
+        <input type="text" placeholder="Search here...">
+      </div>
+
+      <a class="notification-btn" *ngIf="showNotificationButton" [routerLink]="notificationRoute || null"
+        [attr.aria-label]="'Open notifications'">
+        <span>🔔</span>
+
+        <b *ngIf="notificationCount > 0">
+          {{ notificationCount > 99 ? '99+' : notificationCount }}
+        </b>
+      </a>
+
+      <div class="identity-stack">
+        <div class="identity-copy">
+          <span>Signed in</span>
+          <strong>{{ badgeText || 'MedVerse User' }}</strong>
+        </div>
+
+        <div class="avatar" [class.has-image]="avatarImage">
+          <img *ngIf="avatarImage; else avatarInitials" [src]="avatarImage" alt="Profile photo">
+
+          <ng-template #avatarInitials>
+            {{ avatarText || 'U' }}
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

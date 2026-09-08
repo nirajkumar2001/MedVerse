@@ -1,0 +1,428 @@
+<div class="page-shell">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content" id="fullMedicalProfilePrintArea">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="My Medical Records" title="My Medical Records"
+      subtitle="View emergency records, visit history, prescriptions, and doctor findings."
+      [badgeText]="patientBadgeText" [showSearch]="false" [showNotificationButton]="false" theme="patient">
+    </app-page-header>
+
+    <section class="loading-card" *ngIf="isLoading">
+      Loading your medical records...
+    </section>
+
+    <ng-container *ngIf="!isLoading">
+      <!-- Top Action Bar -->
+      <section class="records-hero-card compact-records-hero">
+        <div class="hero-profile no-hero-photo">
+          <div>
+            <span>Patient Medical Profile</span>
+            <h2>{{ patientName }}</h2>
+            <p>{{ patientAgeGender }}</p>
+          </div>
+        </div>
+
+        <div class="export-actions">
+          <button class="btn-primary" type="button" (click)="exportFullMedicalProfile()">
+            Export Full Profile
+          </button>
+
+          <button class="btn-secondary" type="button" (click)="exportEmergencyDetails()">
+            Export Emergency Records
+          </button>
+
+          <button class="btn-secondary" type="button" [disabled]="!selectedVisit" (click)="exportSelectedVisit()">
+            Export Selected Visit
+          </button>
+        </div>
+      </section>
+
+      <!-- My Emergency Records -->
+      <section class="emergency-record-card" id="emergencyDetailsPrintArea">
+
+        <div class="emergency-record-header enhanced-emergency-header">
+          <div class="emergency-title-block">
+            <span>Visible to doctors during approved access</span>
+            <h3>My Emergency Records</h3>
+            <p>
+              This section contains patient identity, emergency contact, address, and emergency medical details visible during approved access or emergency lookup.
+            </p>
+          </div>
+
+          <div class="emergency-photo emergency-photo-large" [class.has-image]="patientPhotoUrl">
+            <img *ngIf="patientPhotoUrl; else emergencyInitialTemplate" [src]="patientPhotoUrl"
+              alt="Patient profile photo">
+
+            <ng-template #emergencyInitialTemplate>
+              {{ patientInitial }}
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="emergency-record-layout">
+          <article class="emergency-section">
+            <h4>Patient Information</h4>
+
+            <div class="summary-row">
+              <span>Full Name</span>
+              <strong>{{ patientName }}</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Patient ID</span>
+              <strong>
+                {{
+                patientAny?.patientId ||
+                patientAny?.userId ||
+                record?.patientId ||
+                'Not recorded'
+                }}
+              </strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Age / Gender</span>
+              <strong>{{ patientAgeGender }}</strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Emergency Contact</span>
+              <strong>
+                {{
+                patientAny?.emergencyContact ||
+                patientAny?.emergencyRecord?.emergencyContact ||
+                patientAny?.contactNumber ||
+                'Not recorded'
+                }}
+              </strong>
+            </div>
+
+            <div class="summary-row">
+              <span>Address</span>
+              <strong>
+                {{
+                patientAny?.address ||
+                patientAny?.fullAddress ||
+                'Not recorded'
+                }}
+
+                <ng-container *ngIf="patientAny?.district || patientAny?.state || patientAny?.pincode">
+                  <br>
+                  {{ patientAny?.district || '' }}
+                  {{ patientAny?.state ? ', ' + patientAny.state : '' }}
+                  {{ patientAny?.pincode ? ' - ' + patientAny.pincode : '' }}
+                </ng-container>
+              </strong>
+            </div>
+          </article>
+
+          <article class="emergency-section emergency-medical-section">
+            <h4>Emergency Medical Details</h4>
+
+            <div class="blood-summary-card">
+              <span>Blood Group</span>
+              <strong>
+                {{
+                currentProfile?.bloodGroup ||
+                patientAny?.emergencyRecord?.bloodGroup ||
+                'Not recorded'
+                }}
+              </strong>
+            </div>
+
+            <div class="emergency-stack-groups">
+              <section class="emergency-stack-group">
+                <h5>Allergies</h5>
+                <div class="inline-stack" *ngIf="emergencyStack('allergies').length > 0; else noAllergyRecord">
+                  <b *ngFor="let item of emergencyStack('allergies')">{{ item }}</b>
+                </div>
+                <ng-template #noAllergyRecord>
+                  <strong class="not-recorded">Not recorded</strong>
+                </ng-template>
+              </section>
+
+              <section class="emergency-stack-group">
+                <h5>Chronic Conditions</h5>
+                <div class="inline-stack" *ngIf="emergencyStack('chronicConditions').length > 0; else noChronicRecord">
+                  <b *ngFor="let item of emergencyStack('chronicConditions')">{{ item }}</b>
+                </div>
+                <ng-template #noChronicRecord>
+                  <strong class="not-recorded">Not recorded</strong>
+                </ng-template>
+              </section>
+
+              <section class="emergency-stack-group">
+                <h5>Current Medication</h5>
+                <div class="inline-stack" *ngIf="medicationStack().length > 0; else noMedicationRecord">
+                  <b *ngFor="let item of medicationStack()">{{ item }}</b>
+                </div>
+                <ng-template #noMedicationRecord>
+                  <strong class="not-recorded">Not recorded</strong>
+                </ng-template>
+              </section>
+            </div>
+
+            <div class="body-metrics-strip compact-body-metrics">
+              <article>
+                <span>Height</span>
+                <strong>{{ latestHeightCm }}</strong>
+              </article>
+
+              <article>
+                <span>Weight</span>
+                <strong>{{ latestWeightKg }}</strong>
+              </article>
+
+              <article>
+                <span>BMI</span>
+                <strong>{{ latestBmi }}</strong>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Visit History -->
+      <section class="visit-history-card">
+        <div class="visit-history-header">
+          <div>
+            <span>Medical Timeline</span>
+            <h3>Visit History</h3>
+            <p>
+              Open a visit card to view doctor findings, prescriptions, reports, and emergency details
+              recorded during that visit. Use filters only when you need to find a specific record.
+            </p>
+          </div>
+
+          <div class="visit-count-pill">
+            {{ filteredVisits.length }} Visit{{ filteredVisits.length === 1 ? '' : 's' }}
+          </div>
+        </div>
+
+        <!-- Clean Search Panel -->
+        <div class="visit-filter-panel smart-filter-panel clean-filter-panel">
+          <label class="visit-filter-control search-mode-control">
+            <span>Find Records</span>
+
+            <select name="visitSearchMode" [(ngModel)]="visitSearchMode">
+              <option value="">Show all visits</option>
+              <option value="text">Search by keyword</option>
+              <option value="singleDate">Search by exact date</option>
+              <option value="dateRange">Search by date range</option>
+            </select>
+          </label>
+
+          <label class="visit-search-control active-search-input" *ngIf="visitSearchMode === 'text'">
+            <span>Keyword</span>
+
+            <div class="visit-search-box">
+              <b>⌕</b>
+
+              <input type="text" name="searchTerm" [(ngModel)]="searchTerm"
+                placeholder="Disease, doctor, finding, report, prescription, allergy...">
+            </div>
+          </label>
+
+          <label class="visit-filter-control active-search-input" *ngIf="visitSearchMode === 'singleDate'">
+            <span>Visit Date</span>
+
+            <input type="date" name="selectedVisitDate" [(ngModel)]="selectedVisitDate">
+          </label>
+
+          <div class="date-range-control active-search-input" *ngIf="visitSearchMode === 'dateRange'">
+            <label class="visit-filter-control">
+              <span>From Date</span>
+
+              <input type="date" name="visitStartDate" [(ngModel)]="visitStartDate">
+            </label>
+
+            <label class="visit-filter-control">
+              <span>To Date</span>
+
+              <input type="date" name="visitEndDate" [(ngModel)]="visitEndDate">
+            </label>
+          </div>
+
+          <label class="visit-filter-control sort-control">
+            <span>Sort</span>
+
+            <select name="sortOrder" [(ngModel)]="sortOrder">
+              <option value="latest">Latest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </label>
+
+          <button type="button" class="visit-reset-btn" *ngIf="visitSearchMode || sortOrder !== 'latest'"
+            (click)="clearVisitFilters()">
+            Reset
+          </button>
+        </div>
+
+        <div class="active-filter-note" *ngIf="visitSearchMode">
+          Active filter:
+          <strong *ngIf="visitSearchMode === 'text'">Keyword search</strong>
+          <strong *ngIf="visitSearchMode === 'singleDate'">Exact visit date</strong>
+          <strong *ngIf="visitSearchMode === 'dateRange'">Date range</strong>
+        </div>
+
+        <div class="visit-list expanded-visit-list" *ngIf="filteredVisits.length > 0; else noVisits">
+
+          <article class="visit-record-card" *ngFor="let visit of filteredVisits" [class.open]="isSelectedVisit(visit)"
+            [attr.data-visit-key]="visit.updateId || visit.sessionId">
+
+            <button type="button" class="visit-record-summary"
+              (click)="viewVisitDetails(isSelectedVisit(visit) ? null : visit)">
+
+              <div class="visit-date-badge">
+                <span>
+                  {{ formatDate(visit.dateOfUpdate || visit.createdAt || visit.updatedAt) }}
+                </span>
+              </div>
+
+              <div class="visit-record-main">
+                <span>Reason for Visit</span>
+                <h4>{{ visit.disease || 'Medical Visit' }}</h4>
+                <p>
+                  Updated by
+                  <strong>{{ visitDoctorLabel(visit) }}</strong>
+                </p>
+              </div>
+
+              <div class="visit-record-preview">
+                <span>Doctor Finding</span>
+                <strong>{{ visit.findings || 'No finding recorded' }}</strong>
+              </div>
+
+              <div class="visit-expand-icon">
+                {{ isSelectedVisit(visit) ? '−' : '+' }}
+              </div>
+            </button>
+
+            <section class="inline-visit-details" *ngIf="isSelectedVisit(visit)" id="selectedVisitPrintArea">
+
+              <div class="inline-detail-section" *ngIf="hasDoctorVisitNotes(visit)">
+                <h4>Doctor Visit Notes</h4>
+
+                <div class="inline-detail-grid">
+                  <article *ngIf="visit.disease">
+                    <span>Reason / Concern</span>
+                    <p>{{ visit.disease }}</p>
+                  </article>
+
+                  <article *ngIf="visit.findings">
+                    <span>Doctor Findings</span>
+                    <p>{{ visit.findings }}</p>
+                  </article>
+
+                  <article *ngIf="visit.prescription">
+                    <span>Prescription</span>
+                    <p>{{ visit.prescription }}</p>
+                  </article>
+
+                  <article *ngIf="visit.medicalReports">
+                    <span>Medical Reports</span>
+                    <p>{{ visit.medicalReports }}</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="inline-detail-section" *ngIf="hasEmergencySnapshot(visit)">
+                <h4>Emergency Details At Visit</h4>
+
+                <div class="inline-detail-grid emergency-grid">
+                  <article *ngIf="visit.bloodGroup">
+                    <span>Blood Group</span>
+                    <p>{{ visit.bloodGroup }}</p>
+                  </article>
+
+                  <article *ngIf="toStackList(visit.allergies).length > 0">
+                    <span>Allergies</span>
+                    <div class="mini-stack">
+                      <b *ngFor="let item of toStackList(visit.allergies)">{{ item }}</b>
+                    </div>
+                  </article>
+
+                  <article *ngIf="toStackList(visit.chronicConditions).length > 0">
+                    <span>Chronic Conditions</span>
+                    <div class="mini-stack">
+                      <b *ngFor="let item of toStackList(visit.chronicConditions)">{{ item }}</b>
+                    </div>
+                  </article>
+
+                  <article *ngIf="toStackList(visit.currentMedication).length > 0">
+                    <span>Current Medication</span>
+                    <div class="mini-stack">
+                      <b *ngFor="let item of toStackList(visit.currentMedication)">{{ item }}</b>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <div class="inline-observation-row" *ngIf="hasGeneralProfile(visit)">
+
+                <article *ngIf="visit.bloodPressure">
+                  <span>Blood Pressure</span>
+                  <strong>{{ visit.bloodPressure }}</strong>
+                </article>
+
+                <article *ngIf="visit.bodyTemperature">
+                  <span>Temperature</span>
+                  <strong>{{ visit.bodyTemperature }}</strong>
+                </article>
+
+                <article *ngIf="visit.heightCm">
+                  <span>Height</span>
+                  <strong>{{ visit.heightCm }} cm</strong>
+                </article>
+
+                <article *ngIf="visit.weightKg">
+                  <span>Weight</span>
+                  <strong>{{ visit.weightKg }} kg</strong>
+                </article>
+
+                <article *ngIf="visit.bmi">
+                  <span>BMI</span>
+                  <strong>{{ visit.bmi }}</strong>
+                </article>
+              </div>
+
+              <div class="visit-export-row">
+                <button type="button" class="btn-secondary" (click)="exportVisit(visit)">
+                  Export This Visit
+                </button>
+              </div>
+
+              <div class="empty-records" *ngIf="
+                  !hasGeneralProfile(visit) &&
+                  !hasEmergencySnapshot(visit) &&
+                  !hasDoctorVisitNotes(visit)
+                ">
+                No detailed information was saved for this visit.
+              </div>
+            </section>
+          </article>
+        </div>
+
+        <ng-template #noVisits>
+          <div class="empty-records">
+            No visit records match the selected search or filter.
+          </div>
+        </ng-template>
+      </section>
+
+      <div class="export-toast" *ngIf="exported">
+        Preparing your medical record for print/export...
+      </div>
+
+      <app-healthcare-footer></app-healthcare-footer>
+    </ng-container>
+
+    <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage">
+    </app-toast-message>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

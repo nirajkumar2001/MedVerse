@@ -1,0 +1,23 @@
+<section class="card" *ngIf="record">
+  <h3 class="card-title">Essential Medical Information</h3>
+
+  <div class="blood-highlight">
+    <span>Blood Group</span>
+    <strong>{{ record.bloodGroup }}</strong>
+  </div>
+
+  <div class="medical-block">
+    <h4>Allergies</h4>
+    <p *ngFor="let item of record.allergies">{{ item }}</p>
+  </div>
+
+  <div class="medical-block">
+    <h4>Chronic Conditions</h4>
+    <p *ngFor="let item of record.chronicConditions">{{ item }}</p>
+  </div>
+
+  <div class="medical-block">
+    <h4>Current Medications</h4>
+    <p *ngFor="let item of record.currentMedications">{{ item }}</p>
+  </div>
+</section>

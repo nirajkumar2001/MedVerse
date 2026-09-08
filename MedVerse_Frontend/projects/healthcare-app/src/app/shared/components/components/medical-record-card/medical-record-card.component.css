@@ -1,0 +1,72 @@
+.blood-highlight {
+  background: linear-gradient(90deg, rgba(187, 225, 250, 0.95), rgba(255, 255, 255, 0.78));
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.blood-highlight strong {
+  color: var(--c-danger);
+  font-size: 22px;
+}
+
+.medical-block {
+  margin-top: 16px;
+}
+
+.medical-block h4 {
+  color: var(--c-dark);
+  margin: 0 0 8px;
+}
+
+.medical-block p {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 8px 0;
+}
+
+@media print {
+  .blood-highlight {
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    padding: 10px;
+    margin-bottom: 12px;
+    background: #ffffff;
+  }
+
+  .blood-highlight span,
+  .medical-block h4 {
+    color: #101828;
+  }
+
+  .blood-highlight strong {
+    color: #b91c1c;
+    font-size: 17px;
+  }
+
+  .medical-block {
+    margin-top: 10px;
+    break-inside: avoid;
+  }
+
+  .medical-block h4 {
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .medical-block p {
+    margin: 5px 0;
+    padding: 7px 9px;
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    background: #ffffff;
+    color: #101828;
+    font-size: 11px;
+    line-height: 1.3;
+  }
+}

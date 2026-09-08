@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: #f7f8fc;
+  color: #070b1f;
+}
+
+button {
+  font-family: inherit;
+}/* You can add global styles to this file, and also import other style files */

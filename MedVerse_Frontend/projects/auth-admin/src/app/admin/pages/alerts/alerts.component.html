@@ -1,0 +1,59 @@
+<div class="layout">
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="content">
+    <div class="top">
+      <div>
+        <h1>Authentication Activity Log</h1>
+        <p>Track login and password actions from backend records</p>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <p *ngIf="isLoading">Loading activity logs...</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Activity ID</th>
+            <th>Category</th>
+            <th>Activity</th>
+            <th>Timestamp</th>
+            <th>Outcome</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let alert of alerts; let i = index">
+            <td>{{ activityNumber(i) }}</td>
+            <td>
+              <span class="type">{{ alert.type }}</span>
+            </td>
+            <td>{{ alert.message }}</td>
+            <td>{{ alert.date }}</td>
+            <td>
+              <span class="status" [class.resolved]="alert.status === 'SUCCESS'" [class.open]="alert.status !== 'SUCCESS'">
+                {{ outcomeText(alert.status) }}
+              </span>
+            </td>
+            <td>
+              <button class="delete" type="button" (click)="removeAlert(alert.id)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="footer">
+        <p>
+          Showing page {{ page + 1 }} of {{ totalPages || 1 }}
+          (max {{ size }} rows per page, total {{ totalItems }})
+        </p>
+        <div class="pagination">
+          <button type="button" (click)="prevPage()" [disabled]="page === 0 || isLoading">Prev</button>
+          <button type="button" (click)="nextPage()" [disabled]="!hasNext || isLoading">Next</button>
+        </div>
+      </div>
+    </div>
+    <app-admin-footer></app-admin-footer>
+  </main>
+</div>

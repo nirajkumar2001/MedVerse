@@ -1,0 +1,24 @@
+# Backend build and local files
+MedVerse_Backend/target/
+MedVerse_Backend/.idea/
+MedVerse_Backend/.run-logs/
+MedVerse_Backend/*.log
+
+# Frontend generated files
+MedVerse_Frontend/node_modules/
+MedVerse_Frontend/dist/
+MedVerse_Frontend/.angular/
+MedVerse_Frontend/.angular-preview-logs/
+MedVerse_Frontend/coverage/
+
+# IDE and operating-system files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Local secrets and environment files
+.env
+.env.*
+**/application-local.properties

@@ -1,0 +1,344 @@
+<div class="page-shell">
+  <app-layout-sidebar
+    brandName="Patient Portal"
+    [menuItems]="menuItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Patient Portal"
+      breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="My Profile"
+      title="My Profile"
+      subtitle="View your general profile details, emergency contact, address, and profile photo from one secure place."
+      [badgeText]="'ID: ' + patientId"
+      [avatarText]="avatarText"
+      [avatarImage]="photoPreview"
+      [showSearch]="false"
+      theme="patient">
+    </app-page-header>
+
+    <section class="profile-page-card">
+      <div class="profile-loading" *ngIf="isLoading">
+        <div class="loader-ring"></div>
+        <div>
+          <h3>Loading patient profile</h3>
+          <p>Please wait while MedVerse fetches your profile details.</p>
+        </div>
+      </div>
+
+      <ng-container *ngIf="!isLoading && patient">
+        <div class="profile-hero">
+          <div class="profile-photo-zone">
+            <div class="photo-frame">
+              <img *ngIf="photoPreview; else profileInitials" [src]="photoPreview" alt="Patient profile photo" />
+
+              <ng-template #profileInitials>
+                <span>{{ avatarText }}</span>
+              </ng-template>
+            </div>
+
+            <div class="photo-actions" *ngIf="isEditMode">
+              <input
+                #photoInput
+                type="file"
+                accept="image/*"
+                hidden
+                (change)="onPhotoSelected($event)" />
+
+              <button type="button" class="photo-action primary" (click)="photoInput.click()">
+                Add Photo
+              </button>
+
+              <button
+                type="button"
+                class="photo-action ghost"
+                *ngIf="photoPreview"
+                (click)="removePhoto(photoInput)">
+                Remove
+              </button>
+            </div>
+
+            <small *ngIf="isEditMode" class="photo-hint">
+              JPG/PNG image up to 2 MB.
+            </small>
+          </div>
+
+          <div class="profile-identity">
+            <span class="identity-chip">Patient Profile</span>
+            <h2>{{ patientName }}</h2>
+            <p>{{ patientEmail }}</p>
+
+            <div class="identity-grid">
+              <div>
+                <span>Patient ID</span>
+                <strong>{{ patientId }}</strong>
+              </div>
+
+              <div>
+                <span>Emergency Contact</span>
+                <strong>{{ displayEmergencyContact }}</strong>
+              </div>
+
+              <div>
+                <span>Profile Completion</span>
+                <strong>{{ profileCompletion }}%</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-actions-top">
+            <button type="button" class="outline-btn" (click)="openChangePassword()">
+              Change Password
+            </button>
+
+            <button
+              type="button"
+              class="primary-btn"
+              *ngIf="!isEditMode"
+              (click)="enableEditMode()">
+              Edit Profile
+            </button>
+
+            <button
+              type="button"
+              class="danger-light-btn"
+              *ngIf="isEditMode"
+              (click)="cancelEdit()">
+              Cancel Editing
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-notice">
+          <div class="notice-icon">i</div>
+          <div>
+            <h3>General profile area</h3>
+            <p>
+              You can update your general details and emergency contact number here. Clinical information such as blood group, allergies, medications, findings, prescriptions, vitals, and medical reports is available in My Medical Records.
+            </p>
+          </div>
+        </div>
+
+        <section class="details-layout">
+          <div class="details-panel">
+            <div class="section-heading">
+              <div>
+                <span>General Information</span>
+                <h3>Personal Details</h3>
+              </div>
+
+              <strong [class.editing]="isEditMode">
+                {{ isEditMode ? 'Editing enabled' : 'View only' }}
+              </strong>
+            </div>
+
+            <div class="form-grid">
+              <label class="field-card">
+                <span>Full Name</span>
+                <strong *ngIf="!isEditMode">{{ patientName }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="text"
+                  appAlphaOnly
+                  appTrimLeadingSpace
+                  [(ngModel)]="profileForm.fullName"
+                  (input)="validateFullName()"
+                  [class.input-error]="errors.fullName"
+                  placeholder="Enter full name" />
+                <small *ngIf="isEditMode && errors.fullName">{{ errors.fullName }}</small>
+              </label>
+
+              <label class="field-card readonly-card">
+                <span>Email Address</span>
+                <strong>{{ patientEmail }}</strong>
+                <em>Not editable</em>
+              </label>
+
+              <label class="field-card readonly-card">
+                <span>Patient ID</span>
+                <strong>{{ patientId }}</strong>
+                <em>System generated</em>
+              </label>
+
+              <label class="field-card">
+                <span>Age</span>
+                <strong *ngIf="!isEditMode">{{ displayAge }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="number"
+                  min="1"
+                  max="120"
+                  [(ngModel)]="profileForm.age"
+                  (input)="validateAge()"
+                  [class.input-error]="errors.age"
+                  placeholder="Enter age" />
+                <small *ngIf="isEditMode && errors.age">{{ errors.age }}</small>
+              </label>
+
+              <label class="field-card">
+                <span>Gender</span>
+                <strong *ngIf="!isEditMode">{{ displayGender }}</strong>
+                <select
+                  *ngIf="isEditMode"
+                  [(ngModel)]="profileForm.gender"
+                  (change)="validateGender()"
+                  [class.input-error]="errors.gender">
+                  <option value="">Select gender</option>
+                  <option *ngFor="let option of genderOptions" [value]="option">
+                    {{ option }}
+                  </option>
+                </select>
+                <small *ngIf="isEditMode && errors.gender">{{ errors.gender }}</small>
+              </label>
+
+              <label class="field-card emergency-card">
+                <span>Emergency Contact Number</span>
+                <strong *ngIf="!isEditMode">{{ displayEmergencyContact }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="tel"
+                  [(ngModel)]="profileForm.emergencyContact"
+                  (input)="validateEmergencyContact()"
+                  [class.input-error]="errors.emergencyContact"
+                  placeholder="+91 98765 43210" />
+                <small *ngIf="isEditMode && errors.emergencyContact">{{ errors.emergencyContact }}</small>
+                <em *ngIf="!errors.emergencyContact">
+                  Used in doctor emergency lookup.
+                </em>
+              </label>
+            </div>
+          </div>
+
+          <div class="details-panel">
+            <div class="section-heading">
+              <div>
+                <span>Location</span>
+                <h3>Address Details</h3>
+              </div>
+            </div>
+
+            <div class="form-grid address-grid">
+              <label class="field-card full-width">
+                <span>Full Address</span>
+                <strong *ngIf="!isEditMode">{{ patient.address || '-' }}</strong>
+                <textarea
+                  *ngIf="isEditMode"
+                  rows="3"
+                  appTrimLeadingSpace
+                  [(ngModel)]="profileForm.address"
+                  (input)="validateAddress()"
+                  [class.input-error]="errors.address"
+                  placeholder="House number, street, area">
+                </textarea>
+                <small *ngIf="isEditMode && errors.address">{{ errors.address }}</small>
+              </label>
+
+              <label class="field-card">
+                <span>District</span>
+                <strong *ngIf="!isEditMode">{{ patient.district || '-' }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="text"
+                  appAlphaOnly
+                  appTrimLeadingSpace
+                  [(ngModel)]="profileForm.district"
+                  (input)="validateDistrict()"
+                  [class.input-error]="errors.district"
+                  placeholder="District" />
+                <small *ngIf="isEditMode && errors.district">{{ errors.district }}</small>
+              </label>
+
+              <label class="field-card">
+                <span>State</span>
+                <strong *ngIf="!isEditMode">{{ patient.state || '-' }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="text"
+                  appAlphaOnly
+                  appTrimLeadingSpace
+                  [(ngModel)]="profileForm.state"
+                  (input)="validateState()"
+                  [class.input-error]="errors.state"
+                  placeholder="State" />
+                <small *ngIf="isEditMode && errors.state">{{ errors.state }}</small>
+              </label>
+
+              <label class="field-card">
+                <span>Pincode</span>
+                <strong *ngIf="!isEditMode">{{ patient.pincode || '-' }}</strong>
+                <input
+                  *ngIf="isEditMode"
+                  type="text"
+                  maxlength="6"
+                  [(ngModel)]="profileForm.pincode"
+                  (input)="validatePincode()"
+                  [class.input-error]="errors.pincode"
+                  placeholder="110001" />
+                <small *ngIf="isEditMode && errors.pincode">{{ errors.pincode }}</small>
+              </label>
+
+              <div class="field-card readonly-card full-width">
+                <span>Complete Address Preview</span>
+                <strong>{{ isEditMode ? (profileForm.address + ', ' + profileForm.district + ', ' + profileForm.state + ', ' + profileForm.pincode) : displayAddress }}</strong>
+                <em>Shown to authorized doctors during approved workflows.</em>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="medical-boundary-card">
+          <div class="boundary-copy">
+            <span>Medical Records</span>
+            <h3>Medical information is available separately</h3>
+            <p>
+              Blood group, allergies, chronic conditions, medications, reports, findings, prescriptions, vitals, and visit updates can be viewed from My Medical Records.
+            </p>
+          </div>
+
+          <div class="boundary-actions">
+            <button type="button" class="outline-btn" (click)="goToEmergencyDetails()">
+              View Emergency Details
+            </button>
+
+            <button type="button" class="primary-btn" (click)="goToMedicalRecords()">
+              My Medical Records
+            </button>
+          </div>
+        </section>
+
+        <div class="sticky-save-bar" *ngIf="isEditMode">
+          <div>
+            <strong>Unsaved profile changes</strong>
+            <span>Save to update your general profile and emergency contact.</span>
+          </div>
+
+          <div class="sticky-actions">
+            <button type="button" class="outline-btn" (click)="cancelEdit()" [disabled]="isSaving">
+              Cancel
+            </button>
+
+            <button type="button" class="primary-btn" (click)="saveProfile()" [disabled]="!canSave">
+              {{ isSaving ? 'Saving...' : 'Save Changes' }}
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    [type]="toastType"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

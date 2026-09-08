@@ -1,0 +1,275 @@
+[1m[33mWarning: Running a server with --disable-host-check is a security risk. See https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a for more information.[39m[22m
+[1m[33mThe "disableHostCheck" option will not be used because it is not supported by the "@angular-devkit/build-angular:application" builder.[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./learner/component/notifications/notifications.component"[0m
+
+    projects/learning-app/src/app/app.routes.ts:9:39:
+[37m      9 │ ...ent } from [32m'./learner/component/notifications/notifications.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/notifications/notifications.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:12:39:
+[37m      12 │ ...nt } from [32m'./learner/component/notifications/notifications.comp[37m...
+         ╵              [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "./learner/component/explore-cases/explore-cases.component"[0m
+
+    projects/learning-app/src/app/app.routes.ts:6:38:
+[37m      6 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/explore-cases/explore-cases.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:9:38:
+[37m      9 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/explore-cases/explore-cases.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:9:38:
+[37m      9 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/explore-cases/explore-cases.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:9:38:
+[37m      9 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/explore-cases/explore-cases.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:9:38:
+[37m      9 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2307: Cannot find module './learner/component/explore-cases/explore-cases.component' or its corresponding type declarations.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/app.routes.ts:9:38:
+[37m      9 │ ...ent } from [32m'./learner/component/explore-cases/explore-cases.comp[37m...
+        ╵               [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'item' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:104:15:
+[37m      104 │           .map([32mitem[37m => ({ ...item, unread: !readMap[item.id] }))
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'a' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:17:
+[37m      105 │           .sort(([32ma[37m, b) => b.id.localeCompare(a.id));
+          ╵                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 'b' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    projects/learning-app/src/app/learner/component/notifications/notifications.component.ts:105:20:
+[37m      105 │           .sort((a, [32mb[37m) => b.id.localeCompare(a.id));
+          ╵                     [32m^[0m
+
+[39m[22m

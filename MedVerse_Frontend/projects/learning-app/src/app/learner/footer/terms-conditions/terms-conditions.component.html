@@ -1,0 +1,21 @@
+<div class="terms-container">
+
+  <h1>Terms & Conditions</h1>
+
+  <div class="profile-tabs">
+    <button
+      *ngFor="let profile of profiles"
+      [class.active]="selectedProfile === profile"
+      (click)="changeProfile(profile)">
+      {{ profile }}
+    </button>
+  </div>
+
+  <div class="terms-content">
+    <ng-container *ngFor="let term of getTermsList()">
+      <h3 *ngIf="term.isHeader">{{ term.text }}</h3>
+      <li *ngIf="!term.isHeader">{{ term.text }}</li>
+    </ng-container>
+  </div>
+
+</div>

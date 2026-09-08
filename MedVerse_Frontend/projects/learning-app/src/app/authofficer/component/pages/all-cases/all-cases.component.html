@@ -1,0 +1,74 @@
+<div class="all-cases-layout">
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="all-cases-page" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <section class="page-header">
+      <div>
+        <h1>All Cases</h1>
+        <p>View all medical cases in the system with their current verification status.</p>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="search-box">
+        <span>Search</span>
+        <input
+          type="text"
+          placeholder="Search cases by ID, disease or title"
+          [(ngModel)]="searchText"
+        />
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <select [(ngModel)]="selectedStatus">
+        <option *ngFor="let status of statuses" [value]="status">
+          {{ status }}
+        </option>
+      </select>
+
+      <section class="bottom-info">
+        <strong>Showing {{ filteredCases.length }} of {{ allCases.length }} cases</strong>
+        <button class="view-details-btn" type="button" (click)="restoreAllRemoved()">Restore Removed</button>
+      </section>
+    </section>
+
+    <section class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Case ID</th>
+            <th>Title</th>
+            <th>Disease</th>
+            <th>Status</th>
+            <th>Submitted On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of filteredCases">
+            <td class="case-id">{{ item.caseId }}</td>
+            <td class="case-title">{{ item.title }}</td>
+            <td>{{ item.disease }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="getStatusClass(item.status)">
+                {{ item.status }}
+              </span>
+            </td>
+            <td>{{ item.submittedOn }}</td>
+            <td>
+              <button class="view-details-btn" type="button" (click)="viewCase(item)">View Details</button>
+              <button class="view-details-btn" type="button" (click)="removeFromList(item)">Remove</button>
+            </td>
+          </tr>
+
+          <tr *ngIf="filteredCases.length === 0">
+            <td colspan="6" class="empty-state">No cases found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <app-authofficer-footer></app-authofficer-footer>
+  </main>
+</div>

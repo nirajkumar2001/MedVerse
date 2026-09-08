@@ -1,0 +1,319 @@
+:host {
+  --footer-primary: #635bff;
+  --footer-primary-2: #7c6dff;
+  --footer-primary-soft: #f1efff;
+  --footer-primary-border: #ded9ff;
+  --footer-text: #101828;
+  --footer-muted: #667085;
+  --footer-soft: #98a2b3;
+  --footer-border: #e7eaf3;
+  display: block;
+  width: 100%;
+}
+
+.healthcare-footer {
+  position: relative;
+  overflow: hidden;
+  margin: 28px -36px -56px;
+  padding: 46px 36px 24px;
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-border);
+  background:
+    radial-gradient(circle at 6% 0%, rgba(99, 91, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 92% 12%, rgba(34, 197, 240, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 255, 0.96) 100%);
+}
+
+.footer-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.42;
+}
+
+.footer-glow-left {
+  left: -70px;
+  top: -80px;
+  width: 210px;
+  height: 210px;
+  background: rgba(99, 91, 255, 0.15);
+}
+
+.footer-glow-right {
+  right: -110px;
+  top: 28px;
+  width: 260px;
+  height: 260px;
+  background: rgba(42, 181, 236, 0.16);
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(270px, 1.45fr) minmax(150px, 0.75fr) minmax(150px, 0.75fr) minmax(245px, 1fr);
+  gap: 28px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 50px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 14px 28px rgba(99, 91, 255, 0.18);
+}
+
+.brand-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-brand h2 {
+  margin: 0;
+  color: var(--footer-text);
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.footer-brand .brand-row p {
+  margin: 6px 0 0;
+  color: var(--footer-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.brand-desc {
+  max-width: 430px;
+  margin: 19px 0 0;
+  color: var(--footer-muted);
+  font-size: 14px;
+  line-height: 1.72;
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.footer-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 7px 11px;
+  border: 1px solid var(--footer-primary-border);
+  border-radius: 999px;
+  color: var(--footer-primary);
+  background: var(--footer-primary-soft);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.footer-col h3 {
+  margin: 0 0 16px;
+  color: var(--footer-text);
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.footer-col a {
+  display: table;
+  margin-bottom: 12px;
+  color: var(--footer-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.footer-col a:hover {
+  color: var(--footer-primary);
+  transform: translateX(3px);
+}
+
+.footer-support {
+  padding: 18px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 10px 10px 24px rgba(75, 90, 130, 0.08), -8px -8px 18px rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+}
+
+.footer-support p {
+  margin: 0 0 15px;
+  color: var(--footer-muted);
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.support-list {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.support-list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  word-break: break-word;
+}
+
+.support-list span {
+  width: 25px;
+  height: 25px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 25px;
+  border-radius: 9px;
+  color: var(--footer-primary);
+  background: var(--footer-primary-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.support-btn {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 11px 15px;
+  border: 1px solid var(--footer-primary-border);
+  border-radius: 13px;
+  color: var(--footer-primary) !important;
+  background: var(--footer-primary-soft);
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 10px 22px rgba(99, 91, 255, 0.10);
+}
+
+.support-btn:hover {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #635bff, #7c6dff);
+  transform: translateY(-2px) !important;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 34px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--footer-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: var(--footer-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--footer-soft);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.trust-strip i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(99, 91, 255, 0.42);
+}
+
+@media (max-width: 1180px) {
+  .footer-inner {
+    grid-template-columns: minmax(250px, 1.4fr) repeat(2, minmax(150px, 1fr));
+  }
+
+  .footer-support {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .healthcare-footer {
+    margin-right: -24px;
+    margin-left: -24px;
+    padding: 40px 24px 22px;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .trust-strip {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .healthcare-footer {
+    margin-right: -18px;
+    margin-left: -18px;
+    padding: 34px 18px 20px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .brand-desc {
+    max-width: 100%;
+  }
+
+  .footer-support {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .trust-strip {
+    display: grid;
+    gap: 7px;
+  }
+
+  .trust-strip i {
+    display: none;
+  }
+}

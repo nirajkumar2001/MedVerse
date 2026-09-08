@@ -1,0 +1,132 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Patient Care"
+      title="Patient Care Queue"
+      subtitle="Send patient access requests and continue care only after consent is granted."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/doctor/notifications"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <section class="care-summary">
+      <article><span>Active</span><strong>{{ activeSessions.length }}</strong><p>Can edit medical profile</p></article>
+      <article><span>Pending</span><strong>{{ pendingSessions.length }}</strong><p>Patient consent required</p></article>
+      <article><span>Completed</span><strong>{{ completedSessions.length }}</strong><p>Visit updates saved</p></article>
+      <article><span>Denied</span><strong>{{ deniedSessions.length }}</strong><p>Patient denied access</p></article>
+    </section>
+
+    <section class="care-layout">
+      <div>
+        <app-access-request-form (requestSent)="onAccessRequestSent($event)"></app-access-request-form>
+      </div>
+
+      <aside class="care-rules-card">
+        <span>Care workflow rule</span>
+        <h3>Medical fields are doctor-managed only</h3>
+        <p>After patient approval, you can update blood group, allergies, chronic conditions, medication, vitals, findings, prescription, and current visit notes. Patient general profile remains read-only.</p>
+        <a routerLink="/doctor/emergency-lookup">Search emergency details</a>
+      </aside>
+    </section>
+
+    <section class="session-board">
+      <div class="board-toolbar">
+        <div>
+          <h2>Care Sessions</h2>
+          <p>Open active approved access to update the patient medical profile.</p>
+        </div>
+
+        <button type="button" class="btn-secondary" (click)="reloadSessions()">Refresh</button>
+      </div>
+
+      <div class="filter-tabs">
+        <button
+          *ngFor="let filter of filters"
+          type="button"
+          [class.active]="activeFilter === filter.key"
+          (click)="setFilter(filter.key)">
+          {{ filter.label }}
+        </button>
+      </div>
+
+      <div class="loading-card" *ngIf="isLoading">Loading patient care sessions...</div>
+
+      <ng-container *ngIf="!isLoading">
+        <div class="empty-state" *ngIf="visibleSessions.length === 0">
+          <strong>No sessions in this view</strong>
+          <p>Use the access request form above or switch filters to review past sessions.</p>
+        </div>
+
+        <div class="session-list" *ngIf="visibleSessions.length > 0">
+          <article class="session-card" *ngFor="let session of visibleSessions; trackBy: trackBySession">
+            <div class="session-main">
+              <span class="status-pill" [ngClass]="statusOf(session).toLowerCase()">{{ statusLabel(session) }}</span>
+              <h3>{{ session.patientId || 'Patient' }}</h3>
+              <p>{{ session.message }}</p>
+
+              <div class="session-meta">
+                <span>Patient: <strong>{{ session.patientId || 'N/A' }}</strong></span>
+                <span>Scope: <strong>{{ session.accessScope || 'General' }}</strong></span>
+                <span>Time: <strong>{{ session.time }}</strong></span>
+              </div>
+            </div>
+
+            <div class="session-actions">
+              <button
+                class="btn-primary"
+                type="button"
+                *ngIf="statusOf(session) === 'APPROVED' && !session.accessEndedAt"
+                (click)="openApprovedProfile(session)">
+                Edit Medical Profile
+              </button>
+
+              <button
+                class="btn-secondary"
+                type="button"
+                *ngIf="statusOf(session) === 'PENDING'"
+                (click)="sendReminder(session)">
+                Send Reminder
+              </button>
+
+              <button
+                class="btn-danger-soft"
+                type="button"
+                *ngIf="statusOf(session) === 'APPROVED' && !session.accessEndedAt"
+                (click)="endSession(session)">
+                End Access
+              </button>
+            </div>
+          </article>
+        </div>
+      </ng-container>
+    </section>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    [type]="toastType"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

@@ -1,0 +1,60 @@
+<div class="profile-rejected-container">
+  <section class="header">
+    <div class="header-text">
+      <div class="icon">X</div>
+      <h1>Profile Rejected</h1>
+      <p>Your profile could not be approved. Upload the corrected verification document and it will go back to admin review.</p>
+    </div>
+
+    <div class="header-image">
+      <img src="shared-assets/auth-pages/profile-rejected-illustration.png" alt="Profile rejected illustration">
+    </div>
+  </section>
+
+  <div class="section-header">Reason for Rejection</div>
+
+  <section class="rejection-reasons card">
+    <div class="reason">
+      <div class="dot">•</div>
+      <div class="reason-text">
+        <p>{{ rejectionReason }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="upload-section card">
+    <h2>Upload Corrected Document</h2>
+
+    <div class="upload-box">
+      <div class="upload-area">
+        <div class="upload-icon">↑</div>
+        <p>Choose a clear PDF verification document</p>
+
+        <label class="choose-file-btn">
+          Choose File
+          <input type="file" accept="application/pdf" (change)="onFileSelected($event)" hidden>
+        </label>
+
+        <p class="file-name" *ngIf="uploadedFileName">Selected File: {{ uploadedFileName }}</p>
+        <p class="upload-note">Only PDF files are allowed. Max file size: 10 MB</p>
+      </div>
+
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <ul>
+          <li>Upload a clear and readable PDF</li>
+          <li>Ensure all details are visible</li>
+          <li>Document should be valid and unexpired</li>
+          <li>Only PDF format is allowed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a routerLink="/login" class="secondary-action">Back to Login</a>
+      <button type="button" class="primary-action" [disabled]="isSubmitting || !selectedFile" (click)="resubmit()">
+        {{ isSubmitting ? 'Submitting...' : 'Submit for Verification' }}
+      </button>
+    </div>
+  </section>
+</div>

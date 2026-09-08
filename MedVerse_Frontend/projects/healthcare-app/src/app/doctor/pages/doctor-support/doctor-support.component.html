@@ -1,0 +1,113 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    brandName="Doctor Portal"
+    [menuItems]="sidebarItems"
+    [userName]="doctor.fullName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Help & Support"
+      title="Doctor Help & Support"
+      subtitle="A practical guide for emergency lookup, consent requests, patient care sessions, and profile management."
+      [badgeText]="'ID: ' + (doctor.doctorId || 'Not available')"
+      [avatarText]="doctor.initials"
+      [avatarImage]="doctor.profileImage || ''"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      notificationRoute="/doctor/notifications"
+      [notificationCount]="unreadCount"
+      theme="light">
+    </app-page-header>
+
+    <section class="support-hero">
+      <div class="support-copy">
+        <span class="eyebrow">Platform guide</span>
+        <h2>Use MedVerse doctor workspace with confidence</h2>
+        <p>
+          Follow the clinical flow: search emergency details, send consent requests, track patient decisions,
+          and update medical records only through approved sessions.
+        </p>
+      </div>
+
+      <div class="support-illustration" aria-hidden="true">
+        <div class="doctor-node">DR</div>
+        <div class="flow-line line-one"></div>
+        <div class="patient-node">PT</div>
+        <div class="flow-line line-two"></div>
+        <div class="record-node">REC</div>
+      </div>
+    </section>
+
+    <section class="guide-section">
+      <div class="section-title">
+        <span>How to use</span>
+        <h2>Doctor workflow guide</h2>
+        <p>Use these steps during normal consultation and emergency care workflows.</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card" *ngFor="let step of guideSteps">
+          <span class="step-number">{{ step.number }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+          <a [routerLink]="step.route">{{ step.action }}</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="visual-guide">
+      <div class="visual-card search-flow">
+        <span>Emergency Lookup</span>
+        <h3>Search → Match → Open Record</h3>
+        <div class="mini-search-ui" aria-hidden="true">
+          <div></div>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>Emergency details are displayed immediately after selecting or exactly matching a patient profile.</p>
+      </div>
+
+      <div class="visual-card consent-flow">
+        <span>Consent Access</span>
+        <h3>Request → Patient Decision → Medical Update</h3>
+        <div class="flow-steps" aria-hidden="true">
+          <i>1</i><b></b><i>2</i><b></b><i>3</i>
+        </div>
+        <p>Medical editing is available only through active approved access sessions.</p>
+      </div>
+    </section>
+
+    <section class="faq-panel">
+      <div class="section-title">
+        <span>FAQ</span>
+        <h2>Frequently asked questions</h2>
+        <p>Important answers for safe and accurate doctor-side platform usage.</p>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item" *ngFor="let item of faqItems" [class.open]="item.open">
+          <button type="button" (click)="toggleFaq(item)">
+            <span>{{ item.category }}</span>
+            <strong>{{ item.question }}</strong>
+            <i>{{ item.open ? '−' : '+' }}</i>
+          </button>
+
+          <p *ngIf="item.open">{{ item.answer }}</p>
+        </article>
+      </div>
+    </section>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

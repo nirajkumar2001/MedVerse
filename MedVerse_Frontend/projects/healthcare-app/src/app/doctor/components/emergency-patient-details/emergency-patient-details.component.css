@@ -1,0 +1,438 @@
+.emergency-grid {
+  --doctor-emergency-dark: #06364a;
+  --doctor-emergency-mid: #0e7490;
+  --doctor-emergency-soft: #e7f8fb;
+  --doctor-emergency-border: rgba(14, 116, 144, .20);
+  --doctor-emergency-shadow: rgba(8, 47, 73, .12);
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.print-record-title {
+  display: none;
+}
+
+.emergency-grid .card,
+:host ::ng-deep app-medical-record-card .card {
+  border-color: var(--doctor-emergency-border);
+  background:
+    radial-gradient(520px 220px at 12% 0%, rgba(45, 212, 191, .10), transparent 58%),
+    linear-gradient(145deg, rgba(255,255,255,.98), rgba(239, 250, 252, .90));
+  box-shadow:
+    10px 14px 28px var(--doctor-emergency-shadow),
+    inset 0 1px 0 rgba(255,255,255,.92);
+}
+
+.emergency-grid .card:hover,
+:host ::ng-deep app-medical-record-card .card:hover {
+  border-color: rgba(14, 116, 144, .34);
+  box-shadow:
+    14px 18px 34px rgba(8, 47, 73, .16),
+    inset 0 1px 0 rgba(255,255,255,.96);
+}
+
+.emergency-grid .card-title,
+:host ::ng-deep app-medical-record-card .card-title {
+  color: var(--doctor-emergency-dark);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.info-grid div {
+  background:
+    linear-gradient(145deg, rgba(231, 248, 251, .88), rgba(255,255,255,.92));
+  border: 1px solid rgba(14, 116, 144, .16);
+  border-radius: 14px;
+  padding: 13px;
+}
+
+.info-grid .full {
+  grid-column: 1 / -1;
+}
+
+.info-grid label {
+  color: var(--doctor-emergency-mid);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.info-grid p {
+  margin: 5px 0 0;
+  font-weight: 750;
+  color: #102a3a;
+}
+
+.photo-box {
+  min-height: 260px;
+  background:
+    radial-gradient(260px 180px at 40% 35%, rgba(45, 212, 191, 0.24), transparent 60%),
+    linear-gradient(135deg, #e9fbff, #bceef4);
+  border: 3px dashed rgba(14, 116, 144, .62);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  min-height: 212px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.photo-icon {
+  color: var(--doctor-emergency-mid);
+  font-size: 72px;
+}
+
+.photo-box p {
+  margin: 0;
+  font-weight: 800;
+  color: var(--doctor-emergency-dark);
+}
+
+.photo-box small {
+  color: #477184;
+}
+
+.photo-id {
+  text-align: center;
+  margin-top: 14px;
+  color: var(--doctor-emergency-mid);
+}
+
+.quick-actions-card {
+  padding: 20px;
+}
+
+.quick-actions-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.quick-actions-heading > span {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--doctor-emergency-dark);
+  background: var(--doctor-emergency-soft);
+  border: 1px solid rgba(14, 116, 144, .14);
+  font-size: 12px;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.quick-actions-heading h3 {
+  margin-bottom: 4px;
+}
+
+.quick-actions-heading p {
+  margin: 0;
+  color: var(--c-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.print-record-btn {
+  width: 100%;
+  min-height: 66px;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #ffffff;
+  text-align: left;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,0)),
+    linear-gradient(135deg, #0e7490, #064e63);
+  box-shadow:
+    0 14px 28px rgba(14, 116, 144, 0.24),
+    inset 0 1px 0 rgba(255,255,255,.34);
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.print-record-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(14, 116, 144, 0.32);
+}
+
+.print-record-btn.secondary-action {
+  margin-top: 12px;
+  color: var(--doctor-emergency-dark);
+  border-color: var(--doctor-emergency-border);
+  background: #ffffff;
+  box-shadow: 0 10px 22px var(--doctor-emergency-shadow);
+}
+
+.print-record-btn:focus-visible {
+  outline: 3px solid rgba(14, 116, 144, .24);
+  outline-offset: 3px;
+}
+
+.print-record-btn strong,
+.print-record-btn small {
+  display: block;
+}
+
+.print-record-btn strong {
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.print-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(255,255,255,.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+  flex: 0 0 auto;
+}
+
+.print-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.emergency-benefits-card {
+  padding: 20px;
+}
+
+.benefits-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.benefits-heading > span {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #0f766e;
+  background: #dff7f3;
+  border: 1px solid rgba(15, 118, 110, .14);
+  font-size: 12px;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.benefits-heading h3 {
+  margin-bottom: 4px;
+}
+
+.benefits-heading p {
+  margin: 0;
+  color: var(--c-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.benefit-list {
+  display: grid;
+  gap: 12px;
+}
+
+.benefit-list div {
+  border: 1px solid rgba(14, 116, 144, .16);
+  border-radius: 8px;
+  padding: 13px;
+  background: linear-gradient(135deg, rgba(255,255,255,.94), rgba(231,248,251,.74));
+}
+
+.benefit-list strong {
+  display: block;
+  color: var(--doctor-emergency-dark);
+  margin-bottom: 5px;
+}
+
+.benefit-list p {
+  margin: 0;
+  color: var(--c-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+:host ::ng-deep app-medical-record-card .blood-highlight {
+  background:
+    linear-gradient(90deg, rgba(188, 238, 244, .95), rgba(255,255,255,.84));
+  border-color: rgba(14, 116, 144, .18);
+}
+
+:host ::ng-deep app-medical-record-card .blood-highlight span,
+:host ::ng-deep app-medical-record-card .medical-block h4 {
+  color: var(--doctor-emergency-mid);
+}
+
+:host ::ng-deep app-medical-record-card .blood-highlight strong {
+  color: #0f766e;
+}
+
+:host ::ng-deep app-medical-record-card .medical-block p {
+  background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(231,248,251,.72));
+  border-color: rgba(14, 116, 144, .16);
+  color: #102a3a;
+}
+
+@media (max-width: 900px) {
+  .emergency-grid,
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  :host {
+    display: block;
+  }
+
+  .emergency-grid {
+    display: grid;
+    grid-template-columns: 2fr .85fr;
+    gap: 12px;
+  }
+
+  .print-record-title {
+    display: block;
+    grid-column: 1 / -1;
+    margin: 0 0 14px;
+    color: #101828;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .quick-actions-card {
+    display: none !important;
+  }
+
+  .emergency-benefits-card {
+    display: none !important;
+  }
+
+  .card {
+    margin-bottom: 12px;
+    padding: 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .card:hover {
+    transform: none !important;
+  }
+
+  .card-title {
+    color: #101828;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .info-grid div {
+    padding: 8px;
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    background: #ffffff;
+  }
+
+  .info-grid label {
+    color: #475467;
+    font-size: 9px;
+  }
+
+  .info-grid p {
+    color: #101828;
+    font-size: 12px;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+
+  .photo-card {
+    display: block !important;
+  }
+
+  .photo-box {
+    min-height: 170px;
+    padding: 10px;
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    background: #ffffff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .photo-box img {
+    min-height: 148px;
+    border-radius: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .photo-icon {
+    color: #475467;
+    font-size: 42px;
+  }
+
+  .photo-box p,
+  .photo-box small,
+  .photo-id {
+    color: #101828;
+    font-size: 11px;
+  }
+
+  :host ::ng-deep app-medical-record-card .card {
+    border: 1px solid #d0d5dd;
+    border-radius: 0;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  :host ::ng-deep app-medical-record-card .card-title,
+  :host ::ng-deep app-medical-record-card .blood-highlight span,
+  :host ::ng-deep app-medical-record-card .medical-block h4,
+  :host ::ng-deep app-medical-record-card .medical-block p {
+    color: #101828;
+  }
+
+  :host ::ng-deep app-medical-record-card .blood-highlight,
+  :host ::ng-deep app-medical-record-card .medical-block p {
+    border-color: #d0d5dd;
+    background: #ffffff !important;
+  }
+
+  :host ::ng-deep app-medical-record-card .blood-highlight strong {
+    color: #b91c1c;
+  }
+}

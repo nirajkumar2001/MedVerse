@@ -1,0 +1,11 @@
+<div class="error-page-container">
+  <div class="error-text">
+    <h1>{{ errorCode }}</h1>
+    <h2>{{ errorMessage }}</h2>
+    <p>{{ description }}</p>
+    <a routerLink="/" class="home-btn">Go Back</a>
+  </div>
+  <div class="error-illustration">
+    <img [src]="illustration" alt="Not found illustration" />
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="queue-layout">
+
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="queue-page" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <!-- Header -->
+    <section class="page-header">
+
+      <div>
+        <h1>Verification Queue</h1>
+        <p>
+          Review medical cases waiting for authentication and verification.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Search -->
+    <section class="search-section">
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search by case ID, disease or title"
+          [(ngModel)]="searchText"
+        />
+      </div>
+
+    </section>
+
+    <div class="case-count">
+      <strong>Showing {{ filteredCases.length }} pending cases</strong>
+    </div>
+
+    <!-- Cards -->
+    <section class="case-grid">
+
+      <article class="case-card" *ngFor="let item of filteredCases">
+
+        <div class="card-top">
+          <div class="case-icon">
+            ⏳
+          </div>
+
+          <span class="status-badge">
+            ● {{ item.status }}
+          </span>
+        </div>
+
+        <div class="case-content">
+          <h3>{{ item.caseId }}</h3>
+
+          <h4>{{ item.title }}</h4>
+
+          <p class="disease">
+            {{ item.disease }}
+          </p>
+
+          <p class="date">
+            🗓 {{ item.submittedDate }}
+          </p>
+        </div>
+
+        <div class="action-buttons">
+          <button type="button" class="view-btn" (click)="viewCase(item)">
+            👁 View
+          </button>
+
+          
+        </div>
+
+      </article>
+
+      <div class="empty-state" *ngIf="filteredCases.length === 0">
+        No pending cases found.
+      </div>
+
+    </section>
+
+    <app-authofficer-footer></app-authofficer-footer>
+  </main>
+
+</div>

@@ -1,0 +1,76 @@
+<div class="page-shell" *ngIf="!isPatient || patient">
+  <app-layout-sidebar [brandName]="root" [menuItems]="menuItems"></app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      [breadcrumbRoot]="root"
+      [breadcrumbRootRoute]="homeRoute"
+      breadcrumbCurrent="Settings"
+      title="Settings"
+      subtitle="Control security, communication, and workspace preferences."
+      [badgeText]="headerBadgeText"
+      [avatarText]="headerAvatarText"
+      [avatarImage]="headerAvatarImage"
+      [showSearch]="!isPatient"
+      [theme]="isPatient ? 'patient' : 'light'">
+    </app-page-header>
+
+    <section class="settings-grid">
+      <article class="card setting-panel">
+        <h3>Workspace Appearance</h3>
+        <label class="toggle-row">
+          <span>
+            <strong>Dark theme</strong>
+            <small>Switch the healthcare workspace to a darker clinical view.</small>
+          </span>
+          <input type="checkbox" [ngModel]="darkTheme" (ngModelChange)="toggleTheme()">
+        </label>
+        <label class="toggle-row">
+          <span>
+            <strong>Compact mode</strong>
+            <small>Reduce spacing for repeated operational use.</small>
+          </span>
+          <input type="checkbox" [ngModel]="compactMode" (ngModelChange)="toggleDensity()">
+        </label>
+      </article>
+
+      <article class="card setting-panel">
+        <h3>Security Controls</h3>
+        <label class="toggle-row">
+          <span>
+            <strong>Audit activity alerts</strong>
+            <small>Notify you when medical records or emergency views are accessed.</small>
+          </span>
+          <input type="checkbox" [(ngModel)]="auditAlerts">
+        </label>
+        <label class="toggle-row">
+          <span>
+            <strong>Consent reminders</strong>
+            <small>Show reminders for pending access decisions and active sessions.</small>
+          </span>
+          <input type="checkbox" [(ngModel)]="consentReminders">
+        </label>
+      </article>
+
+      <article class="card setting-panel">
+        <h3>Communication</h3>
+        <label class="toggle-row">
+          <span>
+            <strong>Email summary</strong>
+            <small>Receive a compact daily summary for activity in this workspace.</small>
+          </span>
+          <input type="checkbox" [(ngModel)]="emailSummary">
+        </label>
+        <label>
+          Profile visibility
+          <select [(ngModel)]="profileVisibility">
+            <option>Role based</option>
+            <option>Emergency only</option>
+            <option>Private</option>
+          </select>
+        </label>
+      </article>
+    </section>
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+</div>

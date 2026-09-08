@@ -1,0 +1,26 @@
+<section id="roles" data-section="roles" class="roles">
+    <div class="heading">
+      <p>Role-based experience</p>
+      <h2>Every user enters a different medical world.</h2>
+    </div>
+  
+    <div class="grid">
+        <article class="magnetic" *ngFor="let role of roles">
+            <span>✦</span>
+            <h3>{{ role[0] }}</h3>
+            <p>{{ role[1] }}</p>
+          
+            <div class="preview">
+              <b>{{ role[0] }} Portal</b>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </article>
+    </div>
+  
+    <div #magnetic class="cta">
+      <h2>Healthcare should feel secure, fast and unforgettable.</h2>
+      <button>Start with Medverse</button>
+    </div>
+  </section>

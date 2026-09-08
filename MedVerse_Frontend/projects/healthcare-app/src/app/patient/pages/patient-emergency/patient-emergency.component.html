@@ -1,0 +1,183 @@
+<div class="page-shell">
+  <app-layout-sidebar
+    brandName="Patient Portal"
+    [menuItems]="menuItems"
+    [userName]="patientName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content patient-emergency-page">
+    <app-page-header
+      breadcrumbRoot="Patient Portal"
+      breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Emergency Details"
+      title="Emergency Details"
+      subtitle="View the exact profile and emergency medical information available during emergency lookup."
+      [badgeText]="patientBadgeText"
+      [avatarText]="avatarText"
+      [avatarImage]="profileImage"
+      [showSearch]="false"
+      [showNotificationButton]="false"
+      theme="patient">
+    </app-page-header>
+
+    <section class="loading-state" *ngIf="isLoading">
+      <div class="loading-orb"></div>
+      <h2>Loading emergency details...</h2>
+      <p>Fetching your profile and emergency medical details securely.</p>
+    </section>
+
+    <section class="error-state" *ngIf="!isLoading && hasLoadError">
+      <div class="error-icon">!</div>
+      <h2>Unable to load emergency details</h2>
+      <p>Please check your backend connection and try again.</p>
+      <button type="button" class="primary-action" (click)="loadEmergencyDetails()">
+        Retry
+      </button>
+    </section>
+
+    <ng-container *ngIf="!isLoading && !hasLoadError && patient">
+      <section class="emergency-overview-card">
+        <div class="profile-photo-wrap">
+          <img *ngIf="profileImage; else photoFallback" [src]="profileImage" [alt]="patientName + ' profile photo'">
+
+          <ng-template #photoFallback>
+            <div class="photo-fallback">{{ avatarText }}</div>
+          </ng-template>
+        </div>
+
+        <div class="overview-copy">
+          <span class="secure-chip">
+            <i></i>
+            Emergency lookup preview
+          </span>
+
+          <h1>{{ patientName }}</h1>
+          <p>These details are shown to doctors during emergency lookup and approved access.</p>
+
+          <div class="identity-strip">
+            <span>Patient ID</span>
+            <strong>{{ patientId }}</strong>
+          </div>
+        </div>
+
+        <div class="overview-actions">
+          <a routerLink="/patient/profile" class="soft-action">Edit Profile</a>
+          <a routerLink="/patient/medical-records" class="soft-action">My Medical Records</a>
+        </div>
+      </section>
+
+      <section class="emergency-main-grid">
+        <article class="content-card patient-details-card">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Profile details</span>
+              <h2>General Details</h2>
+              <p>Basic patient information visible during emergency lookup.</p>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Full Name</label>
+              <p>{{ patientName }}</p>
+            </div>
+
+            <div class="info-item">
+              <label>Patient ID</label>
+              <p>{{ patientId }}</p>
+            </div>
+
+            <div class="info-item">
+              <label>Age / Gender</label>
+              <p>{{ ageGender }}</p>
+            </div>
+
+            <div class="info-item important">
+              <label>Emergency Contact</label>
+              <p>{{ emergencyContact }}</p>
+            </div>
+
+            <div class="info-item wide">
+              <label>Address</label>
+              <p>{{ addressLine }}</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="content-card medical-alert-card">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Emergency medical details</span>
+              <h2>Critical Medical Information</h2>
+              <p>Medical details that support quick emergency decisions.</p>
+            </div>
+          </div>
+
+          <div class="blood-card">
+            <span>Blood Group</span>
+            <strong>{{ bloodGroup }}</strong>
+          </div>
+
+          <div class="medical-stack-grid">
+            <section class="medical-stack-card">
+              <h3>Allergies</h3>
+              <div class="stack-list" *ngIf="allergies.length > 0; else noAllergies">
+                <span *ngFor="let item of allergies; trackBy: trackByValue">{{ item }}</span>
+              </div>
+              <ng-template #noAllergies>
+                <p class="empty-text">No allergies recorded.</p>
+              </ng-template>
+            </section>
+
+            <section class="medical-stack-card">
+              <h3>Chronic Conditions</h3>
+              <div class="stack-list" *ngIf="chronicConditions.length > 0; else noConditions">
+                <span *ngFor="let item of chronicConditions; trackBy: trackByValue">{{ item }}</span>
+              </div>
+              <ng-template #noConditions>
+                <p class="empty-text">No chronic conditions recorded.</p>
+              </ng-template>
+            </section>
+
+            <section class="medical-stack-card">
+              <h3>Current Medications</h3>
+              <div class="stack-list" *ngIf="currentMedications.length > 0; else noMedicines">
+                <span *ngFor="let item of currentMedications; trackBy: trackByValue">{{ item }}</span>
+              </div>
+              <ng-template #noMedicines>
+                <p class="empty-text">No current medications recorded.</p>
+              </ng-template>
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <section class="quick-actions-grid">
+        <ng-container *ngFor="let action of actions; trackBy: trackByAction">
+          <a *ngIf="action.route; else buttonAction" class="quick-card" [routerLink]="action.route">
+            <span>{{ action.title.charAt(0) }}</span>
+            <strong>{{ action.title }}</strong>
+            <p>{{ action.description }}</p>
+          </a>
+
+          <ng-template #buttonAction>
+            <button type="button" class="quick-card" (click)="handleAction(action)">
+              <span>{{ action.title.charAt(0) }}</span>
+              <strong>{{ action.title }}</strong>
+              <p>{{ action.description }}</p>
+            </button>
+          </ng-template>
+        </ng-container>
+      </section>
+    </ng-container>
+
+    <app-healthcare-footer tagline="Emergency-ready, privacy-first care"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

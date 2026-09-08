@@ -1,0 +1,393 @@
+<div class="container">
+
+  <!-- HEADER -->
+
+  <div class="header">
+
+    <div>
+      <h1>My Submissions</h1>
+
+      <p>
+        Track the status of your medical case submissions
+      </p>
+    </div>
+
+    <div class="header-right">
+
+      <input
+        type="text"
+        placeholder="Search by case ID or title..."
+      />
+
+      <div class="notification" role="button" tabindex="0" (click)="openNotifications()">
+        🔔
+        <span *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- STATS -->
+
+
+<div class="stats-grid">
+    <div class="card" *ngFor="let item of stats">
+      <div class="left-section">
+        <div class="icon" [ngClass]="item.class">
+          <img [src]="item.icon" />
+        </div>
+
+        <div class="content">
+          <h4>{{ item.title }}</h4>
+          <h2>{{ item.count }}</h2>
+          <p>{{ item.subtitle }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- TABLE SECTION -->
+
+  <div class="table-container">
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+      <button
+        *ngFor="let tab of tabs"
+        (click)="setActiveTab(tab.name)"
+        [class.active]="activeTab === tab.name"
+      >
+
+        {{ tab.name }}
+
+        <span>
+          {{ tab.count }}
+        </span>
+
+      </button>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Case Details</th>
+          <th>Submitted On</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let item of filteredCases">
+
+          <!-- CASE -->
+
+          <td>
+
+            <div class="case-info">
+
+              <div
+  class="case-icon"
+  [ngClass]="getStatusClass(item.status)"
+>
+
+  <div
+    class="medical-icon"
+    [style.mask]="'url(assets/departmentIcons/' + item.icon + '.svg) no-repeat center'"
+    [style.webkitMask]="'url(assets/departmentIcons/' + item.icon + '.svg) no-repeat center'"
+  >
+  </div>
+
+</div>
+
+              <div>
+
+                <!-- <small>
+                  {{ item.id }}
+                </small> -->
+
+                <h4>
+                  {{ item.title }}
+                </h4>
+
+                <p>
+                  {{ item.department }}
+                  
+                </p>
+
+              </div>
+
+            </div>
+
+          </td>
+
+          <!-- DATE -->
+
+          <td>
+
+            <div class="date">
+
+              <span>
+                {{ item.date }}
+              </span>
+
+              <small>
+                {{ item.time }}
+              </small>
+
+            </div>
+
+          </td>
+
+          <!-- STATUS -->
+
+          <td class="status-column">
+
+  <!-- STATUS BADGE -->
+
+  <div
+    class="status-pill"
+    [ngClass]="getStatusClass(item.status)"
+  >
+
+    <span class="status-icon">
+
+      <ng-container [ngSwitch]="item.status">
+
+        <span *ngSwitchCase="'Approved'">✔</span>
+
+        <span *ngSwitchCase="'Rejected for Review'">✖</span>
+
+        <span *ngSwitchDefault><img src="assets/departmentIcons/load.png"/></span>
+
+      </ng-container>
+
+    </span>
+
+    {{ item.status }}
+     <span *ngIf="item.published">Published</span>
+
+  </div>
+
+  <!-- STATUS STEPPER -->
+
+  <div
+  class="status-stepper"
+  [ngClass]="{
+    pending: item.status === 'Pending for Approval',
+    approved: item.status === 'Approved',
+    rejected: item.status === 'Rejected for Review'
+  }"
+>
+
+  <div class="step">
+    <div class="circle"></div>
+    <span>Submitted</span>
+  </div>
+
+  <div class="step">
+    <div class="circle"></div>
+    <span>In Review</span>
+  </div>
+
+  <div class="step">
+    <div class="circle"></div>
+
+    <span>
+      {{
+        item.status === 'Approved'
+          ? 'Approved'
+          : item.status === 'Rejected for Review'
+          ? 'Rejected'
+          : 'Decision'
+      }}
+    </span>
+  </div>
+
+</div>
+
+</td>
+          <!-- <td>
+
+            <div
+              class="status-pill"
+              [ngClass]="getStatusClass(item.status)"
+            >
+
+              <span class="status-dot"></span>
+
+              {{ item.status }}
+
+            </div>
+
+          </td> -->
+
+          <!-- ACTION -->
+
+          <td>
+
+            <!-- <button   class="view-btn"
+  (click)="openCase(item)"
+>
+              View Case
+            </button> -->
+
+             <div class="action-buttons">
+              <button
+                class="view-btn"
+                type="button"
+                [disabled]="loadingDetailId === item.id"
+                (click)="openCase(item)">
+                {{ loadingDetailId === item.id ? 'Opening...' : 'View Case' }}
+              </button>
+
+              <button
+                *ngIf="item.status === 'Rejected for Review'"
+                class="view-btn"
+                type="button"
+                (click)="editCase(item)">
+                Edit & Submit
+              </button>
+
+              <button
+                *ngIf="item.status === 'Approved' && !item.published"
+                class="view-btn publish-btn"
+                type="button"
+                [disabled]="isPublishing(item)"
+                (click)="publishCase(item)">
+                {{ isPublishing(item) ? 'Publishing...' : 'Publish' }}
+              </button>
+
+              <button
+                class="view-btn remove-btn"
+                type="button"
+                (click)="removeCase(item)">
+                Remove
+              </button>
+            </div>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<div class="case-detail-overlay" *ngIf="selectedCase">
+  <section class="case-detail-modal" role="dialog" aria-modal="true" aria-label="Submission case details">
+    <header class="modal-header">
+      <div>
+        <span class="modal-kicker">Case Details</span>
+        <h2>{{ selectedCase.title }}</h2>
+        <p>{{ selectedCase.id }}</p>
+      </div>
+
+      <button class="modal-close" type="button" (click)="closeCaseDetails()">Close</button>
+    </header>
+
+    <div class="modal-body">
+      <section class="modal-main">
+        <div class="pdf-panel">
+          <div class="panel-title">
+            <div>
+              <h3>Uploaded Document</h3>
+              <p>{{ selectedCase.caseDocName || 'Case document.pdf' }}</p>
+            </div>
+          </div>
+
+          <div class="pdf-frame" *ngIf="safePdfUrl; else noPdf">
+            <iframe [src]="safePdfUrl" title="Uploaded case document"></iframe>
+          </div>
+
+          <ng-template #noPdf>
+            <div class="empty-document">
+              <h3>No document available</h3>
+              <p>The uploaded PDF was not found for this submission.</p>
+            </div>
+          </ng-template>
+        </div>
+      </section>
+
+      <aside class="modal-side">
+        <div class="detail-card">
+          <h3>Review Status</h3>
+          <div class="detail-row">
+            <span>Status</span>
+            <b>{{ selectedCase.status }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Published</span>
+            <b>{{ selectedCase.published ? 'Yes' : 'No' }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Verification ID</span>
+            <b>{{ selectedCase.verificationId || 'Not assigned' }}</b>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <h3>Case Information</h3>
+          <div class="detail-row">
+            <span>Case ID</span>
+            <b>{{ selectedCase.id }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Disease</span>
+            <b>{{ selectedCase.disease || 'N/A' }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Department</span>
+            <b>{{ selectedCase.department }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Submitted</span>
+            <b>{{ selectedCase.date }}</b>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <h3>Auth Officer</h3>
+          <div class="detail-row">
+            <span>Name</span>
+            <b>{{ selectedCase.assignedOfficerName || 'Assigned officer' }}</b>
+          </div>
+          <div class="detail-row">
+            <span>ID</span>
+            <b>{{ selectedCase.assignedOfficerId || 'N/A' }}</b>
+          </div>
+          <div class="detail-row">
+            <span>Department</span>
+            <b>{{ selectedCase.assignedOfficerDepartment || 'N/A' }}</b>
+          </div>
+        </div>
+
+        <div class="detail-card remarks-detail">
+          <h3>Auth Officer Remarks</h3>
+          <p>{{ selectedCase.remarks || 'No remarks have been added yet.' }}</p>
+        </div>
+
+        <div class="detail-card description-detail">
+          <h3>Description</h3>
+          <p>{{ selectedCase.description }}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,214 @@
+<main class="submit-case-page">
+
+  <section class="page-header">
+    <div>
+      <h1>Submit New Case</h1>
+      <p>Fill details to submit your medical case for auth officer review.</p>
+    </div>
+
+    <div class="header-badge">
+      <span>●</span>
+      Review Required
+    </div>
+  </section>
+
+  <section class="submit-layout">
+
+    <!-- LEFT HERO -->
+    <aside class="hero-card">
+      <div class="hero-content">
+        <span class="hero-pill">Medical Case Submission</span>
+
+        <h2>Share a case that helps other learners understand real clinical scenarios.</h2>
+
+        <p>
+          Add a clear title, disease, department and case description.
+          You can also upload a PDF report if available.
+        </p>
+
+        <div class="flow-box">
+          <div>
+            <b>1</b>
+            <span>Create Case</span>
+          </div>
+
+          <div>
+            <b>2</b>
+            <span>Auth Review</span>
+          </div>
+
+          <div>
+            <b>3</b>
+            <span>Published</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="assets/new-case.png" alt="Medical case" />
+      </div>
+    </aside>
+
+    <!-- FORM CARD -->
+    <section class="form-card">
+
+      <div class="form-title">
+        <h2>Case Details</h2>
+        <p>All marked fields are required.</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <!-- Title -->
+        <div class="form-group">
+          <label>Case Title <span>*</span></label>
+
+          <input type="text" formControlName="title" placeholder="Example: Severe Pneumonia in an Elderly Patient"
+            [class.invalid]="isInvalid('title')" />
+
+          <small *ngIf="isInvalid('title')">
+            Case title is required.
+          </small>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label>Case Description <span>*</span></label>
+
+          <textarea rows="5" formControlName="description" placeholder="Write a short clinical summary of the case..."
+            [class.invalid]="isInvalid('description')"></textarea>
+
+          <small *ngIf="isInvalid('description')">
+            Case description is required.
+          </small>
+        </div>
+
+        <!-- Grid -->
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Disease <span>*</span></label>
+
+            <input type="text" formControlName="disease" placeholder="Example: Pneumonia"
+              [class.invalid]="isInvalid('disease')" />
+
+            <small *ngIf="isInvalid('disease')">
+              Disease is required.
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Department <span>*</span></label>
+
+            <!-- <input
+              type="text"
+              formControlName="department"
+              placeholder="Example: Pulmonology"
+              [class.invalid]="isInvalid('department')"
+            /> -->
+
+            <select formControlName="department" [class.invalid]="isInvalid('department')">
+              <option value="">Select department</option>
+              <option *ngFor="let department of departmentOptions" [value]="department.value">
+                {{ department.label }}
+              </option>
+            </select>
+
+
+            <small *ngIf="isInvalid('department')">
+              Department is required.
+            </small>
+          </div>
+
+        </div>
+
+        <!-- File Upload -->
+        <div class="upload-box">
+          <input type="file" accept="application/pdf" (change)="onFileChange($event)" hidden #fileInput />
+
+          <div class="upload-content" (click)="fileInput.click()">
+            <div class="upload-icon">⇧</div>
+
+            <h3>Upload PDF</h3>
+            <p>Click to select a case report PDF</p>
+            <span>• PDF only</span>
+          </div>
+
+          <div class="selected-file" *ngIf="selectedFileName">
+            <div>
+              <b>{{ selectedFileName }}</b>
+              <p>Attached successfully</p>
+            </div>
+
+            <button type="button" (click)="removeFile()">
+              Remove
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Notice -->
+        <!-- <div class="notice-box">
+          <span>ⓘ</span>
+          <p>
+            Please make sure patient identity is removed before submitting the case.
+          </p>
+        </div> -->
+
+        <div class="notice-box">
+          <label>
+            <input type="checkbox" name="confirmAnonymized" required />
+            <span>
+              I certify that this case study is strictkly anonymized. I have  permanently cropped/blurred all patient names,
+               hospital ids, and metadata from text fields and X-rays. I confirm that necessarypatient consent has been obtained
+              in compliance with the DPDPA 2023 and NMC guidelines.Read out full  <a routerLink="/guidelines" class="guidelines-lines">Guidelines</a>.
+            </span>
+          </label>
+        </div>
+
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Submitting...' : 'Submit Case' }}
+        </button>
+
+      </form>
+
+    </section>
+
+  </section>
+
+</main>
+
+<div class="assignment-popup-backdrop" *ngIf="showAssignmentPopup">
+  <section class="assignment-popup" role="dialog" aria-modal="true" aria-labelledby="assignmentTitle">
+    <h3 id="assignmentTitle">Case Submitted Successfully</h3>
+    <p>Your case has been assigned for verification.</p>
+
+    <div class="assignment-grid">
+      <div>
+        <span>Case ID</span>
+        <b>{{ submittedCaseId }}</b>
+      </div>
+      <div>
+        <span>Assigned Officer</span>
+        <b>{{ assignedOfficerName }}</b>
+      </div>
+      <div>
+        <span>Officer ID</span>
+        <b>{{ assignedOfficerId }}</b>
+      </div>
+      <div>
+        <span>Officer Department</span>
+        <b>{{ assignedOfficerDepartment }}</b>
+      </div>
+    </div>
+
+    <p class="redirect-note">
+      Redirecting to <strong>My Cases</strong> in {{ redirectCountdown }} seconds.
+    </p>
+
+    <button type="button" class="go-now-btn" (click)="redirectToMyCasesNow()">
+      Go To My Cases Now
+    </button>
+  </section>
+</div>

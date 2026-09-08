@@ -1,0 +1,247 @@
+<div class="page-shell" *ngIf="patient && record">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="My Medical Records" title="My Medical Records"
+      subtitle="View your latest medical profile, visit history, prescriptions, and doctor findings."
+      [badgeText]="'ID: ' + patient.patientId" [avatarText]="patient.fullName.charAt(0)" [avatarImage]="patientPhotoUrl"
+      [showSearch]="false" theme="patient">
+    </app-page-header>
+
+    <section class="records-hero-card">
+      <div class="hero-profile">
+        <div class="profile-avatar" [class.has-image]="patientPhotoUrl">
+          <img *ngIf="patientPhotoUrl; else patientInitial" [src]="patientPhotoUrl" alt="Patient profile photo">
+
+          <ng-template #patientInitial>
+            {{ patient.fullName.charAt(0) }}
+          </ng-template>
+        </div>
+
+        <div>
+          <span>Patient Medical Profile</span>
+          <h2>{{ patient.fullName }}</h2>
+          <p>
+            {{ patient.age || 'N/A' }} Years • {{ patient.gender || 'N/A' }}
+          </p>
+        </div>
+      </div>
+
+      <button class="btn-primary" type="button" (click)="exportPdf()">
+        Export / Print Records
+      </button>
+    </section>
+
+    <section class="vitals-grid compact-vitals">
+      <article>
+        <span>Height</span>
+        <strong>{{ latestHeightCm }}</strong>
+      </article>
+
+      <article>
+        <span>Weight</span>
+        <strong>{{ latestWeightKg }}</strong>
+      </article>
+
+      <article>
+        <span>BMI</span>
+        <strong>{{ latestBmi }}</strong>
+      </article>
+    </section>
+
+    <section class="profile-summary-grid">
+      <article class="summary-card">
+        <h3>Emergency Medical Details</h3>
+
+        <div class="summary-row">
+          <span>Blood Group</span>
+          <strong>{{ record.currentProfile.bloodGroup || patient.emergencyRecord.bloodGroup || 'Not recorded'
+            }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Allergies</span>
+          <strong>{{ record.currentProfile.allergies || 'Not recorded' }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Chronic Conditions</span>
+          <strong>{{ record.currentProfile.chronicConditions || 'Not recorded' }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Current Medication</span>
+          <strong>{{ record.currentProfile.currentMedication || 'Not recorded' }}</strong>
+        </div>
+      </article>
+
+      <article class="summary-card">
+        <h3>Latest Doctor Update</h3>
+
+        <div class="summary-row">
+          <span>Reason / Concern</span>
+          <strong>{{ record.currentProfile.lastDisease || record.currentProfile.disease || 'Not recorded' }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Doctor Findings</span>
+          <strong>{{ record.currentProfile.lastFindings || record.currentProfile.findings || 'Not recorded' }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Prescription</span>
+          <strong>{{ record.currentProfile.lastPrescription || record.currentProfile.prescription || 'Not recorded'
+            }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Last Updated</span>
+          <strong>{{ formatDate(record.currentProfile.lastUpdatedAt || record.currentProfile.updatedAt) }}</strong>
+        </div>
+      </article>
+    </section>
+
+    <section class="records-layout">
+      <article class="visits-card">
+        <div class="card-header">
+          <div>
+            <h3>Visit History</h3>
+            <p>Click a visit to view complete details.</p>
+          </div>
+
+          <div class="search-box">
+            <span>⌕</span>
+            <input type="text" name="searchTerm" [(ngModel)]="searchTerm"
+              placeholder="Search visits, findings, reports...">
+          </div>
+        </div>
+
+        <div class="visit-list" *ngIf="filteredVisits.length > 0; else noVisits">
+          <button type="button" class="visit-row" *ngFor="let visit of filteredVisits"
+            [class.active]="isSelectedVisit(visit)" (click)="viewVisitDetails(visit)">
+
+            <div>
+              <span>Visit Date & Time</span>
+              <strong>{{ formatDate(visit.dateOfUpdate || visit.createdAt || visit.updatedAt) }}</strong>
+            </div>
+
+            <div>
+              <span>Reason for Visit</span>
+              <strong>{{ visit.disease || 'N/A' }}</strong>
+            </div>
+
+            <div>
+              <span>Doctor Finding</span>
+              <strong>{{ visit.findings || 'N/A' }}</strong>
+            </div>
+
+            <b>View</b>
+          </button>
+        </div>
+
+        <ng-template #noVisits>
+          <div class="empty-records">
+            No medical visit records found yet.
+          </div>
+        </ng-template>
+      </article>
+
+      <aside class="visit-detail-card" *ngIf="selectedVisit as visit; else selectVisit">
+        <div class="detail-header">
+          <div>
+            <span>Selected Visit</span>
+            <h3>{{ visit.disease || 'Medical Visit' }}</h3>
+            <p>{{ formatDate(visit.dateOfUpdate || visit.createdAt || visit.updatedAt) }}</p>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4>General Medical Profile</h4>
+
+          <div class="detail-grid compact-detail-grid">
+            <div>
+              <span>Height</span>
+              <strong>{{ visit.heightCm ? visit.heightCm + ' cm' : 'N/A' }}</strong>
+            </div>
+
+            <div>
+              <span>Weight</span>
+              <strong>{{ visit.weightKg ? visit.weightKg + ' kg' : 'N/A' }}</strong>
+            </div>
+
+            <div>
+              <span>BMI</span>
+              <strong>{{ visit.bmi || 'N/A' }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4>Emergency Medical Profile At Visit</h4>
+
+          <dl>
+            <div>
+              <dt>Blood Group</dt>
+              <dd>{{ visit.bloodGroup || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Allergies</dt>
+              <dd>{{ visit.allergies || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Chronic Conditions</dt>
+              <dd>{{ visit.chronicConditions || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Current Medication</dt>
+              <dd>{{ visit.currentMedication || 'N/A' }}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="detail-section">
+          <h4>Doctor Visit Notes</h4>
+
+          <dl>
+            <div>
+              <dt>Reason / Concern</dt>
+              <dd>{{ visit.disease || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Medical Reports</dt>
+              <dd>{{ visit.medicalReports || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Doctor Findings</dt>
+              <dd>{{ visit.findings || 'N/A' }}</dd>
+            </div>
+
+            <div>
+              <dt>Prescription</dt>
+              <dd>{{ visit.prescription || 'N/A' }}</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+
+      <ng-template #selectVisit>
+        <aside class="visit-detail-card empty-side">
+          Select a visit from the left to view complete medical details.
+        </aside>
+      </ng-template>
+    </section>
+
+    <div class="export-toast" *ngIf="exported">
+      Preparing your medical record for print/export...
+    </div>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+</div>

@@ -1,0 +1,103 @@
+<div class="layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="content">
+
+    <div class="top">
+      <div>
+        <h1>{{ title }}</h1>
+        <p>{{ subtitle }}</p>
+      </div>
+
+      <button class="export-btn" routerLink="/admin/profiles">
+        View Profiles
+      </button>
+    </div>
+
+    <section class="cards" *ngIf="status === 'all'">
+
+      <div class="report-card">
+        <div class="icon green">Ok</div>
+
+        <h3>Approved Users Report</h3>
+
+        <p>
+          View all approved users and approval history.
+        </p>
+
+        <button routerLink="/admin/approved-users">View Report</button>
+      </div>
+
+      <div class="report-card">
+        <div class="icon red">No</div>
+
+        <h3>Rejected Users Report</h3>
+
+        <p>
+          View rejected users with rejection reasons.
+        </p>
+
+        <button routerLink="/admin/rejected-users">View Report</button>
+      </div>
+
+      <div class="report-card">
+        <div class="icon blue">Data</div>
+
+        <h3>Approval Summary</h3>
+
+        <p>
+          Approval rate, pending profiles and live activity.
+        </p>
+
+        <button routerLink="/admin/dashboard">View Dashboard</button>
+      </div>
+
+    </section>
+
+    <div class="table-card" *ngIf="status !== 'all'">
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Reviewed On</th>
+            <th>Remark</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngIf="isLoading">
+            <td colspan="7">Loading report...</td>
+          </tr>
+
+          <tr *ngIf="!isLoading && errorMessage">
+            <td colspan="7">{{ errorMessage }}</td>
+          </tr>
+
+          <tr *ngIf="!isLoading && !errorMessage && users.length === 0">
+            <td colspan="7">No {{ status }} users found.</td>
+          </tr>
+
+          <tr *ngFor="let user of users">
+            <td>{{ user.userId }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ toTitleCase(user.role) }}</td>
+            <td>{{ toTitleCase(getStatus(user)) }}</td>
+            <td>{{ formatDate(user.reviewedAt || user.updatedAt) }}</td>
+            <td>{{ user.reviewRemark || 'No remark' }}</td>
+            <td>
+              <button [routerLink]="['/admin/profile-details', user.userId]">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-admin-footer></app-admin-footer>
+  </main>
+
+</div>

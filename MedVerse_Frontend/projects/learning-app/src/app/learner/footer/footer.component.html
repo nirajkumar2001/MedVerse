@@ -1,0 +1,165 @@
+<!-- <footer class="footer">
+
+  <div class="footer-inner">
+
+
+    <div class="footer-brand">
+      <div class="brand-row">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+        </div>
+
+        <div>
+          <h2>MedCase</h2>
+          <p>{{ footerConfig.roleLabel }}</p>
+        </div>
+      </div>
+
+      <p class="brand-desc">
+        {{ footerConfig.description }}
+      </p>
+
+      <div class="footer-badges">
+        <span>Secure access</span>
+        <span>Role based</span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+
+      <a
+        *ngFor="let link of footerConfig.quickLinks"
+        [routerLink]="link.route"
+      >
+        {{ link.label }}
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Resources</h3>
+
+      <a
+        *ngFor="let item of footerConfig.resources"
+        [routerLink]="item.route"
+      >
+        {{ item.label }}
+      </a>
+    </div>
+
+    <div class="footer-col footer-info">
+      <h3>{{ footerConfig.roleLabel }}</h3>
+
+      <p>
+        Continue your work using the tools available for your current role.
+      </p>
+
+      <button
+        type="button"
+        [routerLink]="footerConfig.ctaRoute"
+      >
+        {{ footerConfig.ctaText }}
+      </button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ currentYear }} MedCase. All rights reserved.</p>
+
+    <div>
+      <a routerLink="/terms">Terms</a>
+      <span>•</span>
+      <a routerLink="/privacy-policy">Privacy</a>
+      <span>•</span>
+      <a routerLink="/contact">Contact</a>
+    </div>
+  </div>
+
+</footer> -->
+
+<footer class="footer">
+
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="brand-row">
+        <div class="brand-icon">
+          <img src="assets/logo.png"/>
+          <!-- <svg viewBox="0 0 24 24"> -->
+            <!-- <path d="M12 5v14M5 12h14" />
+          </svg> -->
+        </div>
+
+        <div>
+          <h2>MedVerse</h2>
+          <p>Report. Learn. Impact.</p>
+        </div>
+      </div>
+
+      <p class="brand-desc">
+        A centralized medical case learning platform where learners can submit,
+        review, save, and explore approved clinical cases.
+      </p>
+
+      <div class="footer-badges">
+        <span>Auth reviewed</span>
+        <span>Medical learning</span>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h3>Platform</h3>
+
+      <a
+        *ngFor="let link of quickLinks"
+        [routerLink]="link.route"
+      >
+        {{ link.label }}
+      </a>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-col">
+      <h3>Resources</h3>
+
+      <a
+        *ngFor="let item of resources"
+        [routerLink]="item.route"
+      >
+        {{ item.label }}
+      </a>
+    </div>
+
+    <!-- Contact / Info -->
+    <div class="footer-col footer-info">
+      <h3>For Learners</h3>
+
+      <p>
+        Only medical students and doctors can register as learners and submit cases.
+      </p>
+
+      <button type="button" routerLink="/learner/submit-new-case">
+        Submit a Case
+      </button>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ currentYear }} MedVerse. All rights reserved.</p>
+
+    <div>
+      <a routerLink="/terms">Terms</a>
+      <span>•</span>
+      <a routerLink="/privacy-policy">Privacy</a>
+      <span>•</span>
+      <a routerLink="/contact">Contact</a>
+    </div>
+  </div>
+
+</footer>

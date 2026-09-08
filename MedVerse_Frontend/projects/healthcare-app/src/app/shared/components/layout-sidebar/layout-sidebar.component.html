@@ -1,0 +1,73 @@
+<aside class="sidebar" [class.collapsed]="collapsed">
+  <div class="sidebar-bubbles" aria-hidden="true">
+    <span
+      class="bubble"
+      *ngFor="let bubble of bubbles; trackBy: trackByBubble"
+      [style.width.px]="displayBubbleSize(bubble)"
+      [style.height.px]="displayBubbleSize(bubble)"
+      [style.opacity]="bubble.opacity"
+      [style.transform]="bubbleTransform(bubble)">
+      <i></i>
+    </span>
+  </div>
+
+  <button
+    class="sidebar-toggle"
+    type="button"
+    (click)="toggleSidebar()"
+    [attr.aria-label]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+    [title]="collapsed ? 'Expand sidebar' : 'Collapse sidebar'">
+    <span>{{ collapsed ? '›' : '‹' }}</span>
+  </button>
+
+  <div class="sidebar-logo">
+    <div class="logo-mark image-logo" aria-hidden="true">
+      <img src="/shared-assets/Medverse_images/medverse_logo.png" alt="MedVerse logo" />
+    </div>
+
+    <div class="brand-copy">
+      <span>MedVerse</span>
+      <small>{{ portalSubtitle }}</small>
+    </div>
+  </div>
+
+  <div class="portal-chip">
+    <span class="portal-dot"></span>
+    <strong>{{ roleBadge }}</strong>
+    <small>secured access</small>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Healthcare navigation">
+    <div class="sidebar-section-label">Main Menu</div>
+
+    <a
+      *ngFor="let item of displayMenuItems; trackBy: trackByRoute"
+      class="nav-item"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+      [title]="collapsed ? item.label : ''">
+
+      <span class="nav-icon" aria-hidden="true">
+        {{ getIconSymbol(item) }}
+      </span>
+
+      <span class="nav-label">{{ item.label }}</span>
+
+      <span class="nav-badge" *ngIf="item.badgeCount && item.badgeCount > 0">
+        {{ item.badgeCount > 99 ? '99+' : item.badgeCount }}
+      </span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button
+      class="nav-item logout"
+      type="button"
+      (click)="onLogout()"
+      [title]="collapsed ? 'Logout' : ''">
+      <span class="nav-icon" aria-hidden="true">↪</span>
+      <span class="nav-label">Logout</span>
+    </button>
+  </div>
+</aside>

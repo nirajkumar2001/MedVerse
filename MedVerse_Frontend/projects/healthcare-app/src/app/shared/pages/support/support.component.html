@@ -1,0 +1,76 @@
+<div class="page-shell">
+  <app-layout-sidebar
+    [brandName]="root"
+    [menuItems]="menuItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      [breadcrumbRoot]="root"
+      [breadcrumbRootRoute]="homeRoute"
+      breadcrumbCurrent="Help & Support"
+      title="Help & Support"
+      subtitle="Raise operational queries, review common workflows, and contact the MedVerse team."
+      badgeText="24x7 Desk"
+      avatarText="MV"
+      [showSearch]="!isPatient">
+    </app-page-header>
+
+    <section class="support-layout">
+      <article class="card">
+        <h3>Submit a Query</h3>
+        <label>
+          Category
+          <select [(ngModel)]="category">
+            <option>Access and consent</option>
+            <option>Emergency lookup</option>
+            <option>Profile verification</option>
+            <option>Technical issue</option>
+          </select>
+        </label>
+        <label>
+          Message
+          <textarea rows="7" [(ngModel)]="message" placeholder="Describe the issue or request..."></textarea>
+        </label>
+        <button class="btn-primary" type="button" (click)="submitConcern()" [disabled]="submitting">
+          {{ submitting ? 'Sending...' : 'Send Query' }}
+        </button>
+        <p class="field-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p class="success-alert" *ngIf="submitted">Concern submitted. It will appear in the admin support queue on backend v2.0.</p>
+      </article>
+
+      <article class="card knowledge-card">
+        <h3>Support Contacts</h3>
+        <div class="help-item">
+          <strong>Healthcare Desk</strong>
+          <p>support.healthcare&#64;medverse.local - +91 1800 100 204</p>
+        </div>
+        <div class="help-item">
+          <strong>Security & Consent</strong>
+          <p>privacy&#64;medverse.local - Available 24x7 for access concerns.</p>
+        </div>
+        <h3>Quick Help</h3>
+        <div class="help-item">
+          <strong>Access requests</strong>
+          <p>Doctors create a consent session. Patients can allow full records, allow profile-only access, or reject.</p>
+        </div>
+        <div class="help-item">
+          <strong>Emergency lookup</strong>
+          <p>Doctors search by patient ID, address, location, pincode, and patient details. Patients only view their own emergency data.</p>
+        </div>
+        <div class="help-item">
+          <strong>Verification</strong>
+          <p>New accounts stay pending until admin approval. Pending users can login with restricted access.</p>
+        </div>
+      </article>
+    </section>
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

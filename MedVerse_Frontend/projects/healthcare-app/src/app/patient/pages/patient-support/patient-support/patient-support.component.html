@@ -1,0 +1,83 @@
+<div class="page-shell" *ngIf="patient">
+  <app-layout-sidebar
+    brandName="Patient Portal"
+    [menuItems]="menuItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Patient Portal"
+      breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Help & Support"
+      title="Help & Support"
+      subtitle="Quick answers for profile, emergency details, medical records, and access requests."
+      [badgeText]="'ID: ' + patient.patientId"
+      [avatarText]="patient.fullName.charAt(0)"
+      [showSearch]="false"
+      theme="patient">
+    </app-page-header>
+
+    <section class="support-summary" aria-label="Patient support categories">
+      <article>
+        <span>ER</span>
+        <strong>Emergency Details</strong>
+        <p>Understand what critical information is visible during urgent care.</p>
+      </article>
+
+      <article>
+        <span>AR</span>
+        <strong>Access Requests</strong>
+        <p>Control doctor access to your profile and previous medical records.</p>
+      </article>
+
+      <article>
+        <span>MR</span>
+        <strong>Medical Records</strong>
+        <p>Review, export, and understand your available healthcare records.</p>
+      </article>
+    </section>
+
+    <div class="faq-heading">
+      <span>FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <section class="faq-layout">
+      <div class="faq-list" aria-label="Frequently asked questions">
+        <details class="faq-item" *ngFor="let faq of faqs; let first = first" [open]="first">
+          <summary>
+            <span>{{ faq.category }}</span>
+            <strong>{{ faq.question }}</strong>
+          </summary>
+
+          <p>{{ faq.answer }}</p>
+        </details>
+      </div>
+
+      <aside class="support-panel" aria-label="Support contact">
+        <span class="panel-icon">24</span>
+        <h2>Need More Help?</h2>
+        <p>For urgent profile, consent, or access concerns, contact the healthcare desk.</p>
+
+        <div class="contact-line">
+          <strong>Email</strong>
+          <span>support.healthcare&#64;medverse.local</span>
+        </div>
+
+        <div class="contact-line">
+          <strong>Phone</strong>
+          <span>+91 1800 100 204</span>
+        </div>
+      </aside>
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+</div>

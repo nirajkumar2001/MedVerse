@@ -1,0 +1,99 @@
+<div class="approved-layout">
+
+  <app-sidebar (logoutClicked)="logout()" (collapsedChange)="onSidebarCollapsed($event)"></app-sidebar>
+
+  <main class="approved-page" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <!-- Header -->
+    <section class="page-header">
+
+      <div>
+        <h1>Approved Cases</h1>
+        <p>
+          Browse all medical cases that have been successfully verified and approved for publication.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Search -->
+    <section class="search-section">
+
+      <div class="search-box">
+        <span>⌕</span>
+
+        <input
+          type="text"
+          placeholder="Search by case ID,disease or title"
+          [(ngModel)]="searchText"
+        />
+      </div>
+
+    </section>
+   <div class="case-count">
+  <strong>Showing {{ filteredCases.length }} approved cases</strong>
+</div>
+    <!-- Cards -->
+    <section class="case-grid">
+
+      <article class="case-card" *ngFor="let item of filteredCases">
+
+        <div class="card-top">
+          <div class="case-icon">
+            ✓
+          </div>
+
+          <span class="status-badge">
+            ● {{ item.status }}
+          </span>
+        </div>
+
+        <div class="case-content">
+          <h3>{{ item.caseId }}</h3>
+
+          <h4>{{ item.title }}</h4>
+
+          <p class="disease">
+            {{ item.disease }}
+          </p>
+
+          <p class="date">
+            🗓 {{ item.approvedDate }}
+          </p>
+        </div>
+
+        <button type="button" class="view-btn" (click)="viewCase(item)">
+          👁 View Case
+        </button>
+
+      </article>
+
+      <div class="empty-state" *ngIf="filteredCases.length === 0">
+        No approved cases found.
+      </div>
+
+    </section>
+
+    <!-- Pagination -->
+    <!-- <section class="pagination-section">
+
+      <p>
+        Showing 1 to {{ filteredCases.length }} of {{ approvedCases.length }} cases
+      </p>
+
+      <div class="pagination">
+        <button type="button">‹</button>
+        <button type="button" class="active">1</button>
+        <button type="button">2</button>
+        <button type="button">3</button>
+        <button type="button">...</button>
+        <button type="button">22</button>
+        <button type="button">›</button>
+      </div>
+
+    </section> -->
+    
+    <app-authofficer-footer></app-authofficer-footer>
+  </main>
+
+</div>

@@ -1,0 +1,159 @@
+<main class="saved-page">
+
+  <!-- Header -->
+  <section class="page-header">
+    <div>
+      <h1>Saved Cases</h1>
+      <p>Your bookmarked cases, organized for easy access and learning.</p>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-box">
+        <span>⌕</span>
+        <input type="text" [(ngModel)]="searchText" (ngModelChange)="goToPage(1)" placeholder="Search saved cases..." />
+      </div>
+
+      <div class="notification" role="button" tabindex="0" (click)="openNotifications()">
+        🔔
+        <span *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-icon" [ngClass]="stat.color">
+        {{ stat.icon }}
+      </div>
+
+      <div>
+        <h2>{{ stat.value }}</h2>
+        <h3>{{ stat.title }}</h3>
+        <p>{{ stat.subtitle }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="filter-panel">
+    <div class="category-tabs">
+      <button *ngFor="let category of categories" [class.active]="activeCategory === category.name"
+        (click)="setActiveCategory(category.name)">
+        {{ category.name }}
+        <span>{{ category.count }}</span>
+      </button>
+    </div>
+
+    <div class="filter-actions">
+      <div class="view-toggle">
+        <button [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')">
+          ▦
+        </button>
+
+        <button [class.active]="viewMode === 'list'" (click)="setViewMode('list')">
+          ☰
+        </button>
+      </div>
+
+      <select>
+        <option>Recently Saved</option>
+        <!-- <option>Most Viewed</option> -->
+        <!-- <option>Most Liked</option> -->
+        <option>Oldest Saved</option>
+      </select>
+
+
+    </div>
+  </section>
+
+  <!-- Saved Cases -->
+  <section class="cases-grid" [class.list-view]="viewMode === 'list'">
+
+    <article class="case-card" *ngFor="let item of pagedCases">
+
+      <div class="case-image">
+        <img
+  [src]="caseImageService.getCaseImage(item.department)"
+  [alt]="item.title"
+/>
+
+        <button
+  class="bookmark-btn bookmarked"
+  (click)="removeBookmark(item, $event)"
+>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+  >
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+  </svg>
+
+</button>
+        <!-- <span
+          class="priority-badge"
+          *ngIf="item.priority === 'High'"
+        >
+          High Priority
+        </span> -->
+      </div>
+
+      <div class="case-content">
+        <div class="case-top">
+          <span class="department">{{ item.department }}</span>
+
+          <button class="menu-btn">
+            ⋮
+          </button>
+        </div>
+
+        <h3>{{ item.title }}</h3>
+
+        <p class="description">
+          {{ item.description }}
+        </p>
+
+        <div class="case-meta">
+          <span>📅 {{ item.savedDate }}</span>
+          <span>👨‍⚕️ {{ item.author }}</span>
+        </div>
+
+        <div class="case-actions">
+          <button class="open-btn" (click)="openCase(item)">
+            Open Case
+          </button>
+
+          <button class="remove-btn" (click)="removeBookmark(item)">
+            Remove
+          </button>
+        </div>
+      </div>
+
+    </article>
+
+  </section>
+
+  <!-- Empty State -->
+  <section class="empty-state" *ngIf="filteredCases.length === 0">
+    <div>🔖</div>
+    <h2>No saved cases found</h2>
+    <p>Try changing your search or selected category.</p>
+  </section>
+
+  <!-- Footer Pagination -->
+  <section class="pagination" *ngIf="filteredCases.length > 0">
+    <p>Showing {{ (currentPage - 1) * pageSize + 1 }} to {{ ((currentPage - 1) * pageSize) + pagedCases.length }} of {{ filteredCases.length }} saved cases</p>
+
+    <div class="pages">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">&#8249;</button>
+      <button *ngFor="let page of pageNumbers" [class.active]="currentPage === page" (click)="goToPage(page)">{{ page }}</button>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">&#8250;</button>
+    </div>
+  </section>
+
+</main>
+

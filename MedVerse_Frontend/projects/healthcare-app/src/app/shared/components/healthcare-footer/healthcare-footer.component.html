@@ -1,0 +1,61 @@
+<footer class="healthcare-footer">
+  <div class="footer-glow footer-glow-left"></div>
+  <div class="footer-glow footer-glow-right"></div>
+
+  <div class="footer-inner">
+    <section class="footer-brand">
+      <div class="brand-row">
+        <div class="brand-icon" aria-hidden="true">
+          <img src="/shared-assets/Medverse_images/medverse_logo.png" alt="MedVerse logo" />
+        </div>
+
+        <div>
+          <h2>MedVerse</h2>
+          <p>{{ footerConfig.roleTagline }}</p>
+        </div>
+      </div>
+
+      <p class="brand-desc">{{ footerConfig.description }}</p>
+
+      <div class="footer-badges">
+        <span>Secure records</span>
+        <span>Role-based access</span>
+        <span>Healthcare ready</span>
+      </div>
+    </section>
+
+    <section class="footer-col">
+      <h3>Platform</h3>
+      <a *ngFor="let link of footerConfig.platformLinks" [routerLink]="link.route">{{ link.label }}</a>
+    </section>
+
+    <section class="footer-col">
+      <h3>Resources</h3>
+      <a *ngFor="let item of footerConfig.resourceLinks" [routerLink]="item.route">{{ item.label }}</a>
+    </section>
+
+    <section class="footer-col footer-support">
+      <h3>{{ footerConfig.roleLabel }}</h3>
+      <p>Need help with your MedVerse account or healthcare workspace? Reach our support team anytime.</p>
+
+      <div class="support-list">
+        <a href="mailto:support@medverse.com"><span>✉</span>support&#64;medverse.com</a>
+        <a href="tel:+919812345678"><span>☎</span>+91 98123 45678</a>
+      </div>
+
+      <a class="support-btn" [routerLink]="footerConfig.supportRoute">Open Support</a>
+    </section>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {{ currentYear }} MedVerse Healthcare. All rights reserved.</p>
+
+    <div class="trust-strip">
+      <span>Privacy-first access</span>
+      <i></i>
+      <span>Encrypted sessions</span>
+      <i></i>
+      <span>{{ tagline }}</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,6 @@
+<div class="toast" [ngClass]="type" *ngIf="show">
+  <span *ngIf="type === 'success'">✅</span>
+  <span *ngIf="type === 'danger'">⚠️</span>
+  <span *ngIf="type === 'info'">ℹ️</span>
+  {{ message }}
+</div>

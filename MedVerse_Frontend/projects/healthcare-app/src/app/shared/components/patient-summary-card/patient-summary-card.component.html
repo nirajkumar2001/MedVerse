@@ -1,0 +1,15 @@
+<div class="patient-card">
+  <div>
+    <strong>{{ patient.fullName }}</strong>
+    <p>
+      ID: {{ patient.patientId }} ·
+      {{ patient.district }} ·
+      {{ patient.state }} ·
+      {{ patient.pincode }}
+    </p>
+  </div>
+
+  <button class="btn-secondary" type="button" (click)="onActionClick()">
+    {{ actionLabel }}
+  </button>
+</div>

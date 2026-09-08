@@ -1,0 +1,33 @@
+<div class="loader" [class.hide]="!loading">
+  <div class="loader-mark">M</div>
+  <p>Entering Medverse</p>
+</div>
+
+<div class="cursor-light"></div>
+
+<div class="nav-dots">
+  <button [class.active]="activeSection === 'hero'" (click)="scrollTo('hero')"></button>
+  <button [class.active]="activeSection === 'emergency'" (click)="scrollTo('emergency')"></button>
+  <button [class.active]="activeSection === 'consent'" (click)="scrollTo('consent')"></button>
+  <button [class.active]="activeSection === 'learning'" (click)="scrollTo('learning')"></button>
+  <button [class.active]="activeSection === 'roles'" (click)="scrollTo('roles')"></button>
+</div>
+<div class="particles">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<app-navbar></app-navbar>
+
+<main class="medverse">
+  <app-hero></app-hero>
+  <app-data-stats
+    [patientCount]="1234"
+    [doctorCount]="2454"
+    [learnerCount]="3142"
+    [officerCount]="1446"
+  ></app-data-stats>
+
+<app-story></app-story>
+  <app-roles></app-roles>
+  <app-footer></app-footer>
+</main>

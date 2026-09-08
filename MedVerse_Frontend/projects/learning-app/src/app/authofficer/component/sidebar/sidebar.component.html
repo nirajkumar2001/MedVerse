@@ -1,0 +1,118 @@
+<button
+  class="mobile-menu-btn"
+  [class.hide-menu]="isMobileOpen"
+  (click)="toggleMobileSidebar()"
+>
+  <svg viewBox="0 0 24 24">
+    <path d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+</button>
+
+<div
+  class="sidebar-overlay"
+  [class.show]="isMobileOpen"
+  (click)="closeMobileSidebar()">
+</div>
+
+<aside
+  class="sidebar"
+  [class.collapsed]="isCollapsed"
+  [class.mobile-open]="isMobileOpen">
+
+  <div class="logo-box">
+    <div class="logo-icon">
+      <img src="assets/logo.png">
+    </div>
+
+    <div class="logo-text">
+      <h2>MedVerse</h2>
+      <p>Authentication Officer</p>
+    </div>
+
+    <button
+      class="collapse-btn"
+      type="button"
+      (click)="toggleSidebar()"
+      [attr.aria-label]="isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+    >
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="nav-menu">
+    <a
+      class="nav-item"
+      *ngFor="let item of sidebarItems"
+      [routerLink]="item.route"
+      (click)="closeMobileSidebar()"
+      [class.active]="isActive(item)"
+      [title]="isCollapsed ? item.label : ''">
+
+      <span class="nav-icon">
+        <ng-container [ngSwitch]="item.icon">
+
+          <svg *ngSwitchCase="'dashboard'" viewBox="0 0 24 24">
+            <path d="M4 13h7V4H4v9zM13 20h7V4h-7v16zM4 20h7v-5H4v5z" />
+          </svg>
+
+          <svg *ngSwitchCase="'approve'" viewBox="0 0 24 24">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+
+          <svg *ngSwitchCase="'cases'" viewBox="0 0 24 24">
+            <path d="M7 3h7l5 5v13H7z" />
+            <path d="M14 3v5h5" />
+            <path d="M9 13h6M9 17h6" />
+          </svg>
+
+          <svg *ngSwitchCase="'reports'" viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+
+          <svg *ngSwitchCase="'all-cases'" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+
+          <svg *ngSwitchCase="'profile'" viewBox="0 0 24 24">
+            <path d="M20 21a8 8 0 0 0-16 0" />
+            <path d="M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" />
+          </svg>
+
+          <svg *ngSwitchCase="'support'" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M9.4 9.6a2.6 2.6 0 1 1 4.9 1.3c-.6 1-1.9 1.3-2.2 2.6"></path>
+            <circle cx="12" cy="16.8" r="0.8"></circle>
+          </svg>
+
+          <svg *ngSwitchCase="'password'" viewBox="0 0 24 24">
+            <rect x="4" y="11" width="16" height="9" rx="2"></rect>
+            <path d="M8 11V8a4 4 0 0 1 8 0v3"></path>
+            <circle cx="12" cy="15.5" r="1"></circle>
+          </svg>
+
+        </ng-container>
+      </span>
+
+      <span class="nav-label">{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <div class="logout" (click)="logout()">
+    <span class="nav-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M10 17l5-5-5-5" />
+        <path d="M15 12H3" />
+        <path d="M21 3v18" />
+      </svg>
+    </span>
+
+    <span class="nav-label">Logout</span>
+  </div>
+
+</aside>
+
+<lib-logout-confirm-modal
+  [open]="showLogoutModal"
+  (cancelled)="closeLogoutModal()"
+  (confirmed)="confirmLogout()">
+</lib-logout-confirm-modal>

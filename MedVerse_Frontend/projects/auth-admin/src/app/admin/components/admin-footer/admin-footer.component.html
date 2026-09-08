@@ -1,0 +1,52 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <section class="footer-brand">
+      <div class="brand-row">
+        <div class="brand-icon">
+          <img src="assets/logo.png" alt="MedVerse" />
+        </div>
+        <div>
+          <h2>MedVerse</h2>
+          <p>Admin Console</p>
+        </div>
+      </div>
+
+      <p class="brand-desc">
+        Manage platform onboarding, review profile requests, monitor alerts,
+        and maintain trusted role-based access across MedVerse modules.
+      </p>
+
+      <div class="footer-badges">
+        <span>Access control</span>
+        <span>Audit workflow</span>
+      </div>
+    </section>
+
+    <section class="footer-col">
+      <h3>Platform</h3>
+      <a *ngFor="let link of quickLinks" [routerLink]="link.route">{{ link.label }}</a>
+    </section>
+
+    <section class="footer-col">
+      <h3>Resources</h3>
+      <a *ngFor="let item of resources" [routerLink]="item.route">{{ item.label }}</a>
+    </section>
+
+    <section class="footer-col footer-info">
+      <h3>For Admins</h3>
+      <p>Review profiles fairly, keep records consistent, and resolve account issues quickly.</p>
+      <button type="button" routerLink="/admin/profiles">Review Pending Profiles</button>
+    </section>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} MedVerse. All rights reserved.</p>
+    <div>
+      <a routerLink="/terms-conditions">Terms</a>
+      <span>&bull;</span>
+      <a routerLink="/privacy-policy">Privacy</a>
+      <span>&bull;</span>
+      <a routerLink="/admin/alerts">Alerts</a>
+    </div>
+  </div>
+</footer>

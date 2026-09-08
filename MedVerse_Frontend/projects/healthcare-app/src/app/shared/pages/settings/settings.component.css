@@ -1,0 +1,64 @@
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.setting-panel h3 {
+  margin: 0 0 18px;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--c-border);
+  padding: 14px 0;
+}
+
+.toggle-row:last-child {
+  border-bottom: 0;
+}
+
+label {
+  display: block;
+  color: var(--c-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+label strong,
+label small {
+  display: block;
+  text-transform: none;
+}
+
+label strong {
+  color: var(--c-darkest);
+  font-size: 14px;
+}
+
+label small {
+  color: var(--c-muted);
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.toggle-row input {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1100px) {
+  .settings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+}

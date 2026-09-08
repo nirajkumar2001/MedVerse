@@ -1,0 +1,1315 @@
+:host {
+  display: block;
+}
+
+/* ---------- Page ---------- */
+.main-content {
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.09), transparent 34%),
+    radial-gradient(circle at 12% 42%, rgba(14, 165, 233, 0.07), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #ffffff 42%, #f7f9ff 100%);
+}
+
+/* ---------- Lookup Hero ---------- */
+.lookup-hero-card {
+  position: relative;
+  overflow: hidden;
+  margin: 24px 0 18px;
+  padding: 26px;
+  border-radius: 28px;
+  border: 1px solid rgba(99, 91, 255, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(124, 109, 255, 0.18), transparent 36%),
+    radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.13), transparent 35%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(244, 247, 255, 0.94));
+  box-shadow:
+    0 20px 48px rgba(54, 63, 110, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.9fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.lookup-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 0;
+  width: 6px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(180deg, #635bff, #7c6dff, #38bdf8);
+}
+
+.lookup-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.lookup-copy span {
+  display: inline-flex;
+  align-items: center;
+  color: #5a35f0;
+  background: rgba(99, 91, 255, 0.08);
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+
+.lookup-copy h2 {
+  margin: 16px 0 10px;
+  color: #07144f;
+  font-size: 30px;
+  line-height: 1.14;
+  font-weight: 950;
+  max-width: 720px;
+}
+
+.lookup-copy p {
+  margin: 0;
+  color: #4b587c;
+  line-height: 1.65;
+  font-size: 15px;
+  font-weight: 700;
+  max-width: 760px;
+}
+
+.lookup-search {
+  position: relative;
+  z-index: 1;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.08), transparent 36%),
+    rgba(255, 255, 255, 0.82);
+  box-shadow: 0 16px 36px rgba(54, 63, 110, 0.10);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(99, 91, 255, 0.14);
+  background: rgba(248, 250, 255, 0.96);
+  border-radius: 17px;
+  padding: 0 14px;
+}
+
+.search-input-wrap span {
+  color: #635bff;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.search-input-wrap input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 15px 0;
+  color: #07144f;
+  font: inherit;
+  font-weight: 800;
+}
+
+.search-input-wrap input::placeholder {
+  color: #9aa4be;
+  font-weight: 650;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary,
+.btn-secondary,
+.btn-open {
+  border-radius: 16px;
+  padding: 13px 18px;
+  font-weight: 950;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #635bff, #7c6dff);
+  box-shadow: 0 14px 30px rgba(99, 91, 255, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(99, 91, 255, 0.32);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(99, 91, 255, 0.15);
+  color: #4f32d8;
+  background: rgba(99, 91, 255, 0.06);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(99, 91, 255, 0.11);
+}
+
+.btn-open {
+  border: 0;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #635bff);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.20);
+}
+
+.btn-open:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.26);
+}
+
+/* ---------- Status ---------- */
+.result-message,
+.loading-card {
+  margin-bottom: 18px;
+  padding: 15px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.08), transparent 34%),
+    rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 28px rgba(54, 63, 110, 0.08);
+  color: #4b587c;
+  font-weight: 850;
+}
+
+.loading-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-card::before {
+  content: '';
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  border: 3px solid rgba(99, 91, 255, 0.16);
+  border-top-color: #635bff;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Shared Cards ---------- */
+.multiple-results-card,
+.patient-emergency-hero,
+.info-card,
+.empty-lookup-card {
+  border-radius: 28px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.055), transparent 36%),
+    rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 44px rgba(54, 63, 110, 0.10);
+}
+
+.multiple-results-card {
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #07144f;
+  font-size: 21px;
+  font-weight: 950;
+}
+
+.section-header p {
+  margin: 6px 0 0;
+  color: #69728c;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.count-pill {
+  flex: 0 0 auto;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #5a35f0;
+  background: rgba(99, 91, 255, 0.08);
+  border: 1px solid rgba(99, 91, 255, 0.14);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+/* ---------- Multiple Results ---------- */
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.patient-match-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(99, 91, 255, 0.12);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.06), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 255, 0.92));
+  box-shadow: 0 14px 32px rgba(54, 63, 110, 0.08);
+}
+
+.match-avatar {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 18px;
+  color: #5a35f0;
+  background: rgba(99, 91, 255, 0.09);
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.match-avatar.has-image {
+  background: #ffffff;
+  padding: 0;
+}
+
+.match-avatar img,
+.patient-avatar img,
+.inline-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.match-content {
+  min-width: 0;
+}
+
+.match-content span {
+  display: inline-flex;
+  color: #5a35f0;
+  background: rgba(99, 91, 255, 0.08);
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 950;
+  margin-bottom: 8px;
+}
+
+.match-content h4 {
+  margin: 0;
+  color: #07144f;
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.match-content p {
+  margin: 6px 0 10px;
+  color: #4b587c;
+  font-weight: 750;
+}
+
+.match-info {
+  color: #4b587c;
+  line-height: 1.5;
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.match-info b {
+  color: #07144f;
+  font-weight: 950;
+}
+
+/* ---------- Selected Patient Hero ---------- */
+.patient-emergency-hero {
+  margin: 22px 0 18px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.13), transparent 35%),
+    radial-gradient(circle at bottom left, rgba(14, 165, 233, 0.10), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 255, 0.94));
+}
+
+.patient-main {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.patient-avatar {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 24px;
+  color: #5a35f0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.95), transparent 36%),
+    linear-gradient(135deg, rgba(99, 91, 255, 0.16), rgba(124, 109, 255, 0.08));
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  box-shadow: 0 16px 32px rgba(99, 91, 255, 0.14);
+  font-size: 32px;
+  font-weight: 950;
+}
+
+.patient-avatar.has-image {
+  background: #ffffff;
+  padding: 0;
+}
+
+.patient-main span,
+.blood-card span,
+.info-row span,
+.contact-display span,
+.identification-grid span,
+.critical-card span {
+  display: block;
+  color: #69728c;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 7px;
+}
+
+.patient-main h2 {
+  margin: 0;
+  color: #07144f;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 950;
+}
+
+.patient-main p {
+  margin: 7px 0 0;
+  color: #4b587c;
+  font-weight: 750;
+}
+
+.blood-card {
+  min-width: 170px;
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(99, 91, 255, 0.14);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.10), transparent 36%),
+    rgba(255, 255, 255, 0.94);
+  text-align: center;
+}
+
+.blood-card strong {
+  color: #5a35f0;
+  font-size: 28px;
+  font-weight: 950;
+}
+
+/* ---------- Identity + Contact: High Priority ---------- */
+.details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.info-card {
+  padding: 24px;
+}
+
+.section-title {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.section-title>span {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #635bff, #7c6dff);
+  font-weight: 950;
+  box-shadow: 0 12px 22px rgba(99, 91, 255, 0.22);
+}
+
+.section-title h3 {
+  margin: 0;
+  color: #07144f;
+  font-size: 21px;
+  font-weight: 950;
+}
+
+.section-title p {
+  margin: 5px 0 0;
+  color: #69728c;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 145px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(99, 91, 255, 0.09);
+}
+
+.info-row:first-of-type {
+  border-top: 0;
+}
+
+.info-row strong {
+  color: #07144f;
+  line-height: 1.5;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.emergency-contact-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-display {
+  margin-top: 8px;
+  padding: 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(34, 197, 94, 0.11), transparent 38%),
+    rgba(248, 250, 255, 0.86);
+  border: 1px solid rgba(34, 197, 94, 0.16);
+}
+
+.contact-display strong {
+  color: #15803d;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 950;
+  overflow-wrap: anywhere;
+}
+
+.contact-note {
+  margin-top: auto;
+  padding: 16px;
+  border-radius: 18px;
+  color: #3d5afe;
+  background: rgba(99, 91, 255, 0.06);
+  border: 1px solid rgba(99, 91, 255, 0.10);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+/* ---------- Height / Weight: Supporting Info, Not Dominant ---------- */
+.identification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.identification-grid article {
+  position: relative;
+  min-height: 78px;
+  padding: 15px 16px 15px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(99, 91, 255, 0.10);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.055), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 255, 0.86));
+  box-shadow: 0 10px 24px rgba(54, 63, 110, 0.06);
+}
+
+.identification-grid article::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 4px;
+  border-radius: 0 999px 999px 0;
+  background: rgba(99, 91, 255, 0.45);
+}
+
+.identification-grid span {
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.identification-grid strong {
+  display: block;
+  color: #07144f;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+/* ---------- Critical Care: Highest Priority ---------- */
+.critical-care-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.critical-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 18px;
+  align-items: flex-start;
+  min-height: 152px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(99, 91, 255, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.09), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(246, 248, 255, 0.94));
+  box-shadow: 0 20px 46px rgba(54, 63, 110, 0.12);
+}
+
+.critical-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22px;
+  bottom: 22px;
+  width: 6px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(180deg, #635bff, #7c6dff);
+}
+
+.critical-card.blood {
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.critical-card.blood::before {
+  background: linear-gradient(180deg, #2563eb, #38bdf8);
+}
+
+.alert-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: #5a35f0;
+  background: rgba(99, 91, 255, 0.09);
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.critical-card.blood .alert-icon {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.13);
+}
+
+.critical-card span {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.critical-card strong {
+  display: block;
+  color: #07144f;
+  font-size: 19px;
+  line-height: 1.45;
+  font-weight: 950;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.chip-list b {
+  padding: 10px 13px;
+  border-radius: 999px;
+  color: #4f32d8;
+  background: rgba(99, 91, 255, 0.09);
+  border: 1px solid rgba(99, 91, 255, 0.14);
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+/* ---------- Inline Expandable Multiple Results ---------- */
+.expandable-patients-grid {
+  grid-template-columns: 1fr;
+}
+
+.expandable-card {
+  display: block;
+  padding: 0;
+}
+
+.expandable-card::before {
+  display: none;
+}
+
+.match-card-main {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
+}
+
+.match-card-main::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 5px;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(180deg, #635bff, #7c6dff);
+}
+
+.expandable-card.expanded {
+  border-color: rgba(99, 91, 255, 0.34);
+  box-shadow: 0 20px 48px rgba(99, 91, 255, 0.14);
+}
+
+.inline-loading {
+  margin: 0 18px 18px 90px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  color: #4b587c;
+  background: rgba(99, 91, 255, 0.055);
+  border: 1px solid rgba(99, 91, 255, 0.10);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.inline-patient-details {
+  position: relative;
+  margin: 0 18px 18px;
+  padding: 22px;
+  border-radius: 26px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.08), transparent 36%),
+    linear-gradient(145deg, rgba(248, 250, 255, 0.98), rgba(255, 255, 255, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.btn-collapse-inline {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(220, 38, 38, 0.14);
+  border-radius: 13px;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 950;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-collapse-inline:hover {
+  transform: translateY(-2px);
+  background: rgba(220, 38, 38, 0.14);
+}
+
+.inline-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding-right: 46px;
+  margin-bottom: 18px;
+}
+
+.inline-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.inline-avatar {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 22px;
+  color: #5a35f0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.95), transparent 36%),
+    linear-gradient(135deg, rgba(99, 91, 255, 0.16), rgba(124, 109, 255, 0.08));
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  box-shadow: 0 14px 28px rgba(99, 91, 255, 0.12);
+  font-size: 28px;
+  font-weight: 950;
+}
+
+.inline-avatar.has-image {
+  background: #ffffff;
+}
+
+.inline-profile span,
+.inline-blood-card span {
+  color: #69728c;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.inline-profile h3 {
+  margin: 0;
+  color: #07144f;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+.inline-profile p {
+  margin: 6px 0 0;
+  color: #4b587c;
+  font-weight: 750;
+}
+
+.inline-blood-card {
+  min-width: 150px;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(99, 91, 255, 0.13);
+  background: rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+
+.inline-blood-card strong {
+  color: #5a35f0;
+  font-size: 24px;
+  font-weight: 950;
+}
+
+.inline-details-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.inline-info-card {
+  padding: 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(99, 91, 255, 0.10);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.inline-section-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.inline-section-title>span {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #635bff, #7c6dff);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.inline-section-title h4 {
+  margin: 0;
+  color: #07144f;
+  font-size: 17px;
+  font-weight: 950;
+}
+
+.inline-section-title p {
+  margin: 5px 0 0;
+  color: #69728c;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.inline-identification-grid {
+  margin-bottom: 16px;
+}
+
+.inline-critical-grid {
+  margin-bottom: 0;
+}
+
+/* ---------- Empty ---------- */
+.empty-lookup-card {
+  padding: 34px;
+  margin: 22px 0;
+  text-align: center;
+}
+
+.empty-lookup-card div {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  border-radius: 22px;
+  color: #635bff;
+  background: rgba(99, 91, 255, 0.08);
+  border: 1px solid rgba(99, 91, 255, 0.12);
+  font-size: 28px;
+  font-weight: 950;
+}
+
+.empty-lookup-card h3 {
+  margin: 0;
+  color: #07144f;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.empty-lookup-card p {
+  margin: 8px auto 0;
+  color: #69728c;
+  line-height: 1.6;
+  font-weight: 750;
+  max-width: 620px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1280px) {
+  .lookup-hero-card {
+    grid-template-columns: 1fr;
+  }
+
+  .patients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .lookup-search {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-match-card,
+  .match-card-main {
+    grid-template-columns: 58px minmax(0, 1fr);
+  }
+
+  .patient-match-card .btn-open,
+  .match-card-main .btn-open {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .details-grid,
+  .inline-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .critical-care-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inline-details-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inline-blood-card {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 780px) {
+
+  .patient-emergency-hero,
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+  }
+
+  .blood-card {
+    min-width: 0;
+  }
+
+  .identification-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .lookup-hero-card,
+  .patient-emergency-hero,
+  .multiple-results-card,
+  .info-card,
+  .inline-patient-details {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .lookup-copy h2,
+  .patient-main h2 {
+    font-size: 23px;
+  }
+
+  .patient-main,
+  .inline-profile {
+    align-items: flex-start;
+  }
+
+  .patient-avatar {
+    width: 62px;
+    height: 62px;
+    flex-basis: 62px;
+    border-radius: 20px;
+  }
+
+  .inline-avatar {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+    border-radius: 18px;
+  }
+
+  .inline-profile h3 {
+    font-size: 19px;
+  }
+
+  .critical-card {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .inline-info-card {
+    padding: 15px;
+  }
+}
+
+/* ---------- Improved Emergency Lookup Visual Priority ---------- */
+
+/* Hero should introduce the patient, not take too much vertical space */
+.patient-emergency-hero {
+  padding: 22px 24px;
+  margin: 20px 0 16px;
+  min-height: 112px;
+}
+
+.patient-avatar {
+  width: 70px;
+  height: 70px;
+  flex-basis: 70px;
+  border-radius: 22px;
+}
+
+.patient-main h2 {
+  font-size: 27px;
+}
+
+.blood-card {
+  min-width: 145px;
+  padding: 17px 18px;
+  border-radius: 22px;
+}
+
+.blood-card strong {
+  font-size: 26px;
+}
+
+/* Emergency medical details should be the main focus */
+.priority-critical-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 16px;
+  margin: 0 0 18px;
+}
+
+.priority-critical-grid .critical-card {
+  min-height: 132px;
+  padding: 22px;
+  border-radius: 26px;
+  border-color: rgba(99, 91, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(54, 63, 110, 0.11);
+}
+
+.priority-critical-grid .critical-card.blood {
+  grid-row: span 1;
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(242, 247, 255, 0.94));
+}
+
+.priority-critical-grid .critical-card:not(.blood) {
+  background:
+    radial-gradient(circle at top right, rgba(99, 91, 255, 0.10), transparent 38%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(247, 248, 255, 0.95));
+}
+
+.priority-critical-grid .critical-card span {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.priority-critical-grid .critical-card strong {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.priority-critical-grid .alert-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.priority-critical-grid .chip-list {
+  gap: 9px;
+}
+
+.priority-critical-grid .chip-list b {
+  padding: 10px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: rgba(99, 91, 255, 0.10);
+}
+
+/* Patient identity and contact are important but secondary */
+.supporting-details-grid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.supporting-details-grid .info-card {
+  padding: 20px 22px;
+  border-radius: 24px;
+}
+
+.supporting-details-grid .section-title {
+  margin-bottom: 14px;
+}
+
+.supporting-details-grid .section-title h3 {
+  font-size: 19px;
+}
+
+.supporting-details-grid .section-title p {
+  font-size: 12px;
+}
+
+.supporting-details-grid .info-row {
+  padding: 11px 0;
+}
+
+.supporting-details-grid .info-row span {
+  font-size: 10px;
+}
+
+.supporting-details-grid .info-row strong {
+  font-size: 13px;
+}
+
+.supporting-details-grid .contact-display {
+  padding: 18px;
+  border-radius: 20px;
+}
+
+.supporting-details-grid .contact-display strong {
+  font-size: 22px;
+}
+
+.supporting-details-grid .contact-note {
+  padding: 13px 14px;
+  font-size: 12px;
+}
+
+/* Height and weight should be supporting details only */
+.compact-identification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.compact-identification-grid article {
+  min-height: 72px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(54, 63, 110, 0.055);
+}
+
+.compact-identification-grid article::before {
+  top: 15px;
+  bottom: 15px;
+  width: 4px;
+  background: rgba(99, 91, 255, 0.42);
+}
+
+.compact-identification-grid span {
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.compact-identification-grid strong {
+  font-size: 17px;
+}
+
+/* Improve multiple result inline expanded section with same priority */
+.inline-patient-details .inline-critical-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.inline-patient-details .inline-critical-grid .critical-card {
+  min-height: 122px;
+  padding: 20px;
+  border-radius: 24px;
+}
+
+.inline-patient-details .inline-identification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.inline-patient-details .inline-identification-grid article {
+  min-height: 70px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(54, 63, 110, 0.055);
+}
+
+.inline-patient-details .inline-identification-grid strong {
+  font-size: 17px;
+}
+
+/* Larger screen: make emergency details feel like a proper dashboard section */
+@media (min-width: 1300px) {
+  .priority-critical-grid {
+    grid-template-columns: 0.8fr 1.1fr 1.1fr;
+  }
+
+  .priority-critical-grid .critical-card.blood {
+    grid-row: span 2;
+    min-height: 280px;
+    align-content: center;
+  }
+
+  .priority-critical-grid .critical-card.blood strong {
+    font-size: 30px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+
+  .priority-critical-grid,
+  .inline-patient-details .inline-critical-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .supporting-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+
+  .priority-critical-grid,
+  .inline-patient-details .inline-critical-grid,
+  .compact-identification-grid,
+  .inline-patient-details .inline-identification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-emergency-hero {
+    align-items: stretch;
+  }
+
+  .blood-card {
+    min-width: 0;
+  }
+
+  .priority-critical-grid .critical-card {
+    min-height: auto;
+  }
+}

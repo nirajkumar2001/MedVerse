@@ -1,0 +1,62 @@
+.stat-card {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  grid-template-areas:
+    "icon label"
+    "icon value"
+    "icon desc";
+  align-items: center;
+  gap: 2px 14px;
+}
+
+.stat-icon {
+  grid-area: icon;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 0;
+  font-weight: 900;
+}
+
+.stat-icon.blue {
+  background: rgba(90, 53, 240, 0.12);
+  color: #4c2df0;
+}
+
+.stat-icon.orange {
+  background: rgba(245,124,0,0.12);
+  color: var(--c-warning);
+}
+
+.stat-icon.green {
+  background: rgba(46,125,50,0.12);
+  color: var(--c-success);
+}
+
+.stat-icon.red {
+  background: rgba(229,57,53,0.12);
+  color: var(--c-danger);
+}
+
+.stat-label {
+  grid-area: label;
+  color: var(--c-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+strong {
+  grid-area: value;
+  display: block;
+  margin: 4px 0;
+  font-size: 24px;
+  color: var(--c-darkest);
+}
+
+small {
+  grid-area: desc;
+  color: #667085;
+}

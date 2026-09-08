@@ -1,0 +1,317 @@
+<div class="page-shell doctor-workspace">
+  <app-layout-sidebar
+    [menuItems]="sidebarItems"
+    [userName]="doctorDisplayName"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="doctor-main">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Medical Update"
+      title="Patient Medical Profile"
+      subtitle="Review patient overview and update doctor-managed emergency medical information after patient consent."
+      [badgeText]="doctorBadgeText"
+      [avatarText]="doctorAvatarText"
+      [avatarImage]="doctorAvatarImage"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      [notificationCount]="unreadCount"
+      notificationRoute="/doctor/notifications"
+      theme="light">
+    </app-page-header>
+
+    <section class="loading-card" *ngIf="isLoading">
+      Loading approved patient medical profile...
+    </section>
+
+    <ng-container *ngIf="!isLoading">
+      <section class="patient-hero">
+        <div class="hero-main">
+          <div class="patient-photo">
+            <img *ngIf="patientSummary.photoUrl; else patientInitialsBlock" [src]="patientSummary.photoUrl" alt="Patient profile photo" />
+            <ng-template #patientInitialsBlock>{{ patientInitials }}</ng-template>
+          </div>
+
+          <div>
+            <span>Approved patient</span>
+            <h2>{{ patientSummary.fullName }}</h2>
+            <p>Patient ID: <strong>{{ patientSummary.patientId || patientId }}</strong></p>
+
+            <div class="hero-tags">
+              <em>{{ displayValue(patientSummary.bloodGroup) }}</em>
+              <em>{{ patientSummary.age || 'Age N/A' }} yrs</em>
+              <em>{{ displayValue(patientSummary.gender) }}</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button type="button" class="btn-secondary" (click)="backToCare()">Patient Care</button>
+          <button type="button" class="btn-secondary" (click)="endWithoutSaving()">End Access</button>
+        </div>
+      </section>
+
+      <section class="profile-grid">
+        <article class="info-card readonly-card">
+          <div class="section-title">
+            <span>Patient overview</span>
+            <h3>General Details</h3>
+            <p>These values come from the patient profile and emergency lookup record.</p>
+          </div>
+
+          <div class="detail-grid">
+            <div><span>Full Name</span><strong>{{ displayValue(patientSummary.fullName) }}</strong></div>
+            <div><span>Patient ID</span><strong>{{ displayValue(patientSummary.patientId || patientId) }}</strong></div>
+            <div><span>Emergency Contact</span><strong>{{ displayValue(patientSummary.emergencyContact) }}</strong></div>
+            <div><span>Blood Group</span><strong>{{ displayValue(patientSummary.bloodGroup || medicalForm.bloodGroup) }}</strong></div>
+            <div class="wide"><span>Address</span><strong>{{ formatAddress() }}</strong></div>
+          </div>
+        </article>
+
+        <article class="info-card edit-card">
+          <div class="section-title">
+            <span>Emergency medical profile</span>
+            <h3>Reusable Medical Flags</h3>
+            <p>Add or remove allergies, chronic conditions, and current medications as clear stacked values.</p>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Blood Group
+              <select [(ngModel)]="medicalForm.bloodGroup">
+                <option *ngFor="let group of bloodGroupOptions" [value]="group">
+                  {{ group || 'Select blood group' }}
+                </option>
+              </select>
+            </label>
+          </div>
+
+          <div class="medical-stack-grid">
+            <article class="stack-card">
+              <div class="stack-head">
+                <span>Allergies</span>
+                <strong>{{ allergyItems.length }}</strong>
+              </div>
+
+              <div class="stack-list" *ngIf="allergyItems.length > 0; else noAllergy">
+                <div class="stack-item" *ngFor="let item of allergyItems; let i = index">
+                  <span>{{ item }}</span>
+                  <button type="button" (click)="removeListItem('allergy', i)" aria-label="Remove allergy">×</button>
+                </div>
+              </div>
+
+              <ng-template #noAllergy>
+                <p class="stack-empty">No allergy added.</p>
+              </ng-template>
+
+              <div class="stack-input-row">
+                <input
+                  [(ngModel)]="allergyDraft"
+                  maxlength="80"
+                  placeholder="Add allergy"
+                  (keydown.enter)="addListItem('allergy'); $event.preventDefault()" />
+                <button type="button" (click)="addListItem('allergy')">Add</button>
+              </div>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-head">
+                <span>Chronic Conditions</span>
+                <strong>{{ chronicConditionItems.length }}</strong>
+              </div>
+
+              <div class="stack-list" *ngIf="chronicConditionItems.length > 0; else noChronic">
+                <div class="stack-item" *ngFor="let item of chronicConditionItems; let i = index">
+                  <span>{{ item }}</span>
+                  <button type="button" (click)="removeListItem('chronic', i)" aria-label="Remove chronic condition">×</button>
+                </div>
+              </div>
+
+              <ng-template #noChronic>
+                <p class="stack-empty">No chronic condition added.</p>
+              </ng-template>
+
+              <div class="stack-input-row">
+                <input
+                  [(ngModel)]="chronicDraft"
+                  maxlength="80"
+                  placeholder="Add chronic condition"
+                  (keydown.enter)="addListItem('chronic'); $event.preventDefault()" />
+                <button type="button" (click)="addListItem('chronic')">Add</button>
+              </div>
+            </article>
+
+            <article class="stack-card">
+              <div class="stack-head">
+                <span>Current Medication</span>
+                <strong>{{ currentMedicationItems.length }}</strong>
+              </div>
+
+              <div class="stack-list" *ngIf="currentMedicationItems.length > 0; else noMedication">
+                <div class="stack-item" *ngFor="let item of currentMedicationItems; let i = index">
+                  <span>{{ item }}</span>
+                  <button type="button" (click)="removeListItem('medication', i)" aria-label="Remove medication">×</button>
+                </div>
+              </div>
+
+              <ng-template #noMedication>
+                <p class="stack-empty">No current medication added.</p>
+              </ng-template>
+
+              <div class="stack-input-row">
+                <input
+                  [(ngModel)]="medicationDraft"
+                  maxlength="80"
+                  placeholder="Add current medication"
+                  (keydown.enter)="addListItem('medication'); $event.preventDefault()" />
+                <button type="button" (click)="addListItem('medication')">Add</button>
+              </div>
+            </article>
+          </div>
+
+          <small class="field-error list-error" *ngIf="formErrors.listItem">{{ formErrors.listItem }}</small>
+        </article>
+      </section>
+
+      <section class="visit-card">
+        <div class="section-title clinical-title">
+          <span>Current visit</span>
+          <h3>Clinical Update</h3>
+          <p>Saving this update completes the approved access automatically and notifies the patient.</p>
+        </div>
+
+        <div class="form-grid visit-form">
+          <label>
+            Health Concern <b>*</b>
+            <input
+              [(ngModel)]="medicalForm.disease"
+              [class.input-error]="formErrors.disease"
+              placeholder="Example: Chest pain follow-up" />
+            <small class="field-error" *ngIf="formErrors.disease">{{ formErrors.disease }}</small>
+          </label>
+
+          <label>
+            Medical Reports
+            <input [(ngModel)]="medicalForm.medicalReports" placeholder="Report reference, uploaded file name, or notes" />
+          </label>
+
+          <label>
+            Height (cm)
+            <input type="number" [(ngModel)]="medicalForm.heightCm" [class.input-error]="formErrors.heightCm" placeholder="170" />
+            <small class="field-error" *ngIf="formErrors.heightCm">{{ formErrors.heightCm }}</small>
+          </label>
+
+          <label>
+            Weight (kg)
+            <input type="number" [(ngModel)]="medicalForm.weightKg" [class.input-error]="formErrors.weightKg" placeholder="70" />
+            <small class="field-error" *ngIf="formErrors.weightKg">{{ formErrors.weightKg }}</small>
+          </label>
+
+          <label>
+            BMI
+            <input type="number" [ngModel]="calculatedBmi" readonly />
+          </label>
+
+          <label>
+            Blood Pressure
+            <input [(ngModel)]="medicalForm.bloodPressure" [class.input-error]="formErrors.bloodPressure" placeholder="120/80 mmHg" />
+            <small class="field-error" *ngIf="formErrors.bloodPressure">{{ formErrors.bloodPressure }}</small>
+          </label>
+
+          <label>
+            Body Temperature
+            <input [(ngModel)]="medicalForm.bodyTemperature" [class.input-error]="formErrors.bodyTemperature" placeholder="98.6°F" />
+            <small class="field-error" *ngIf="formErrors.bodyTemperature">{{ formErrors.bodyTemperature }}</small>
+          </label>
+
+          <label class="wide">
+            Doctor Findings <b>*</b>
+            <textarea
+              rows="4"
+              [(ngModel)]="medicalForm.findings"
+              [class.input-error]="formErrors.findings"
+              placeholder="Diagnosis support, examination findings, clinical notes">
+            </textarea>
+            <small class="field-error" *ngIf="formErrors.findings">{{ formErrors.findings }}</small>
+          </label>
+
+          <label class="wide">
+            Prescription / Advice
+            <textarea rows="4" [(ngModel)]="medicalForm.prescription" placeholder="Medicines, dosage, follow-up advice, precautions"></textarea>
+          </label>
+        </div>
+      </section>
+
+      <section class="records-panel" *ngIf="canViewPreviousRecords">
+        <div class="section-title">
+          <span>Read-only history</span>
+          <h3>Previous Medical Records</h3>
+          <p>Previous records are visible because the patient approved history access. They cannot be edited.</p>
+        </div>
+
+        <div class="empty-state" *ngIf="previousRecords.length === 0">
+          <strong>No previous records available</strong>
+          <p>The patient has not received earlier medical profile updates.</p>
+        </div>
+
+        <article class="record-card" *ngFor="let record of previousRecords">
+          <div class="record-row">
+            <div><span>Date</span><strong>{{ formatDate(record.dateOfUpdate || record.createdAt) }}</strong></div>
+            <div><span>Health Concern</span><strong>{{ displayValue(record.disease) }}</strong></div>
+            <div><span>Doctor</span><strong>{{ displayValue(record.doctorName || record.doctorId) }}</strong></div>
+            <button type="button" class="btn-secondary" (click)="toggleRecord(record)">
+              {{ isRecordExpanded(record) ? 'Hide' : 'View' }} Details
+            </button>
+          </div>
+
+          <div class="record-detail" *ngIf="isRecordExpanded(record)">
+            <div class="record-list-grid">
+              <div>
+                <strong>Allergies</strong>
+                <span *ngFor="let item of displayList(record.allergies)">{{ item }}</span>
+                <em *ngIf="displayList(record.allergies).length === 0">Not recorded</em>
+              </div>
+
+              <div>
+                <strong>Chronic Conditions</strong>
+                <span *ngFor="let item of displayList(record.chronicConditions)">{{ item }}</span>
+                <em *ngIf="displayList(record.chronicConditions).length === 0">Not recorded</em>
+              </div>
+
+              <div>
+                <strong>Current Medication</strong>
+                <span *ngFor="let item of displayList(record.currentMedication)">{{ item }}</span>
+                <em *ngIf="displayList(record.currentMedication).length === 0">Not recorded</em>
+              </div>
+            </div>
+
+            <p><strong>Findings:</strong> {{ displayValue(record.findings) }}</p>
+            <p><strong>Prescription:</strong> {{ displayValue(record.prescription) }}</p>
+            <p><strong>Reports:</strong> {{ displayValue(record.medicalReports) }}</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="save-bar">
+        <div>
+          <strong>Ready to save current visit?</strong>
+          <p>Once saved, approved access is completed and the patient is notified.</p>
+        </div>
+
+        <div class="save-actions">
+          <button type="button" class="btn-secondary" (click)="backToNotifications()">Cancel</button>
+          <button type="button" class="btn-primary" (click)="saveMedicalUpdate()" [disabled]="isSaving">
+            {{ isSaving ? 'Saving...' : 'Save Medical Update' }}
+          </button>
+        </div>
+      </section>
+    </ng-container>
+
+    <app-healthcare-footer tagline="Clinical care workspace"></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()"></app-logout-confirm-modal>
+  <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage"></app-toast-message>
+</div>

@@ -1,0 +1,139 @@
+<div class="page-shell" *ngIf="patient">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home" breadcrumbCurrent="My Profile"
+      title="My Profile" subtitle="Manage your basic profile, emergency contact, address, and profile photo."
+      [badgeText]="'ID: ' + patient.patientId" [avatarText]="patient.fullName.charAt(0)" [avatarImage]="patientPhotoUrl"
+      [showSearch]="false" theme="patient">
+    </app-page-header>
+
+    <section class="profile-hero-card">
+      <div class="profile-photo-wrap">
+        <div class="profile-photo" [class.has-image]="patientPhotoUrl">
+          <img *ngIf="patientPhotoUrl; else profileInitial" [src]="patientPhotoUrl" alt="Patient profile photo">
+
+          <ng-template #profileInitial>
+            {{ patient.fullName.charAt(0) }}
+          </ng-template>
+        </div>
+
+        <div class="photo-actions">
+          <label class="btn-upload-photo">
+            <input type="file" accept="image/*" (change)="onPhotoSelected($event)">
+            Upload Photo
+          </label>
+
+          <span class="photo-status" *ngIf="isSavingPhoto">
+            Saving photo...
+          </span>
+
+          <span class="photo-hint" *ngIf="!isSavingPhoto">
+            This photo will appear in your dashboard, profile header, and doctor emergency lookup.
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-info">
+        <span>Patient Profile</span>
+        <h2>{{ patient.fullName }}</h2>
+        <p>
+          {{ patient.age || 'N/A' }} Years • {{ patient.gender || 'N/A' }}
+        </p>
+      </div>
+    </section>
+
+    <form class="profile-form-card" (ngSubmit)="save()">
+      <div class="section-header">
+        <div>
+          <h3>Basic Information</h3>
+          <p>These details are used across your patient profile and emergency identity.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Patient ID
+          <input type="text" name="patientId" [(ngModel)]="patient.patientId" readonly>
+        </label>
+
+        <label>
+          Full Name
+          <input type="text" name="fullName" [(ngModel)]="patient.fullName" placeholder="Enter your full name">
+        </label>
+
+        <label>
+          Age
+          <input type="number" name="age" [(ngModel)]="patient.age" placeholder="Enter your age">
+        </label>
+
+        <label>
+          Gender
+          <select name="gender" [(ngModel)]="patient.gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="section-header spaced">
+        <div>
+          <h3>Emergency Contact</h3>
+          <p>This number is used for urgent medical coordination and emergency support.</p>
+        </div>
+      </div>
+
+      <div class="form-grid single">
+        <label>
+          Emergency Contact Number
+          <input type="text" name="emergencyContact" [(ngModel)]="patient.emergencyContact"
+            placeholder="Example: +91 98765 43210">
+        </label>
+      </div>
+
+      <div class="section-header spaced">
+        <div>
+          <h3>Address Details</h3>
+          <p>Keep your address accurate so emergency lookup and identification remain reliable.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <label class="full">
+          Address
+          <textarea name="address" rows="3" [(ngModel)]="patient.address"
+            placeholder="House number, street, area, landmark"></textarea>
+        </label>
+
+        <label>
+          District / City
+          <input type="text" name="district" [(ngModel)]="patient.district" placeholder="Example: Pune">
+        </label>
+
+        <label>
+          State
+          <input type="text" name="state" [(ngModel)]="patient.state" placeholder="Example: Maharashtra">
+        </label>
+
+        <label>
+          Pincode
+          <input type="text" name="pincode" [(ngModel)]="patient.pincode" placeholder="Example: 411001">
+        </label>
+      </div>
+
+      <div class="save-row">
+        <div class="save-success" *ngIf="saved">
+          Profile updated successfully.
+        </div>
+
+        <button class="btn-primary" type="submit">
+          Save Profile
+        </button>
+      </div>
+    </form>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+</div>

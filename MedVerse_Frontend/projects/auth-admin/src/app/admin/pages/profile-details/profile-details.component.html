@@ -1,0 +1,126 @@
+<div class="layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <div class="content">
+
+    <a class="back" routerLink="/admin/profiles">
+      Back to Profiles
+    </a>
+
+    <h1>Profile Details</h1>
+
+    <p class="sub">
+      Review user information and verify submitted document
+    </p>
+
+    <p *ngIf="isLoading">Loading profile details...</p>
+    <p *ngIf="!isLoading && errorMessage">{{ errorMessage }}</p>
+
+    <ng-container *ngIf="!isLoading && user">
+      <div class="profile-card">
+
+        <div class="header">
+
+          <span class="profile-photo">
+            <img [src]="profileImage" alt="User profile photo" (error)="onProfileImageError($event)" />
+          </span>
+
+          <div>
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.email }}</p>
+          </div>
+
+          <span class="status" [ngClass]="normalizedStatus.toLowerCase()">
+            {{ toTitleCase(normalizedStatus) }}
+          </span>
+
+        </div>
+
+        <div class="grid">
+
+          <div>
+            <label>Role</label>
+            <h4>{{ toTitleCase(user.role) }}</h4>
+          </div>
+
+          <div>
+            <label>User ID</label>
+            <h4>{{ user.userId }}</h4>
+          </div>
+
+          <div>
+            <label>Submitted On</label>
+            <h4>{{ submittedOn }}</h4>
+          </div>
+
+          <div>
+            <label>Reviewed On</label>
+            <h4>{{ reviewedOn }}</h4>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="document-card">
+
+        <h3>Submitted Document</h3>
+
+        <div class="pdf-box">
+
+          <div class="left">
+
+            <div class="pdf">
+              PDF
+            </div>
+
+            <div>
+              <h4>{{ user.documentName || 'No document uploaded' }}</h4>
+              <p>{{ user.documentContentType || 'Document unavailable' }}</p>
+            </div>
+
+          </div>
+
+          <button type="button" (click)="viewDocument()" [disabled]="!user.documentData">
+            View Document
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="notes">
+
+        <h3>Admin Notes</h3>
+        <p class="locked-note" *ngIf="normalizedStatus === 'REJECTED' && user.reviewRemark">
+          Your submitted verification document was not accepted. {{ user.reviewRemark }}
+        </p>
+
+        <textarea
+          placeholder="Add notes about this verification..."
+          [(ngModel)]="remark"
+          [disabled]="isReviewLocked">
+        </textarea>
+
+        <p class="locked-note" *ngIf="isReviewLocked">
+          This profile is already {{ toTitleCase(normalizedStatus) }}. Review actions and remarks are locked.
+        </p>
+
+        <div class="buttons">
+          <button class="reject" type="button" (click)="reject()" [disabled]="isSubmitting || isReviewLocked">
+            Reject
+          </button>
+
+          <button class="approve" type="button" (click)="approve()" [disabled]="isSubmitting || isReviewLocked">
+            Approve
+          </button>
+        </div>
+
+      </div>
+    </ng-container>
+
+    <app-admin-footer></app-admin-footer>
+  </div>
+
+</div>

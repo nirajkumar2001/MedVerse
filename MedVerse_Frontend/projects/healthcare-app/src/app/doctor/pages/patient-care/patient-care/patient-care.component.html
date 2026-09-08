@@ -1,0 +1,65 @@
+<div class="page-shell">
+  <app-layout-sidebar
+    [menuItems]="sidebarItems"
+    (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header
+      breadcrumbRoot="Doctor Portal"
+      breadcrumbRootRoute="/doctor/home"
+      breadcrumbCurrent="Patient Care"
+      title="Request Patient Medical Profile"
+      subtitle="Start a consent-backed patient profile request and track the care handoff clearly."
+      [badgeText]="'ID: ' + doctor.doctorId"
+      [avatarText]="doctor.initials"
+      [showSearch]="false"
+      [showNotificationButton]="true"
+      [notificationCount]="unreadCount"
+      theme="dark">
+    </app-page-header>
+
+    <section class="care-overview">
+      <article>
+        <span>01</span>
+        <strong>Identify Patient</strong>
+        <p>Use a valid Patient ID so the consent session is attached to the correct medical profile.</p>
+      </article>
+
+      <article>
+        <span>02</span>
+        <strong>Explain Access</strong>
+        <p>Add a precise reason that helps the patient approve the correct access scope.</p>
+      </article>
+
+      <article>
+        <span>03</span>
+        <strong>Wait for Consent</strong>
+        <p>Approved sessions unlock profile access while previous records stay protected.</p>
+      </article>
+    </section>
+
+    <section class="patient-care-layout">
+      <div class="request-panel">
+        <app-access-request-form
+          (requestSent)="onAccessRequestSent($event)">
+        </app-access-request-form>
+      </div>
+
+    </section>
+
+    <app-healthcare-footer></app-healthcare-footer>
+  </main>
+
+  <app-logout-confirm-modal
+    [open]="showLogoutModal"
+    (cancelled)="closeLogoutModal()"
+    (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message
+    [show]="showToast"
+    type="success"
+    [message]="toastMessage">
+  </app-toast-message>
+</div>

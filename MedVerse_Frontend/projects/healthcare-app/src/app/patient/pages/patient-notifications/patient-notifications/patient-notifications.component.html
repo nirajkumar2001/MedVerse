@@ -1,0 +1,165 @@
+<div class="page-shell" *ngIf="patient">
+  <app-layout-sidebar brandName="Patient Portal" [menuItems]="menuItems" (logoutClicked)="openLogoutModal()">
+  </app-layout-sidebar>
+
+  <main class="main-content">
+    <app-page-header breadcrumbRoot="Patient Portal" breadcrumbRootRoute="/patient/home"
+      breadcrumbCurrent="Access Requests" title="Doctor Access Requests"
+      subtitle="Review new requests, manage active sessions, and track completed access history."
+      [badgeText]="'ID: ' + patient.patientId" [avatarText]="patient.fullName.charAt(0)" [avatarImage]="patientPhotoUrl"
+      [showSearch]="false" theme="patient">
+    </app-page-header>
+
+    <section class="consent-summary">
+      <article>
+        <span>New Requests</span>
+        <strong>{{ newCount }}</strong>
+      </article>
+
+      <article>
+        <span>Active Sessions</span>
+        <strong>{{ activeCount }}</strong>
+      </article>
+
+      <article>
+        <span>Dismissed</span>
+        <strong>{{ dismissedCount }}</strong>
+      </article>
+
+      <article>
+        <span>Completed</span>
+        <strong>{{ completedCount }}</strong>
+      </article>
+    </section>
+
+    <section class="request-list">
+      <div class="filter-tabs">
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'new'" (click)="setFilter('new')">
+          New
+          <span>{{ newCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'active'"
+          (click)="setFilter('active')">
+          Active Session
+          <span>{{ activeCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'dismissed'"
+          (click)="setFilter('dismissed')">
+          Dismissed
+          <span>{{ dismissedCount }}</span>
+        </button>
+
+        <button class="filter-tab" type="button" [class.active]="activeFilter === 'completed'"
+          (click)="setFilter('completed')">
+          Completed
+          <span>{{ completedCount }}</span>
+        </button>
+      </div>
+
+      <div class="card loading-card" *ngIf="isLoading">
+        <span class="mini-loader"></span>
+        Fetching latest access requests...
+      </div>
+
+      <ng-container *ngIf="!isLoading && filteredRequests.length > 0; else noRequests">
+        <article class="card request-card" *ngFor="let request of filteredRequests"
+          [class.request-new]="request.status === 'New'" [class.request-approved]="request.status === 'Active Session'"
+          [class.request-completed]="request.status === 'Completed'"
+          [class.request-rejected]="request.status === 'Dismissed'">
+
+          <div class="request-content">
+            <div class="request-kicker">
+              Doctor access request
+            </div>
+
+            <h3>{{ request.doctorName }}</h3>
+
+            <p>{{ request.reason }}</p>
+
+            <label class="consent-check" *ngIf="request.status === 'New'">
+              <input type="checkbox" [(ngModel)]="request.allowPrevious">
+              Allow access to previous medical records
+            </label>
+
+            <div class="consent-note" *ngIf="request.status !== 'New'">
+              Previous records:
+              <strong>{{ request.allowPrevious ? 'Allowed' : 'Not allowed' }}</strong>
+            </div>
+
+            <div class="request-time-grid">
+              <div class="request-time-chip" *ngIf="request.displayNotificationTime">
+                <span>Notification Received</span>
+                <strong>{{ request.displayNotificationTime }}</strong>
+              </div>
+
+              <div class="request-time-chip success" *ngIf="request.displayGrantedTime && request.status !== 'New'">
+                <span>Access Granted</span>
+                <strong>{{ request.displayGrantedTime }}</strong>
+              </div>
+
+              <div class="request-time-chip completed" *ngIf="request.displayCompletedTime">
+                <span>Session Closed</span>
+                <strong>{{ request.displayCompletedTime }}</strong>
+              </div>
+            </div>
+
+            <small *ngIf="request.status === 'New'">
+              The doctor can view your profile only after you approve this request.
+              Previous records stay protected unless you allow them.
+            </small>
+
+            <small *ngIf="request.status === 'Active Session'">
+              This access session is active. You can dismiss the session anytime.
+            </small>
+
+            <small *ngIf="request.status === 'Dismissed'">
+              This request or active session was dismissed.
+              {{ request.endReason || '' }}
+            </small>
+
+            <small *ngIf="request.status === 'Completed'">
+              This access session was completed after the doctor saved the visit update.
+            </small>
+          </div>
+
+          <div class="actions">
+            <strong class="status-pill" [class.new]="request.status === 'New'"
+              [class.approved]="request.status === 'Active Session'" [class.rejected]="request.status === 'Dismissed'"
+              [class.completed]="request.status === 'Completed'">
+              {{ request.status }}
+            </strong>
+
+            <ng-container *ngIf="request.status === 'New'">
+              <button class="btn-primary" type="button" (click)="approve(request)">
+                Allow
+              </button>
+
+              <button class="btn-danger-soft" type="button" (click)="reject(request)">
+                Reject
+              </button>
+            </ng-container>
+
+            <button class="btn-dismiss-session" type="button" *ngIf="request.status === 'Active Session'"
+              (click)="dismissActiveSession(request)">
+              Dismiss Active Session
+            </button>
+          </div>
+        </article>
+      </ng-container>
+
+      <ng-template #noRequests>
+        <app-empty-state *ngIf="!isLoading" icon="notification" title="No access requests found"
+          message="There are no access requests for the selected filter.">
+        </app-empty-state>
+      </ng-template>
+    </section>
+  </main>
+
+  <app-logout-confirm-modal [open]="showLogoutModal" (cancelled)="closeLogoutModal()" (confirmed)="confirmLogout()">
+  </app-logout-confirm-modal>
+
+  <app-toast-message [show]="showToast" [type]="toastType" [message]="toastMessage">
+  </app-toast-message>
+</div>

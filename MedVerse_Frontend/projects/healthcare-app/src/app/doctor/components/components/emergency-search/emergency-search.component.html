@@ -1,0 +1,61 @@
+<section class="emergency-hero">
+  <div class="hero-header">
+    <h2>MedVerse</h2>
+    <p>Emergency Patient Lookup &bull; View Only</p>
+  </div>
+
+  <div class="search-row">
+    <div class="search-input-wrap">
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M16.5 16.5 21 21" />
+        </svg>
+      </span>
+
+      <input
+        type="text"
+        appNoSpecialChars
+        appTrimLeadingSpace
+        [(ngModel)]="searchQuery"
+        (input)="onSearchInput()"
+        (keyup.enter)="searchPatient()"
+        placeholder="Search by ID / Name / Address / District / State / Pincode" />
+      <button class="search-submit" type="button" (click)="searchPatient()" [disabled]="isSearching">
+        <span class="submit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M16.5 16.5 21 21" />
+          </svg>
+        </span>
+        <span>{{ isSearching ? 'Searching...' : 'Search' }}</span>
+      </button>
+    </div>
+  </div>
+
+  <p class="search-helper">Search for patient</p>
+
+  <p
+    class="lookup-feedback"
+    *ngIf="feedbackMessage"
+    [class.ok]="feedbackType === 'ok'"
+    [class.err]="feedbackType === 'err'">
+    {{ feedbackMessage }}
+  </p>
+
+  <div class="search-results" *ngIf="searchResults.length > 0">
+    <app-patient-summary-card
+      *ngFor="let patient of searchResults"
+      [patient]="patient"
+      actionLabel="View Emergency Record"
+      (actionClicked)="selectPatient($event)">
+    </app-patient-summary-card>
+  </div>
+
+  <app-empty-state
+    *ngIf="hasSearched && feedbackType === 'err' && searchResults.length === 0"
+    icon="🚑"
+    title="No emergency record loaded"
+    message="Try searching using Patient ID, name, district, state, address or pincode.">
+  </app-empty-state>
+</section>
