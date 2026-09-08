@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping({ "/api/v1/patient", "/api/patient" })
+@RequestMapping("/api/v1/patient")
 public class PatientController {
 
     private final PatientService patientService;
@@ -21,6 +21,17 @@ public class PatientController {
     @GetMapping("/me")
     public ResponseEntity<ApiResponse<PatientResponseDTO>> getMyProfile(Authentication authentication) {
         PatientResponseDTO response = patientService.getMyProfile(authentication);
+
+        return ResponseEntity.ok(
+                ApiResponse.success("Patient profile fetched successfully", response));
+    }
+
+    @GetMapping("/{patientId}")
+    public ResponseEntity<ApiResponse<PatientResponseDTO>> getPatientForDoctor(
+            Authentication authentication,
+            @PathVariable String patientId) {
+
+        PatientResponseDTO response = patientService.getPatientForDoctor(authentication, patientId);
 
         return ResponseEntity.ok(
                 ApiResponse.success("Patient profile fetched successfully", response));

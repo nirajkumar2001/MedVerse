@@ -1,6 +1,7 @@
 package com.tcs.medverse.util;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -10,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "medverse.redis.enabled", havingValue = "false", matchIfMissing = true)
 public class OtpService {
 
     private final Map<String, OtpEntry> store = new ConcurrentHashMap<>();

@@ -31,7 +31,7 @@ public class MedicalProfileUpdateController {
                 this.medicalProfileUpdateService = medicalProfileUpdateService;
         }
 
-        @GetMapping("/record/{patientId}")
+        @GetMapping({"/record/{patientId}", "/patient/{patientId}"})
         public ResponseEntity<ApiResponse<PatientMedicalRecordResponse>> getCompleteRecordForDoctor(
                         Authentication authentication,
                         @PathVariable String patientId,

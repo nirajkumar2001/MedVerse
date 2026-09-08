@@ -110,6 +110,9 @@ public class SecurityConfig {
                                                 .requestMatchers("/api/v1/patient/**").hasRole("DOCTOR")
                                                 .requestMatchers("/api/patient/**").hasRole("DOCTOR")
 
+                                                /* ---------- Patient Emergency Profile ---------- */
+                                                .requestMatchers("/api/v1/emergency/me").hasRole("PATIENT")
+
                                                 /* ---------- Emergency Lookup ---------- */
                                                 .requestMatchers("/api/v1/emergency/**").hasRole("DOCTOR")
 
@@ -127,7 +130,9 @@ public class SecurityConfig {
                                                 .requestMatchers("/api/v1/editpatientprofile/session/**")
                                                 .hasAnyRole("DOCTOR", "PATIENT")
 
-                                                .requestMatchers(HttpMethod.POST, "/api/v1/editpatientprofile")
+                                                .requestMatchers(HttpMethod.POST,
+                                                                "/api/v1/editpatientprofile",
+                                                                "/api/v1/editpatientprofile/")
                                                 .hasRole("DOCTOR")
 
                                                 .requestMatchers(HttpMethod.PUT, "/api/v1/editpatientprofile/**")

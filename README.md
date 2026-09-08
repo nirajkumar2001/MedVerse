@@ -134,6 +134,35 @@ cd MedVerse_Frontend
 npm test
 ```
 
+## Docker, Redis, and Kafka
+
+The repository includes Dockerfiles and a Compose stack for PostgreSQL, Redis,
+Kafka, the backend, and the `auth-admin` frontend.
+
+Build the backend image first, then start the stack:
+
+```powershell
+cd MedVerse_Backend
+.\mvnw.cmd clean package
+cd ..
+docker compose up --build
+```
+
+With Compose enabled, the backend uses Redis for OTP/rate-limit state and
+publishes `medical-record-updated` events to Kafka. Local and test profiles
+keep the in-memory OTP/rate-limit fallback and disable Kafka so the backend can
+still run without infrastructure services.
+
+The Compose defaults are development-only. Set `POSTGRES_PASSWORD`,
+`REDIS_PASSWORD`, `JWT_SECRET`, and `MEDVERSE_ADMIN_PASSWORD` through the
+environment before using the stack outside local development.
+
+## Continuous Integration
+
+GitHub Actions is configured in `.github/workflows/ci.yml`. Pull requests and
+pushes to `main` run the backend Maven tests and build the `auth-admin`
+Angular application.
+
 ## Security Notes
 
 - Do not commit database passwords, JWT secrets, SMTP passwords, or private API keys.

@@ -21,12 +21,19 @@ public class EmergencyLookupController {
         this.emergencyLookupService = emergencyLookupService;
     }
 
-    @GetMapping("/search")
+    @GetMapping("/me")
+    public ResponseEntity<PatientDetailsResponseDto> getMyEmergencyDetails(Authentication authentication) {
+        return ResponseEntity.ok(emergencyLookupService.getMyEmergencyDetails(authentication));
+    }
+
+    @GetMapping({"/search", "/patients/search"})
     public ResponseEntity<EmergencyLookupSearchResponseDto> searchPatients(
             Authentication authentication,
-            @RequestParam String query) {
+            @RequestParam(name = "query", required = false) String query,
+            @RequestParam(name = "q", required = false) String shorthandQuery) {
 
-        EmergencyLookupSearchResponseDto response = emergencyLookupService.searchPatients(authentication, query);
+        String effectiveQuery = query != null ? query : shorthandQuery;
+        EmergencyLookupSearchResponseDto response = emergencyLookupService.searchPatients(authentication, effectiveQuery);
 
         return ResponseEntity.ok(response);
     }

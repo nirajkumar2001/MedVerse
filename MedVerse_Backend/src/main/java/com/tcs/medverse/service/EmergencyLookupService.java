@@ -99,6 +99,18 @@ public class EmergencyLookupService {
         return toPatientDetails(patient);
     }
 
+    @Transactional(readOnly = true)
+    public PatientDetailsResponseDto getMyEmergencyDetails(Authentication authentication) {
+        com.tcs.medverse.entity.Signup patientSignup =
+                healthcareSecurityService.currentApprovedUser(authentication, Role.PATIENT);
+
+        Patient patient = patientRepository.findById(patientSignup.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Patient not found with patientId: " + patientSignup.getUserId()));
+
+        return toPatientDetails(patient);
+    }
+
     private PatientSummaryResponseDto toPatientSummary(Patient patient) {
         PatientSummaryResponseDto dto = new PatientSummaryResponseDto();
 

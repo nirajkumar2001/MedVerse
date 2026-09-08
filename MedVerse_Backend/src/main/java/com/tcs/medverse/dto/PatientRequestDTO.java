@@ -2,6 +2,8 @@ package com.tcs.medverse.dto;
 
 public class PatientRequestDTO {
 
+    private String patientId;
+    private String email;
     private String name;
     private Integer age;
     private String gender;
@@ -24,6 +26,22 @@ public class PatientRequestDTO {
     private String photoUrl;
 
     public PatientRequestDTO() {
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

@@ -1,0 +1,48 @@
+name: MedVerse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Run backend tests
+        working-directory: MedVerse_Backend
+        run: chmod +x mvnw && ./mvnw test
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: MedVerse_Frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: MedVerse_Frontend
+        run: npm ci
+
+      - name: Build auth-admin
+        working-directory: MedVerse_Frontend
+        run: npx ng build auth-admin

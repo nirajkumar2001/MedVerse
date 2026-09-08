@@ -6,6 +6,8 @@ import com.tcs.medverse.dto.MedicalProfileUpdateResponse;
 import com.tcs.medverse.dto.MedicalProfileUpdateUpdateRequest;
 import com.tcs.medverse.dto.PatientMedicalProfileResponse;
 import com.tcs.medverse.dto.PatientMedicalRecordResponse;
+import com.tcs.medverse.event.DomainEventPublisher;
+import com.tcs.medverse.event.MedicalRecordUpdatedEvent;
 import com.tcs.medverse.entity.AccessNotification;
 import com.tcs.medverse.entity.MedicalProfileUpdate;
 import com.tcs.medverse.entity.PatientMedicalProfile;
@@ -37,6 +39,7 @@ public class MedicalProfileUpdateService {
     private final HealthcareSecurityService healthcareSecurityService;
     private final SignupRepository signupRepository;
     private final SimpMessagingTemplate messagingTemplate;
+    private final DomainEventPublisher domainEventPublisher;
 
     public MedicalProfileUpdateService(
             MedicalProfileUpdateRepository medicalProfileUpdateRepository,
@@ -44,13 +47,15 @@ public class MedicalProfileUpdateService {
             AccessNotificationRepository accessNotificationRepository,
             HealthcareSecurityService healthcareSecurityService,
             SignupRepository signupRepository,
-            SimpMessagingTemplate messagingTemplate) {
+            SimpMessagingTemplate messagingTemplate,
+            DomainEventPublisher domainEventPublisher) {
         this.medicalProfileUpdateRepository = medicalProfileUpdateRepository;
         this.patientMedicalProfileRepository = patientMedicalProfileRepository;
         this.accessNotificationRepository = accessNotificationRepository;
         this.healthcareSecurityService = healthcareSecurityService;
         this.signupRepository = signupRepository;
         this.messagingTemplate = messagingTemplate;
+        this.domainEventPublisher = domainEventPublisher;
     }
 
     @Transactional(readOnly = true)
@@ -74,6 +79,10 @@ public class MedicalProfileUpdateService {
         if (!"APPROVED".equalsIgnoreCase(session.getAccessStatus())
                 && !"COMPLETED".equalsIgnoreCase(session.getAccessStatus())) {
             throw new BadRequestException("Patient profile can be viewed only after patient approval");
+        }
+
+        if (!Boolean.TRUE.equals(session.getCanViewPreviousRecords())) {
+            throw new BadRequestException("Access to previous medical records was not granted");
         }
 
         PatientMedicalProfile profile = getOrCreatePatientMedicalProfile(patientId);
@@ -203,6 +212,12 @@ public class MedicalProfileUpdateService {
 
         publishAccessNotificationToBothSides(savedSession);
         publishMedicalUpdateToPatient(savedSession, savedUpdate);
+        domainEventPublisher.publishMedicalRecordUpdated(new MedicalRecordUpdatedEvent(
+                savedUpdate.getUpdateId(),
+            savedUpdate.getPatientId(),
+            savedUpdate.getDoctorId(),
+            savedUpdate.getSessionId(),
+            now));
 
         return toUpdateResponse(savedUpdate);
     }

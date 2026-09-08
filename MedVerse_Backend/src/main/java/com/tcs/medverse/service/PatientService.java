@@ -5,8 +5,10 @@ import com.tcs.medverse.dto.PatientResponseDTO;
 import com.tcs.medverse.entity.Patient;
 import com.tcs.medverse.entity.Signup;
 import com.tcs.medverse.enums.Role;
+import com.tcs.medverse.exception.BadRequestException;
 import com.tcs.medverse.exception.ResourceNotFoundException;
 import com.tcs.medverse.repository.PatientRepository;
+import com.tcs.medverse.repository.SignupRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +19,15 @@ import java.time.LocalDateTime;
 public class PatientService {
 
     private final PatientRepository patientRepository;
+    private final SignupRepository signupRepository;
     private final HealthcareSecurityService healthcareSecurityService;
 
     public PatientService(
             PatientRepository patientRepository,
+            SignupRepository signupRepository,
             HealthcareSecurityService healthcareSecurityService) {
         this.patientRepository = patientRepository;
+        this.signupRepository = signupRepository;
         this.healthcareSecurityService = healthcareSecurityService;
     }
 
@@ -37,6 +42,21 @@ public class PatientService {
         return mapToResponse(patient, patientSignup);
     }
 
+        @Transactional(readOnly = true)
+        public PatientResponseDTO getPatientForDoctor(Authentication authentication, String patientId) {
+        healthcareSecurityService.currentApprovedUser(authentication, Role.DOCTOR);
+
+        Patient patient = patientRepository.findById(patientId)
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "Patient profile not found with patientId: " + patientId));
+
+        Signup patientSignup = signupRepository.findByUserId(patient.getPatientId())
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "Patient account not found with patientId: " + patientId));
+
+        return mapToResponse(patient, patientSignup);
+        }
+
     @Transactional
     public PatientResponseDTO updateMyProfile(
             Authentication authentication,
@@ -48,8 +68,10 @@ public class PatientService {
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Patient profile not found with patientId: " + patientSignup.getUserId()));
 
-        if (request.getName() != null) {
-            patient.setName(cleanText(request.getName()));
+        if (request.getPatientId() != null
+                || request.getEmail() != null
+                || request.getName() != null) {
+            throw new BadRequestException("patientId, email and name cannot be updated");
         }
 
         if (request.getAge() != null) {
