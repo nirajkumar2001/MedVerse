@@ -5,6 +5,7 @@
   "framework": null,
   "routes": [
     { "handle": "filesystem" },
+    { "src": "^/$", "dest": "/healthcare/index.html" },
     { "src": "/healthcare(?:/(.*))?", "dest": "/healthcare/index.html" },
     { "src": "/learning(?:/(.*))?", "dest": "/learning/index.html" },
     { "src": "/admin(?:/(.*))?", "dest": "/admin/index.html" }
