@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 export interface EmergencyPatientSummary {
   patientId: string;
@@ -44,7 +45,7 @@ export interface EmergencyLookupSearchResponse {
   providedIn: 'root'
 })
 export class EmergencyLookupService {
-  private readonly baseUrl = 'http://localhost:9090/api/v1/emergency';
+  private readonly baseUrl = `${API_BASE_URL}/emergency`;
 
   constructor(private readonly http: HttpClient) {}
 

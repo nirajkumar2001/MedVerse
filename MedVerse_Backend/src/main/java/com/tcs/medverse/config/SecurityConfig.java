@@ -18,7 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.beans.factory.annotation.Value;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -28,6 +30,9 @@ public class SecurityConfig {
 
         private final JwtAuthFilter jwtAuthFilter;
         private final JwtAuthenticationEntryPoint authenticationEntryPoint;
+
+        @Value("${medverse.cors.allowed-origins:http://localhost:4200,http://localhost:4201,http://localhost:4202}")
+        private String allowedOrigins;
 
         @Bean
         public ObjectMapper objectMapper() {
@@ -163,10 +168,10 @@ public class SecurityConfig {
         public CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration config = new CorsConfiguration();
 
-                config.setAllowedOrigins(List.of(
-                                "http://localhost:4200",
-                                "http://localhost:4201",
-                                "http://localhost:4202"));
+                config.setAllowedOrigins(Arrays.stream(allowedOrigins.split(","))
+                                .map(String::trim)
+                                .filter(origin -> !origin.isBlank())
+                                .toList());
 
                 config.setAllowedMethods(List.of(
                                 "GET",

@@ -10,6 +10,7 @@ import { LayoutSidebarComponent } from '../../components/layout-sidebar/layout-s
 import { HealthcareFooterComponent } from '../../components/healthcare-footer/healthcare-footer.component';
 import { LogoutConfirmModalComponent } from '../../components/logout-confirm-modal/logout-confirm-modal.component';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 @Component({
   selector: 'app-support',
@@ -26,7 +27,7 @@ export class SupportComponent {
   errorMessage = '';
   showLogoutModal = false;
 
-  private readonly apiBaseUrl = 'http://localhost:9090/api/v1';
+  private readonly apiBaseUrl = API_BASE_URL;
 
   constructor(
     private router: Router,

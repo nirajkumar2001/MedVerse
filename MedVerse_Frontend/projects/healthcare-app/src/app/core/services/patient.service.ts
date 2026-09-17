@@ -4,12 +4,13 @@ import { catchError, forkJoin, map, Observable, of, throwError } from 'rxjs';
 
 import { PatientMedicalRecord } from '../models/medical-record.model';
 import { Patient } from '../models/patient.model';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
-  private readonly apiBaseUrl = 'http://localhost:9090/api/v1';
+  private readonly apiBaseUrl = API_BASE_URL;
 
   constructor(private readonly http: HttpClient) {}
 

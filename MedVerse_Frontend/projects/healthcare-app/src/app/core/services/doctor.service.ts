@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Doctor } from '../models/doctor.model';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctorService {
-  private readonly apiBaseUrl = 'http://localhost:9090/api/v1';
+  private readonly apiBaseUrl = API_BASE_URL;
   private readonly doctorSubject = new BehaviorSubject<Doctor>(this.emptyDoctor());
 
   constructor(private readonly http: HttpClient) {}

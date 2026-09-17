@@ -49,14 +49,12 @@ public class LoginService {
     public LoginResponse login(LoginRequest request) {
         rateLimiter.checkRequestLimit("LOGIN:" + request.userId());
 
-        if (request.userId().contains("@")) {
-            throw new BadRequestException("Login with email is not allowed. Use userId.");
-        }
-
-        Signup user = signupRepository.findByUserId(request.userId())
-                .orElse(null);
+        String identifier = request.userId().trim();
+        Signup user = identifier.contains("@")
+                ? signupRepository.findByEmail(identifier).orElse(null)
+                : signupRepository.findByUserId(identifier).orElse(null);
         if (user == null) {
-            recordUnknownAttempt(request.userId(), "FAILED_INVALID_USER");
+            recordUnknownAttempt(identifier, "FAILED_INVALID_USER");
             throw new BadRequestException("Invalid credentials");
         }
 

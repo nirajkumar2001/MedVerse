@@ -1,0 +1,23 @@
+[build]
+  base = "MedVerse_Frontend"
+  command = "npm run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/healthcare/*"
+  to = "/healthcare/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/learning/*"
+  to = "/learning/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+

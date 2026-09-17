@@ -3,8 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve healthcare-app",
+    "start:admin": "ng serve auth-admin --port 4202",
+    "start:learning": "ng serve learning-app --port 4201",
+    "build": "npm run build:healthcare && npm run build:learning && npm run build:admin",
+    "build:netlify": "node scripts/configure-api-origin.mjs && npm run build && node scripts/prepare-netlify.mjs",
+    "build:vercel": "node scripts/configure-api-origin.mjs && npm run build && node scripts/prepare-netlify.mjs",
+    "build:healthcare": "ng build healthcare-app --configuration production --base-href /healthcare/",
+    "build:learning": "ng build learning-app --configuration production --base-href /learning/",
+    "build:admin": "ng build auth-admin --configuration production --base-href /admin/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -7,7 +7,5 @@ public enum Role {
     LEARNER,
     DOCTOR,
     PATIENT,
-    AUTHOFFICER,
-
-    ADMIN
+    AUTHOFFICER,ADMIN
 }

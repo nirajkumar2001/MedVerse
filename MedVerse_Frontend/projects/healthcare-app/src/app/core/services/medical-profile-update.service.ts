@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 export interface MedicalProfileUpdatePayload {
   sessionId: string;
@@ -30,8 +31,8 @@ export interface MedicalProfileUpdatePayload {
   providedIn: 'root'
 })
 export class MedicalProfileUpdateService {
-  private readonly apiBaseUrl = 'http://localhost:9090/api/v1/editpatientprofile';
-  private readonly emergencyBaseUrl = 'http://localhost:9090/api/v1/emergency';
+  private readonly apiBaseUrl = `${API_BASE_URL}/editpatientprofile`;
+  private readonly emergencyBaseUrl = `${API_BASE_URL}/emergency`;
 
   constructor(private readonly http: HttpClient) {}
 

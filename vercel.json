@@ -1,0 +1,12 @@
+{
+  "installCommand": "npm ci --prefix MedVerse_Frontend",
+  "buildCommand": "npm run build:vercel --prefix MedVerse_Frontend",
+  "outputDirectory": "MedVerse_Frontend/dist",
+  "framework": null,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/healthcare(?:/(.*))?", "dest": "/healthcare/index.html" },
+    { "src": "/learning(?:/(.*))?", "dest": "/learning/index.html" },
+    { "src": "/admin(?:/(.*))?", "dest": "/admin/index.html" }
+  ]
+}

@@ -31,7 +31,7 @@ public class DefaultAdminSeeder {
     @Value("${medverse.default-admin.email:admin@medverse.com}")
     private String adminEmail;
 
-    @Value("${medverse.default-admin.password:change-me-locally}")
+    @Value("${medverse.default-admin.password:Pass@123}")
     private String adminPassword;
 
     @Bean
@@ -39,10 +39,6 @@ public class DefaultAdminSeeder {
         return args -> {
             Signup admin = signupRepository.findByUserId(adminUserId)
                     .orElseGet(Signup::new);
-
-            if (admin.getId() != null && admin.getRole() == Role.ADMIN) {
-                return;
-            }
 
             if (admin.getId() == null && signupRepository.existsByEmailAndRole(adminEmail, Role.ADMIN)) {
                 System.out.println("[DEFAULT_ADMIN_SKIPPED] admin email already exists: " + adminEmail);
@@ -53,7 +49,9 @@ public class DefaultAdminSeeder {
             admin.setAuthRefId(admin.getAuthRefId() == null ? "AUTH_ADMIN_" + UUID.randomUUID() : admin.getAuthRefId());
             admin.setName(adminName);
             admin.setEmail(adminEmail);
-            admin.setPassword(passwordEncoder.encode(adminPassword));
+            if (admin.getPassword() == null || !passwordEncoder.matches(adminPassword, admin.getPassword())) {
+                admin.setPassword(passwordEncoder.encode(adminPassword));
+            }
             admin.setRole(Role.ADMIN);
             admin.setAuthStatus(AuthStatus.APPROVED);
             admin.setActive(true);

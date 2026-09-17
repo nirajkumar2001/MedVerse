@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { API_ORIGIN } from '../../../shared-services/src/lib/api-config';
 
 export interface OtpWebSocketMessage {
   sessionId: string;
@@ -14,7 +13,7 @@ export interface OtpWebSocketMessage {
   providedIn: 'root'
 })
 export class OtpWebSocketService {
-  private readonly socketUrl = API_ORIGIN.replace(/^http/, 'ws') + '/ws';
+  private readonly socketUrl = `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}/ws`;
   private readonly otpMessagesSubject = new Subject<OtpWebSocketMessage>();
   readonly otpMessages$ = this.otpMessagesSubject.asObservable();
 

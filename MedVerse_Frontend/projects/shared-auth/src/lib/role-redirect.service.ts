@@ -7,19 +7,19 @@ export type MedAuthRole = 'learner' | 'patient' | 'doctor' | 'admin' | 'authOffi
 })
 export class RoleRedirectService {
   private readonly roleTargets: Record<MedAuthRole, string> = {
-    learner: 'http://localhost:4201/learner/dashboard',
-    patient: 'http://localhost:4200/patient/home',
-    doctor: 'http://localhost:4200/doctor/home',
-    admin: 'http://localhost:4202/admin/dashboard',
-    authOfficer: 'http://localhost:4201/authofficer/auth-officer-dashboard'
+    learner: '/learning/learner/dashboard',
+    patient: '/healthcare/patient/home',
+    doctor: '/healthcare/doctor/home',
+    admin: '/admin/admin/dashboard',
+    authOfficer: '/learning/authofficer/auth-officer-dashboard'
   };
 
   private readonly pendingProfileTargets: Record<MedAuthRole, string> = {
-    learner: 'http://localhost:4201/learner/profile',
-    patient: 'http://localhost:4200/patient/profile',
-    doctor: 'http://localhost:4200/doctor/profile',
-    admin: 'http://localhost:4202/admin/dashboard',
-    authOfficer: 'http://localhost:4201/authofficer/profile'
+    learner: '/learning/learner/profile',
+    patient: '/healthcare/patient/profile',
+    doctor: '/healthcare/doctor/profile',
+    admin: '/admin/admin/dashboard',
+    authOfficer: '/learning/authofficer/profile'
   };
 
   redirectToRole(role: MedAuthRole): void {

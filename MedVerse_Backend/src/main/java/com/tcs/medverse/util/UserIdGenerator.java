@@ -20,7 +20,7 @@ public class UserIdGenerator {
             case PATIENT -> "PAT";
             case LEARNER -> "LRN";
             case AUTHOFFICER -> "AOF";
-            case ADMIN -> null;// we dont have them
+            case ADMIN->null;// we dont have them
 
         };
     }

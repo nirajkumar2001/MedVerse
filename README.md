@@ -46,6 +46,17 @@ Install the following before running the project:
 
 ## Backend Setup
 
+For immediate local development without Docker, the backend automatically uses
+the `local` profile. It runs on H2, keeps OTP and rate-limit state in memory,
+and seeds the admin account below:
+
+```text
+User ID: ADM00001
+Password: Pass@123
+```
+
+Start it with:
+
 Open PowerShell in the backend directory:
 
 ```powershell
@@ -74,6 +85,18 @@ The backend runs on:
 http://localhost:9090
 ```
 
+The Angular development proxy forwards `/api` and `/ws` to this backend. Run
+the admin application in a second terminal:
+
+```powershell
+cd MedVerse_Frontend
+npm ci
+npm run start:admin
+```
+
+Open `http://localhost:4202/login`. The healthcare and learning apps are
+available with `npm start` on port 4200 and `npm run start:learning` on port 4201.
+
 ## Frontend Setup
 
 Open PowerShell in the frontend directory and install the locked dependencies:
@@ -83,18 +106,26 @@ cd MedVerse_Frontend
 npm ci
 ```
 
-This is a multi-project Angular workspace. Start an application by specifying its project name:
+This is a multi-project Angular workspace. The default start command runs the healthcare app:
 
 ```powershell
-npx ng serve auth-admin
-npx ng serve healthcare-app
-npx ng serve learning-app
+npm start
 ```
 
-The development server runs on:
+The development server runs on `http://localhost:4200`.
+
+Build all three production applications for the unified frontend image:
+
+```powershell
+npm run build
+```
+
+The container serves the applications from one host:
 
 ```text
-http://localhost:4200
+http://localhost:4200/healthcare/
+http://localhost:4200/learning/
+http://localhost:4200/admin/
 ```
 
 ## Frontend Builds
@@ -118,6 +149,57 @@ npx ng build shared-ui
 
 Build artifacts are written to `MedVerse_Frontend/dist/` and are excluded from Git.
 
+## Netlify Deployment
+
+The root `netlify.toml` configures one Netlify site for all three Angular apps:
+
+```text
+/healthcare/
+/learning/
+/admin/
+```
+
+In Netlify, choose **Add new site > Import an existing project**, select the
+GitHub repository `nirajkumar2001/MedVerse`, and keep the repository root as
+the base. Netlify will read `netlify.toml` and run the frontend build.
+
+Set this Netlify environment variable to the public HTTPS URL of the deployed
+Spring Boot backend:
+
+```text
+MEDVERSE_API_ORIGIN=https://your-backend-domain.example.com
+```
+
+The build generates proxy rules for `/api` and `/ws` from that value. Enable
+automatic deploys for the `main` branch in **Site configuration > Build &
+deploy > Continuous deployment**. Every pushed frontend change will then
+trigger a new Netlify deployment; backend-only changes do not trigger the
+frontend build unless the push also changes frontend files or Netlify is set to
+build every push.
+
+## Vercel Deployment
+
+The root `vercel.json` is configured for the Vercel import flow. In the Vercel
+form, enter:
+
+```text
+Framework Preset: Other
+Root Directory: .
+Build Command: npm run build:vercel --prefix MedVerse_Frontend
+Output Directory: MedVerse_Frontend/dist
+Install Command: npm ci --prefix MedVerse_Frontend
+```
+
+Add this environment variable for Production, Preview, and Development:
+
+```text
+MEDVERSE_API_ORIGIN=https://your-public-backend-domain.example.com
+```
+
+After the first deployment, Vercel automatically redeploys when changes are
+pushed to the connected GitHub branch. The three applications are available at
+`/healthcare/`, `/learning/`, and `/admin/` on the Vercel domain.
+
 ## Testing
 
 Run backend tests with:
@@ -137,7 +219,7 @@ npm test
 ## Docker, Redis, and Kafka
 
 The repository includes Dockerfiles and a Compose stack for PostgreSQL, Redis,
-Kafka, the backend, and the `auth-admin` frontend.
+Kafka, the backend, and all three frontend applications behind one nginx server.
 
 Build the backend image first, then start the stack:
 
@@ -148,10 +230,18 @@ cd ..
 docker compose up --build
 ```
 
-With Compose enabled, the backend uses Redis for OTP/rate-limit state and
+With Compose enabled, the backend uses the `docker` profile and Redis for OTP/rate-limit state and
 publishes `medical-record-updated` events to Kafka. Local and test profiles
 keep the in-memory OTP/rate-limit fallback and disable Kafka so the backend can
 still run without infrastructure services.
+
+For a deployed frontend hostname, set `MEDVERSE_CORS_ALLOWED_ORIGINS` to the
+frontend origin before starting Compose, for example:
+
+```powershell
+$env:MEDVERSE_CORS_ALLOWED_ORIGINS="https://medverse.example.com"
+docker compose up --build
+```
 
 The Compose defaults are development-only. Set `POSTGRES_PASSWORD`,
 `REDIS_PASSWORD`, `JWT_SECRET`, and `MEDVERSE_ADMIN_PASSWORD` through the

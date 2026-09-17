@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../../../../../shared-services/src/lib/api-config';
 
 export type AccessDecision = 'APPROVE' | 'DENY' | 'APPROVED' | 'REJECTED';
 
@@ -8,7 +9,7 @@ export type AccessDecision = 'APPROVE' | 'DENY' | 'APPROVED' | 'REJECTED';
   providedIn: 'root'
 })
 export class AccessRequestService {
-  private readonly baseUrl = 'http://localhost:9090/api/v1/accessnotification';
+  private readonly baseUrl = `${API_BASE_URL}/accessnotification`;
 
   constructor(private readonly http: HttpClient) {}
 
