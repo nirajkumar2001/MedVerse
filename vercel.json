@@ -5,7 +5,8 @@
   "framework": null,
   "routes": [
     { "handle": "filesystem" },
-    { "src": "^/$", "dest": "/healthcare/index.html" },
+    { "src": "^/$", "dest": "/admin/index.html" },
+    { "src": "^/(login|signup|otp-verification|device-limit-reached|profile-rejected|internal-server|forgot-password|reset-password|change-password)(?:/(.*))?$", "dest": "/admin/index.html" },
     { "src": "/healthcare(?:/(.*))?", "dest": "/healthcare/index.html" },
     { "src": "/learning(?:/(.*))?", "dest": "/learning/index.html" },
     { "src": "/admin(?:/(.*))?", "dest": "/admin/index.html" }
